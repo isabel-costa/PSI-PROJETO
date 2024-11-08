@@ -22,15 +22,22 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
+                'only' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
                         'allow' => true,
+                        'roles' => ['admin'],
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['login', 'logout', 'createEvents', 'updateEvents', 'deleteEvents'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['organizer'],
+                    ],
+                    [
+                        'actions' => ['login', 'logout', 'viewReports'],
+                        'allow' => true,
+                        'roles' => ['partner'],
                     ],
                 ],
             ],

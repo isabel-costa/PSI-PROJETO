@@ -29,17 +29,17 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'signup'],
+                'only' => ['login', 'logout', 'register', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        'actions' => ['login', 'logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                         'allow' => true,
-                        'roles' => ['?'],
+                        'roles' => ['registeredUser'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['register', 'searchEvents'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['guest'],
                     ],
                 ],
             ],
