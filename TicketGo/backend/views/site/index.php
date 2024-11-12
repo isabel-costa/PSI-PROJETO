@@ -1,53 +1,41 @@
 <?php
+use hail812\adminlte\widgets\Alert;
+use hail812\adminlte\widgets\SmallBox;
+use yii\helpers\Html;
 
-/** @var yii\web\View $this */
+$this->title = 'Dashboard';
 
-$this->title = 'My Yii Application';
 ?>
+
 <div class="site-index">
-
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="https://www.yiiframework.com">Get started with Yii</a></p>
+    <div class="jumbotron">
+        <h1><?= Html::encode($this->title) ?></h1>
     </div>
 
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-outline-secondary" href="https://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <?= SmallBox::widget([
+                'title' => '150',
+                'text' => 'New Orders',
+                'icon' => 'fas fa-shopping-cart',
+                'theme' => 'info'
+            ]) ?>
         </div>
-
+        <div class="col-lg-4">
+            <?= SmallBox::widget([
+                'title' => '53%',
+                'text' => 'Bounce Rate',
+                'icon' => 'fas fa-chart-bar',
+                'theme' => 'success'
+            ]) ?>
+        </div>
+        <div class="col-lg-4">
+            <?= SmallBox::widget([
+                'title' => '44',
+                'text' => 'User Registrations',
+                'icon' => 'fas fa-user-plus',
+                'theme' => 'warning'
+            ]) ?>
+        </div>
     </div>
 </div>

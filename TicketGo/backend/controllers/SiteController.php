@@ -22,20 +22,20 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
+                'only' => ['logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
+                        'actions' => ['logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'createEvents', 'updateEvents', 'deleteEvents'],
+                        'actions' => ['logout', 'createEvents', 'updateEvents', 'deleteEvents'],
                         'allow' => true,
                         'roles' => ['organizer'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'viewReports'],
+                        'actions' => ['logout', 'viewReports'],
                         'allow' => true,
                         'roles' => ['partner'],
                     ],
