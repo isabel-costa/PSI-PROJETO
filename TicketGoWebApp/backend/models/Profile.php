@@ -14,7 +14,7 @@ use Yii;
  * @property string|null $morada
  * @property string|null $dataregisto
  *
- * @property Carrinho $carrinho
+ * @property Carrinhos $carrinhos
  * @property Faturas[] $faturas
  * @property Favoritos[] $favoritos
  */
@@ -57,13 +57,13 @@ class Profile extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Carrinho]].
+     * Gets query for [[Carrinhos]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCarrinho()
+    public function getCarrinhos()
     {
-        return $this->hasOne(Carrinho::class, ['profile_id' => 'id']);
+        return $this->hasOne(Carrinhos::class, ['profile_id' => 'id']);
     }
 
     /**
