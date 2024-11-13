@@ -11,10 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+
     'components' => [
 
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+            // Uncomment the next line if you want to cache RBAC items hierarchy
+            // 'cache' => 'cache',
             'itemTable' => '{{%auth_item}}',
             'itemChildTable' => '{{%auth_item_child}}',
             'assignmentTable' => '{{%auth_assignment}}',
