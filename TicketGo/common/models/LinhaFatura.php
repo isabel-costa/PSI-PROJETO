@@ -1,7 +1,9 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Bilhetes;
+use app\models\Faturas;
 use Yii;
 
 /**

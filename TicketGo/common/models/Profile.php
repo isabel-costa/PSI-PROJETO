@@ -1,7 +1,10 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Carrinhos;
+use app\models\Faturas;
+use app\models\Favoritos;
 use Yii;
 
 /**

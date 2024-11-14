@@ -1,7 +1,13 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Bilhetes;
+use app\models\Categorias;
+use app\models\Favoritos;
+use app\models\Imagens;
+use app\models\Locais;
+use app\models\Zonas;
 use Yii;
 
 /**

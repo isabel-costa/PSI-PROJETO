@@ -1,7 +1,8 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Faturas;
 use Yii;
 
 /**

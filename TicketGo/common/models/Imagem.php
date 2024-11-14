@@ -1,27 +1,27 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Eventos;
 use Yii;
 
 /**
- * This is the model class for table "Favoritos".
+ * This is the model class for table "Imagens".
  *
  * @property int $id
- * @property int|null $profile_id
+ * @property string|null $nome
  * @property int|null $evento_id
  *
  * @property Eventos $evento
- * @property Profiles $profile
  */
-class Favorito extends \yii\db\ActiveRecord
+class Imagem extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'Favoritos';
+        return 'Imagens';
     }
 
     /**
@@ -30,8 +30,9 @@ class Favorito extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['profile_id', 'evento_id'], 'integer'],
-            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profiles::class, 'targetAttribute' => ['profile_id' => 'id']],
+            [['evento_id'], 'integer'],
+            [['nome'], 'string', 'max' => 50],
+            [['evento_id'], 'unique'],
             [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Eventos::class, 'targetAttribute' => ['evento_id' => 'id']],
         ];
     }
@@ -43,7 +44,7 @@ class Favorito extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'profile_id' => 'Profile ID',
+            'nome' => 'Nome',
             'evento_id' => 'Evento ID',
         ];
     }
@@ -56,15 +57,5 @@ class Favorito extends \yii\db\ActiveRecord
     public function getEvento()
     {
         return $this->hasOne(Eventos::class, ['id' => 'evento_id']);
-    }
-
-    /**
-     * Gets query for [[Profile]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProfile()
-    {
-        return $this->hasOne(Profiles::class, ['id' => 'profile_id']);
     }
 }

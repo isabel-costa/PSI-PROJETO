@@ -1,7 +1,10 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\LinhasFatura;
+use app\models\MetodosPagamento;
+use app\models\Profiles;
 use Yii;
 
 /**

@@ -1,7 +1,10 @@
 <?php
 
-namespace app\models;
+namespace common\models;
 
+use app\models\Bilhetes;
+use app\models\Eventos;
+use app\models\Locais;
 use Yii;
 
 /**
