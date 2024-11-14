@@ -50,6 +50,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'evento/index' => 'evento/index',
             ],
         ],
         'view' => [

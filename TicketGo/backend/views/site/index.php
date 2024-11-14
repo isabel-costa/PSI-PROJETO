@@ -1,10 +1,8 @@
 <?php
-use hail812\adminlte\widgets\Alert;
-use hail812\adminlte\widgets\SmallBox;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'Dashboard';
-
 ?>
 
 <div class="site-index">
@@ -14,28 +12,18 @@ $this->title = 'Dashboard';
 
     <div class="row">
         <div class="col-lg-4">
-            <?= SmallBox::widget([
-                'title' => '150',
-                'text' => 'New Orders',
-                'icon' => 'fas fa-shopping-cart',
-                'theme' => 'info'
-            ]) ?>
+            <div class="small-box">
+                <div class="inner">
+                    <h3>Eventos</h3>
+                    <p>Numero de Eventos</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <a href="<?= Url::to(['evento/index']) ?>" class="small-box-footer">
+                    Ver Eventos <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
         </div>
-        <div class="col-lg-4">
-            <?= SmallBox::widget([
-                'title' => '53%',
-                'text' => 'Bounce Rate',
-                'icon' => 'fas fa-chart-bar',
-                'theme' => 'success'
-            ]) ?>
-        </div>
-        <div class="col-lg-4">
-            <?= SmallBox::widget([
-                'title' => '44',
-                'text' => 'User Registrations',
-                'icon' => 'fas fa-user-plus',
-                'theme' => 'warning'
-            ]) ?>
-        </div>
-    </div>
+
 </div>

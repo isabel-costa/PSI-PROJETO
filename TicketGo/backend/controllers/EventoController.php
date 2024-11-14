@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use common\models\Evento;
 use Yii;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 
 class EventoController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
         return [
             'access' => [
@@ -28,10 +30,22 @@ class EventoController extends \yii\web\Controller
             ],
         ];
     }
+    public function actionIndex()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Evento::find(),
+            'pagination' => [
+                'pageSize' => 10, // Define o número de itens por página
+            ],
+        ]);
+
+        // Renderiza a view index e passa os eventos para a view
+        return $this->render('index', ['dataProvider' => $dataProvider]);
+    }
 
     public function actionCreate()
     {
-        $model = new Event();
+        $model = new Evento();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -46,7 +60,7 @@ class EventoController extends \yii\web\Controller
     public function actionSearchEvents() {
 
         //Inicializa a query
-        $query = Event::find()
+        $query = Evento::find()
             ->joinWith(['local', 'categoria']) //Join com a tabela de 'local' e 'categoria'
             ->joinWith(['bilhetes']); //Obter os bilhetes (preço e disponibilidade)
 
@@ -96,7 +110,7 @@ class EventoController extends \yii\web\Controller
     public function actionViewEventDetails($id)
     {
 
-        $event = Event::findOne($id);
+        $event = Evento::findOne($id);
 
         //Verifica se o evento foi encontrado
         if (!$event) {
