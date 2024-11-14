@@ -35,15 +35,6 @@ class RbacController extends Controller
         $deleteUsers->description = 'Permission to delete users';
         $auth->add($deleteUsers);
 
-        //Login
-        $loginPermission = $auth->createPermission('login');
-        $loginPermission->description = 'Login';
-        $auth->add($loginPermission);
-
-        //Logout
-        $logoutPermission = $auth->createPermission('logout');
-        $logoutPermission->description = 'Logout';
-        $auth->add($logoutPermission);
 
         //Registo
         $registerPermission = $auth->createPermission('register');
@@ -144,8 +135,6 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
 
-        $auth->addChild($admin, $loginPermission);
-        $auth->addChild($admin, $logoutPermission);
         $auth->addChild($admin, $createUsers);
         $auth->addChild($admin, $updateUsers);
         $auth->addChild($admin, $deleteUsers);
@@ -162,8 +151,7 @@ class RbacController extends Controller
         $organizer = $auth->createRole('organizer');
         $auth->add($organizer);
 
-        $auth->addChild($organizer, $loginPermission);
-        $auth->addChild($organizer, $logoutPermission);
+
         $auth->addChild($organizer, $createEvents);
         $auth->addChild($organizer, $updateEvents);
         $auth->addChild($organizer, $deleteEvents);
@@ -172,16 +160,14 @@ class RbacController extends Controller
         $partner = $auth->createRole('partner');
         $auth->add($partner);
 
-        $auth->addChild($partner, $loginPermission);
-        $auth->addChild($partner, $logoutPermission);
+
         $auth->addChild($partner, $viewReports);
 
         //Utilizador Registado
         $registeredUser = $auth->createRole('registeredUser');
         $auth->add($registeredUser);
 
-        $auth->addChild($registeredUser, $loginPermission);
-        $auth->addChild($registeredUser, $logoutPermission);
+
         $auth->addChild($registeredUser, $updateProfile);
         $auth->addChild($registeredUser, $searchEvents);
         $auth->addChild($registeredUser, $addTicketsCart);
