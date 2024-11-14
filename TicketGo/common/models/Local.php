@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use app\models\Eventos;
-use app\models\Zonas;
+use common\models\Eventos;
+use common\models\Zonas;
 use Yii;
 
 /**

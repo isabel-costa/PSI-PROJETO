@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use app\models\Faturas;
+use common\models\Faturas;
 use Yii;
 
 /**

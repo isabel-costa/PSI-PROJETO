@@ -2,9 +2,9 @@
 
 namespace common\models;
 
-use app\models\Carrinhos;
-use app\models\Faturas;
-use app\models\Favoritos;
+use common\models\Carrinhos;
+use common\models\Faturas;
+use common\models\Favoritos;
 use Yii;
 
 /**

@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use app\models\Eventos;
-use app\models\Profiles;
+use common\models\Eventos;
+use common\models\Profiles;
 use Yii;
 
 /**

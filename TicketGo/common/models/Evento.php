@@ -2,12 +2,12 @@
 
 namespace common\models;
 
-use app\models\Bilhetes;
-use app\models\Categorias;
-use app\models\Favoritos;
-use app\models\Imagens;
-use app\models\Locais;
-use app\models\Zonas;
+use common\models\Bilhetes;
+use common\models\Categorias;
+use common\models\Favoritos;
+use common\models\Imagens;
+use common\models\Locais;
+use common\models\Zonas;
 use Yii;
 
 /**

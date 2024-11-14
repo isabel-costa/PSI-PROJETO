@@ -2,10 +2,10 @@
 
 namespace common\models;
 
-use app\models\Eventos;
-use app\models\LinhasCarrinho;
-use app\models\LinhasFatura;
-use app\models\Zonas;
+use common\models\Eventos;
+use common\models\LinhasCarrinho;
+use common\models\LinhasFatura;
+use common\models\Zonas;
 use Yii;
 
 /**

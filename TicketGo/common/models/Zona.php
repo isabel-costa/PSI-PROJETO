@@ -2,9 +2,9 @@
 
 namespace common\models;
 
-use app\models\Bilhetes;
-use app\models\Eventos;
-use app\models\Locais;
+use common\models\Bilhetes;
+use common\models\Eventos;
+use common\models\Locais;
 use Yii;
 
 /**

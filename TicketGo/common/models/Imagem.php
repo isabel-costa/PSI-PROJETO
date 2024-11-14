@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use app\models\Eventos;
+use common\models\Eventos;
 use Yii;
 
 /**

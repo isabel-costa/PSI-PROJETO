@@ -2,9 +2,9 @@
 
 namespace common\models;
 
-use app\models\LinhasFatura;
-use app\models\MetodosPagamento;
-use app\models\Profiles;
+use common\models\LinhasFatura;
+use common\models\MetodosPagamento;
+use common\models\Profiles;
 use Yii;
 
 /**

@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use app\models\Bilhetes;
-use app\models\Faturas;
+use common\models\Bilhetes;
+use common\models\Faturas;
 use Yii;
 
 /**

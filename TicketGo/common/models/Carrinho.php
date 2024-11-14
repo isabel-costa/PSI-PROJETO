@@ -2,8 +2,8 @@
 
 namespace common\models;
 
-use app\models\LinhasCarrinho;
-use app\models\Profiles;
+use common\models\LinhasCarrinho;
+use common\models\Profiles;
 use Yii;
 
 /**
