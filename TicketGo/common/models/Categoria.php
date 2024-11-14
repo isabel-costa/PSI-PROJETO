@@ -1,6 +1,8 @@
 <?php
 
-namespace app\models;
+namespace common\models;
+
+use common\models\Eventos;
 
 use Yii;
 

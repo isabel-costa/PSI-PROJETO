@@ -1,6 +1,10 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Bilhetes;
+use common\models\Carrinhos;
 
 use Yii;
 
