@@ -1,5 +1,6 @@
 <?php
 
+
 namespace common\models;
 
 use common\models\Bilhetes;
@@ -8,6 +9,7 @@ use common\models\Favoritos;
 use common\models\Imagens;
 use common\models\Locais;
 use common\models\Zonas;
+
 use Yii;
 
 /**
