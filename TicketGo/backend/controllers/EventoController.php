@@ -2,13 +2,15 @@
 
 namespace backend\controllers;
 
+use common\models\Evento;
 use Yii;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
 
 class EventoController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
         return [
             'access' => [
@@ -29,9 +31,22 @@ class EventoController extends \yii\web\Controller
             ],
         ];
     }
+    public function actionIndex()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Evento::find(),
+            'pagination' => [
+                'pageSize' => 10, // Define o número de itens por página
+            ],
+        ]);
+
+        // Renderiza a view index e passa os eventos para a view
+        return $this->render('index', ['dataProvider' => $dataProvider]);
+    }
 
     public function actionCreateEvent()
     {
+        $model = new Evento();
 
         if (!Yii::$app->user->can('createEvent')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para criar eventos.');
@@ -39,7 +54,7 @@ class EventoController extends \yii\web\Controller
             return $this->redirect(['index']);
         }
 
-        $model = new Event();
+        $model = new Evento();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // Salvar o modelo no banco de dados
@@ -86,7 +101,7 @@ class EventoController extends \yii\web\Controller
 
     public function actionDeleteEvent($id)
     {
-        $event = Event::findOne($id);
+        $event = Evento::findOne($id);
 
         if (!$event || !Yii::$app->user->can('deleteEvent', ['eventId' => $id])) {
             throw new ForbiddenHttpException('Não tem permissão para eliminar eventos.');
@@ -101,7 +116,10 @@ class EventoController extends \yii\web\Controller
     {
 
         //Inicializa a query
-        $query = Event::find()
+        $query = Evento::find()
+            ->joinWith(['local', 'categoria']) //Join com a tabela de 'local' e 'categoria'
+            ->joinWith(['bilhetes']); //Obter os bilhetes (preço e disponibilidade)
+        $query = Evento::find()
             ->joinWith(['local', 'categoria', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
 
         //Obtem os parâmetros de filtro da URL (ou da requisição GET)
@@ -150,7 +168,7 @@ class EventoController extends \yii\web\Controller
     public function actionViewEventDetails($id)
     {
 
-        $event = Event::findOne($id);
+        $event = Evento::findOne($id);
 
         //Verifica se o evento foi encontrado
         if (!$event) {
