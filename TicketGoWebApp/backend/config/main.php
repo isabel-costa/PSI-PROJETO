@@ -52,6 +52,15 @@ return [
             'rules' => [
             ],
         ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@backend/views/layouts/adminlte/main.php',
+                'baseUrl' => '@web',
+                'pathMap' => [
+                    '@app/views' => '@backend/views/layouts/adminlte/main.php',
+                ],
+            ],
+        ],
 
     ],
     'params' => $params,

@@ -2,36 +2,44 @@
 
 namespace backend\controllers;
 
+use common\models\Evento;
 use Yii;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
 
 class EventoController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::class,
                 'only' => ['create', 'update', 'delete'],
                 'rules' => [
-                    [
-                        'actions' => ['create', 'update', 'delete'],
-                        'allow' => true,
-                        'roles' => ['admin', 'organizer'],
-                    ],
-                    [
-                        'actions' => ['index', 'view'],
-                        'allow' => true,
-                        'roles' => ['guest', 'registeredUser'],
-                    ],
+                  [
+                      'roles' => ['createEvents', 'updateEvents', 'deleteEvents'],
+                  ]
                 ],
             ],
         ];
     }
+    public function actionIndex()
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Evento::find(),
+            'pagination' => [
+                'pageSize' => 10, // Define o número de itens por página
+            ],
+        ]);
+
+        // Renderiza a view index e passa os eventos para a view
+        return $this->render('index', ['dataProvider' => $dataProvider]);
+    }
 
     public function actionCreateEvent()
     {
+        $model = new Evento();
 
         if (!Yii::$app->user->can('createEvent')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para criar eventos.');
@@ -39,7 +47,7 @@ class EventoController extends \yii\web\Controller
             return $this->redirect(['index']);
         }
 
-        $model = new Event();
+        $model = new Evento();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // Salvar o modelo no banco de dados
@@ -86,7 +94,7 @@ class EventoController extends \yii\web\Controller
 
     public function actionDeleteEvent($id)
     {
-        $event = Event::findOne($id);
+        $event = Evento::findOne($id);
 
         if (!$event || !Yii::$app->user->can('deleteEvent', ['eventId' => $id])) {
             throw new ForbiddenHttpException('Não tem permissão para eliminar eventos.');
@@ -97,60 +105,11 @@ class EventoController extends \yii\web\Controller
     }
 
     //Exibe todos os eventos
-    public function actionSearchEvents()
+
+    /*public function actionViewEventDetails($id)
     {
 
-        //Inicializa a query
-        $query = Event::find()
-            ->joinWith(['local', 'categoria', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
-
-        //Obtem os parâmetros de filtro da URL (ou da requisição GET)
-        $searchTerm = Yii::$app->request->get('search', '');
-        $dataInicio = Yii::$app->request->get('data', '');
-        $localNome = Yii::$app->request->get('local_nome', '');
-        $categoriaNome = Yii::$app->request->get('categoria_nome', '');
-        $preco = Yii::$app->request->get('preco', '');
-        $disponibilidade = Yii::$app->request->get('disponibilidade', '');
-
-        //Aplica os filtros de acordo com os parâmetros recebidos
-        if (!empty($searchTerm)) {
-            $query->andFilterWhere(['like', 'titulo', $searchTerm]);  // Filtro para 'titulo'
-        }
-
-        if (!empty($dataInicio)) {
-            // Filtra pela data do evento, assumindo que você tenha o campo datainicio no seu modelo Event
-            $query->andFilterWhere(['like', 'datainicio', $dataInicio]);  // Filtro para 'data'
-        }
-
-        if (!empty($localNome)) {
-            $query->andFilterWhere(['like', 'local.nome', $localNome]);  // Filtro para 'local_nome'
-        }
-
-        if (!empty($categoriaNome)) {
-            $query->andFilterWhere(['like', 'categoria.nome', $categoriaNome]);  // Filtro para 'categoria_nome'
-        }
-
-        if (!empty($preco)) {
-            // Filtra pela faixa de preço dos bilhetes (usando o campo preco unitário do bilhete)
-            $query->andFilterWhere(['like', 'precounitario', $preco]);  // Filtro para 'preco'
-        }
-
-        if (!empty($disponibilidade)) {
-            // Filtra pela quantidade disponível dos bilhetes
-            $query->andFilterWhere(['>=', 'quantidadedisponivel', $disponibilidade]);  // Filtro para 'disponibilidade'
-        }
-
-        //Executa a consulta e obtém os eventos filtrados
-        $events = $query->all();
-
-        //Devolve a view com os eventos filtrados
-        return $this->render('index', ['events' => $events]);
-    }
-
-    public function actionViewEventDetails($id)
-    {
-
-        $event = Event::findOne($id);
+        $event = Evento::findOne($id);
 
         //Verifica se o evento foi encontrado
         if (!$event) {
@@ -160,5 +119,5 @@ class EventoController extends \yii\web\Controller
         }
 
         return $this->render('view', ['event' => $event]);
-    }
+    }*/
 }
