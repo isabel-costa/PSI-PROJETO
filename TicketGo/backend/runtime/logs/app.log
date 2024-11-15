@@ -13379,3 +13379,727 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1731606856.2593
     'REQUEST_TIME' => 1731606856
 ]
+2024-11-15 10:31:44 [::1][-][-][error][ParseError] ParseError: Unclosed '(' on line 36 does not match ']' in C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\views\layouts\sidebar.php:76
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\wamp64\\www\\P...', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\View.php(157): yii\base\View->renderFile('C:\\wamp64\\www\\P...', Array, NULL)
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\views\layouts\main.php(37): yii\base\View->render('sidebar', Array)
+#3 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\View.php(348): require('C:\\wamp64\\www\\P...')
+#4 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\View.php(258): yii\base\View->renderPhpFile('C:\\wamp64\\www\\P...', Array)
+#5 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Controller.php(422): yii\base\View->renderFile('C:\\wamp64\\www\\P...', Array, Object(backend\controllers\SiteController))
+#6 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Controller.php(408): yii\base\Controller->renderContent('<div class="con...')
+#7 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\controllers\SiteController.php(72): yii\base\Controller->render('index')
+#8 [internal function]: backend\controllers\SiteController->actionIndex()
+#9 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\InlineAction.php(57): call_user_func_array(Array, Array)
+#10 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#11 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index', Array)
+#12 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/index', Array)
+#13 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#14 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#15 {main}
+2024-11-15 10:31:44 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/site/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '54667'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/site/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/site/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731666704.0621
+    'REQUEST_TIME' => 1731666704
+]
+2024-11-15 10:43:28 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "site/evento/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/evento/ind...', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:43:28 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/site/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '54922'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/site/evento/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/site/evento/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731667408.4577
+    'REQUEST_TIME' => 1731667408
+]
+2024-11-15 10:43:56 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "site/evento/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('site/evento/ind...', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:43:56 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/site/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '54930'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/site/evento/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/site/evento/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731667436.1775
+    'REQUEST_TIME' => 1731667436
+]
+2024-11-15 10:50:08 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request: evento/index3.html in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Controller.php:149
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php(552): yii\base\Controller->runAction('index3.html', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('evento/index3.h...', Array)
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#3 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#4 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:50:08 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55169'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/evento/index3.html'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/evento/index3.html'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731667808.9693
+    'REQUEST_TIME' => 1731667808
+]
+2024-11-15 10:54:19 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:54:19 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55216'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731668059.7002
+    'REQUEST_TIME' => 1731668059
+]
+2024-11-15 10:55:24 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:55:24 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55224'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731668124.0568
+    'REQUEST_TIME' => 1731668124
+]
+2024-11-15 10:56:29 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:56:29 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55236'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731668189.7218
+    'REQUEST_TIME' => 1731668189
+]
+2024-11-15 10:56:48 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 10:56:48 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55240'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731668208.0774
+    'REQUEST_TIME' => 1731668208
+]
+2024-11-15 11:14:41 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 11:14:41 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55404'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731669281.1
+    'REQUEST_TIME' => 1731669281
+]
+2024-11-15 11:15:14 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "usuario/index". in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Module.php:561
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php(103): yii\base\Module->runAction('usuario/index', Array)
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\web\Application.php:115
+Stack trace:
+#0 C:\wamp64\www\PLSI-PROJETO\TicketGo\vendor\yiisoft\yii2\base\Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 C:\wamp64\www\PLSI-PROJETO\TicketGo\backend\web\index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-15 11:15:14 [::1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'Phpstorm-42c9c50' => '08a70e26-0de7-4dac-82e5-e363125fbc84'
+    '_csrf-backend' => '533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo\";}'
+]
+
+$_SERVER = [
+    'REDIRECT_STATUS' => '200'
+    'HTTP_HOST' => 'localhost'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"Windows\"'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_REFERER' => 'http://localhost/PLSI-PROJETO/TicketGo/backend/web/evento/index'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_COOKIE' => 'Phpstorm-42c9c50=08a70e26-0de7-4dac-82e5-e363125fbc84; _csrf-backend=533e5bf14b56219e9b2cfc0ff679b1d91c3e55e14fe8542800fb66eb435861c6a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22FZaEU6WMmzu1rgG3VscDWX2nJyG3lLpo%22%3B%7D'
+    'PATH' => 'C:\\Program Files\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\java8path;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\Program Files\\Git\\cmd;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft SQL Server\\150\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\170\\Tools\\Binn\\;C:\\Program Files\\dotnet\\;C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Microsoft\\WindowsApps'
+    'SystemRoot' => 'C:\\Windows'
+    'COMSPEC' => 'C:\\Windows\\system32\\cmd.exe'
+    'PATHEXT' => '.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC'
+    'WINDIR' => 'C:\\Windows'
+    'SERVER_SIGNATURE' => '<address>Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev Server at localhost Port 80</address>
+'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Win64) PHP/8.1.13 mod_fcgid/2.3.10-dev'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'REMOTE_ADDR' => '::1'
+    'DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'REQUEST_SCHEME' => 'http'
+    'CONTEXT_PREFIX' => ''
+    'CONTEXT_DOCUMENT_ROOT' => 'C:/wamp64/www'
+    'SERVER_ADMIN' => 'wampserver@wampserver.invalid'
+    'SCRIPT_FILENAME' => 'C:/wamp64/www/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '55412'
+    'REDIRECT_URL' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'REQUEST_URI' => '/PLSI-PROJETO/TicketGo/backend/web/usuario/index'
+    'SCRIPT_NAME' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'PHP_SELF' => '/PLSI-PROJETO/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1731669314.3302
+    'REQUEST_TIME' => 1731669314
+]

@@ -35,6 +35,10 @@ class RbacController extends Controller
         $deleteUsers->description = 'Permission to delete users';
         $auth->add($deleteUsers);
 
+        //Logout
+        $logoutPermission = $auth->createPermission('logout');
+        $logoutPermission->description = 'Logout';
+        $auth->add($logoutPermission);
 
         //Registo
         $registerPermission = $auth->createPermission('register');
@@ -178,17 +182,16 @@ class RbacController extends Controller
         $auth->addChild($registeredUser, $removeFromFavorites);
 
         //Visitante
-        $guest = $auth->createRole('guest');
+       /* $guest = $auth->createRole('guest');
         $auth->add($guest);
 
         $auth->addChild($guest, $searchEvents);
-        $auth->addChild($guest, $registerPermission);
+        $auth->addChild($guest, $registerPermission);*/
 
         //Atribuir IDs aos Roles
         $auth->assign($admin, 1);
         $auth->assign($organizer, 2);
         $auth->assign($registeredUser, 3);
-        $auth->assign($guest, 4);
-        $auth->assign($partner, 5);
+        $auth->assign($partner, 4);
     }
 }
