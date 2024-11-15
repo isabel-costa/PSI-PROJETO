@@ -22,22 +22,27 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
+                'only' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
+                        'actions' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'createEvents', 'updateEvents', 'deleteEvents'],
+                        'actions' => ['createEvents', 'updateEvents', 'deleteEvents'],
                         'allow' => true,
                         'roles' => ['organizer'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'viewReports'],
+                        'actions' => ['viewReports'],
                         'allow' => true,
                         'roles' => ['partner'],
+                    ],
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -70,6 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+
     }
 
     /**

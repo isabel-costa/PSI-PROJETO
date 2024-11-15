@@ -1,6 +1,12 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Eventos;
+use common\models\LinhasCarrinho;
+use common\models\LinhasFatura;
+use common\models\Zonas;
 
 use Yii;
 

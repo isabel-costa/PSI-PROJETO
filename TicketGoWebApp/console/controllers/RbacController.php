@@ -35,11 +35,6 @@ class RbacController extends Controller
         $deleteUsers->description = 'Permission to delete users';
         $auth->add($deleteUsers);
 
-        //Login
-        $loginPermission = $auth->createPermission('login');
-        $loginPermission->description = 'Login';
-        $auth->add($loginPermission);
-
         //Logout
         $logoutPermission = $auth->createPermission('logout');
         $logoutPermission->description = 'Logout';
@@ -144,8 +139,6 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
 
-        $auth->addChild($admin, $loginPermission);
-        $auth->addChild($admin, $logoutPermission);
         $auth->addChild($admin, $createUsers);
         $auth->addChild($admin, $updateUsers);
         $auth->addChild($admin, $deleteUsers);
@@ -162,8 +155,7 @@ class RbacController extends Controller
         $organizer = $auth->createRole('organizer');
         $auth->add($organizer);
 
-        $auth->addChild($organizer, $loginPermission);
-        $auth->addChild($organizer, $logoutPermission);
+
         $auth->addChild($organizer, $createEvents);
         $auth->addChild($organizer, $updateEvents);
         $auth->addChild($organizer, $deleteEvents);
@@ -172,16 +164,14 @@ class RbacController extends Controller
         $partner = $auth->createRole('partner');
         $auth->add($partner);
 
-        $auth->addChild($partner, $loginPermission);
-        $auth->addChild($partner, $logoutPermission);
+
         $auth->addChild($partner, $viewReports);
 
         //Utilizador Registado
         $registeredUser = $auth->createRole('registeredUser');
         $auth->add($registeredUser);
 
-        $auth->addChild($registeredUser, $loginPermission);
-        $auth->addChild($registeredUser, $logoutPermission);
+
         $auth->addChild($registeredUser, $updateProfile);
         $auth->addChild($registeredUser, $searchEvents);
         $auth->addChild($registeredUser, $addTicketsCart);
@@ -192,17 +182,16 @@ class RbacController extends Controller
         $auth->addChild($registeredUser, $removeFromFavorites);
 
         //Visitante
-        $guest = $auth->createRole('guest');
+       /* $guest = $auth->createRole('guest');
         $auth->add($guest);
 
         $auth->addChild($guest, $searchEvents);
-        $auth->addChild($guest, $registerPermission);
+        $auth->addChild($guest, $registerPermission);*/
 
         //Atribuir IDs aos Roles
         $auth->assign($admin, 1);
         $auth->assign($organizer, 2);
         $auth->assign($registeredUser, 3);
-        $auth->assign($guest, 4);
-        $auth->assign($partner, 5);
+        $auth->assign($partner, 4);
     }
 }

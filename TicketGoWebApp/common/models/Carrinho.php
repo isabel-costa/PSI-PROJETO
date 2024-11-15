@@ -1,7 +1,10 @@
 <?php
 
-namespace app\models;
 
+namespace common\models;
+
+use common\models\LinhasCarrinho;
+use common\models\Profiles;
 use Yii;
 
 /**
