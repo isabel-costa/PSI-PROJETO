@@ -11,6 +11,17 @@ class RbacController extends Controller
      * @throws Exception
      * @throws \Exception
      */
+    public function actionAssignAdmin($userId)
+    {
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole('admin');
+        if ($auth->assign($role, $userId)) {
+            echo "Usuário com ID {$userId} agora é admin.\n";
+        } else {
+            echo "Erro ao atribuir papel de admin ao usuário.\n";
+        }
+    }
+
     public function actionInit()
     {
         $auth=Yii::$app->authManager;
@@ -22,12 +33,12 @@ class RbacController extends Controller
 
         //Criar Utilizadores
         $createUsers = $auth->createPermission('createUsers');
-        $createUsers->description = 'Create an User';
+        $createUsers->description = 'Create an user';
         $auth->add($createUsers);
 
         //Atualizar Utilizadores
         $updateUsers = $auth->createPermission('updateUsers');
-        $updateUsers->description = 'Update an User';
+        $updateUsers->description = 'Update an user';
         $auth->add($updateUsers);
 
         //Apagar Utilizadores
@@ -47,7 +58,7 @@ class RbacController extends Controller
 
         //Atualizar Perfil
         $updateProfile = $auth->createPermission('updateProfile');
-        $updateProfile->description = 'Update User Profile Info';
+        $updateProfile->description = 'Update user Profile Info';
         $auth->add($updateProfile);
 
         //EVENTOS

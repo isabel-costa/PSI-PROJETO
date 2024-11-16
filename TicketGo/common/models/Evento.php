@@ -50,8 +50,8 @@ class Evento extends \yii\db\ActiveRecord
             [['datainicio', 'datafim'], 'safe'],
             [['local_id', 'categoria_id'], 'integer'],
             [['titulo'], 'string', 'max' => 100],
-            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Locais::class, 'targetAttribute' => ['local_id' => 'id']],
-            [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['categoria_id' => 'id']],
+            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
+            [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['categoria_id' => 'id']],
         ];
     }
 

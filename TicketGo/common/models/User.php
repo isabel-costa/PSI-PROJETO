@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
- * User model
+ * user model
  *
  * @property integer $id
  * @property string $username
@@ -54,11 +54,34 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            [['username', 'email', 'password_hash'], 'required'],
+            [['username', 'email', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
+            [['auth_key'], 'string', 'max' => 32],
+            [['status'], 'integer'],
+            [['created_at', 'updated_at'], 'integer'],
+            [['email'], 'email'],
+            [['username', 'email'], 'unique'],
+            [['password_reset_token'], 'unique'],
         ];
     }
 
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                // Gerar o auth_key e os tokens ao criar um novo usuário
+                $this->auth_key = Yii::$app->security->generateRandomString();
+                $this->verification_token = Yii::$app->security->generateRandomString();
+                $this->created_at = time();
+            }
+            // Gerar o hash da senha
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+
+            $this->updated_at = time();
+            return true;
+        }
+        return false;
+    }
     /**
      * {@inheritdoc}
      */
