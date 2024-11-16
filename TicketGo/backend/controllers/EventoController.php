@@ -18,7 +18,8 @@ class EventoController extends \yii\web\Controller
                 'only' => ['create', 'update', 'delete'],
                 'rules' => [
                   [
-                      'roles' => ['createEvents', 'updateEvents', 'deleteEvents'],
+                      'allow' => true,
+                      'roles' => ['admin'],
                   ]
                 ],
             ],
@@ -37,8 +38,13 @@ class EventoController extends \yii\web\Controller
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
 
-    public function actionCreateEvent()
+    public function actionCreate()
     {
+        //Verifica se o utilizador tem permissão para criar eventos
+        if (!Yii::$app->user->can('create')) {
+            Yii::$app->session->setFlash('error', 'Não tem permissão para criar eventos.');
+            return $this->redirect(['index']);
+        }
         $model = new Evento();
 
         if (!Yii::$app->user->can('createEvent')) {
@@ -64,7 +70,7 @@ class EventoController extends \yii\web\Controller
         ]);
     }
 
-    public function actionUpdateEvent($id)
+    public function actionUpdate($id)
     {
         //Verifica se o utilizador tem permissão para editar eventos
         if (!Yii::$app->user->can('updateEvent')) {
@@ -92,7 +98,7 @@ class EventoController extends \yii\web\Controller
         ]);
     }
 
-    public function actionDeleteEvent($id)
+    public function actionDelete($id)
     {
         $event = Evento::findOne($id);
 

@@ -25,7 +25,12 @@ class SiteController extends Controller
                 'only' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
                 'rules' => [
                     [
-                        'actions' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions'=> ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
@@ -83,6 +88,8 @@ class SiteController extends Controller
      *
      * @return string|Response
      */
+
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -92,6 +99,8 @@ class SiteController extends Controller
         $this->layout = 'blank';
 
         $model = new LoginForm();
+        //var_dump($model->login());
+        //dd($model->load(Yii::$app->request->post()));
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
@@ -112,6 +121,6 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(['site/login']);
     }
 }
