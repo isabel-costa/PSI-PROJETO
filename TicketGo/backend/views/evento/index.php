@@ -28,8 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'descricao:ntext',
             'datainicio',
             'datafim',
-            'local_id',
-            'categoria_id',
+            [
+                'attribute' => 'local_id',
+                'label' => 'Local',
+                'value' => function($model) {
+                    return $model->local ? $model->local->nome : '(não definido)';
+                },
+            ],
+            [
+                'attribute' => 'categoria_id',
+                'label' => 'Categoria',
+                'value' => function($model) {
+                    return $model->categoria ? $model->categoria->nome : '(não definido)';
+                },
+            ],
             [
                 'class' => ActionColumn::class,
                 'template' => '{update} {delete}',

@@ -63,7 +63,7 @@ class Local extends \yii\db\ActiveRecord
      */
     public function getEventos()
     {
-        return $this->hasMany(Eventos::class, ['local_id' => 'id']);
+        return $this->hasMany(Evento::class, ['local_id' => 'id']);
     }
 
     /**
@@ -73,6 +73,6 @@ class Local extends \yii\db\ActiveRecord
      */
     public function getZonas()
     {
-        return $this->hasMany(Zonas::class, ['local_id' => 'id']);
+        return $this->hasMany(Zona::class, ['local_id' => 'id']);
     }
 }

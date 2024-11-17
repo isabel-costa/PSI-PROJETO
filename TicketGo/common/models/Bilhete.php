@@ -3,10 +3,10 @@
 
 namespace common\models;
 
-use common\models\Eventos;
-use common\models\LinhasCarrinho;
-use common\models\LinhasFatura;
-use common\models\Zonas;
+use common\models\Evento;
+use common\models\LinhaCarrinho;
+use common\models\LinhaFatura;
+use common\models\Zona;
 
 use Yii;
 
@@ -47,9 +47,9 @@ class Bilhete extends \yii\db\ActiveRecord
             [['precounitario'], 'number'],
             [['data'], 'safe'],
             [['codigobilhete'], 'string'],
-            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Eventos::class, 'targetAttribute' => ['evento_id' => 'id']],
-            [['zona_id'], 'exist', 'skipOnError' => true, 'targetClass' => Zonas::class, 'targetAttribute' => ['zona_id' => 'id']],
-            [['linhafatura_id'], 'exist', 'skipOnError' => true, 'targetClass' => LinhasFatura::class, 'targetAttribute' => ['linhafatura_id' => 'id']],
+            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evento::class, 'targetAttribute' => ['evento_id' => 'id']],
+            [['zona_id'], 'exist', 'skipOnError' => true, 'targetClass' => Zona::class, 'targetAttribute' => ['zona_id' => 'id']],
+            [['linhafatura_id'], 'exist', 'skipOnError' => true, 'targetClass' => LinhaFatura::class, 'targetAttribute' => ['linhafatura_id' => 'id']],
         ];
     }
 
@@ -77,7 +77,7 @@ class Bilhete extends \yii\db\ActiveRecord
      */
     public function getEvento()
     {
-        return $this->hasOne(Eventos::class, ['id' => 'evento_id']);
+        return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
 
     /**
@@ -87,7 +87,7 @@ class Bilhete extends \yii\db\ActiveRecord
      */
     public function getLinhafatura()
     {
-        return $this->hasOne(LinhasFatura::class, ['id' => 'linhafatura_id']);
+        return $this->hasOne(LinhaFatura::class, ['id' => 'linhafatura_id']);
     }
 
     /**
@@ -97,7 +97,7 @@ class Bilhete extends \yii\db\ActiveRecord
      */
     public function getLinhasCarrinhos()
     {
-        return $this->hasMany(LinhasCarrinho::class, ['bilhete_id' => 'id']);
+        return $this->hasMany(LinhaCarrinho::class, ['bilhete_id' => 'id']);
     }
 
     /**
@@ -107,6 +107,6 @@ class Bilhete extends \yii\db\ActiveRecord
      */
     public function getZona()
     {
-        return $this->hasOne(Zonas::class, ['id' => 'zona_id']);
+        return $this->hasOne(Zona::class, ['id' => 'zona_id']);
     }
 }

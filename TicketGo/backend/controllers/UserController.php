@@ -29,11 +29,6 @@ class UserController extends \yii\web\Controller
 }
     public function actionIndex()
     {
-        if (\Yii::$app->user->can('admin')) {
-            var_dump('user is admin');
-        } else {
-            var_dump('user is NOT admin');
-        }
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
             'pagination' => [
@@ -86,7 +81,7 @@ class UserController extends \yii\web\Controller
             //Atualiza o evento na bd
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'User atualizado com sucesso!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             } else {
                 Yii::$app->session->setFlash('error', 'Erro ao atualizar o User.');
             }
