@@ -35,29 +35,21 @@
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-                    /*[
-                        'label' => 'Starter Pages',
-                        'icon' => 'tachometer-alt',
-                        'badge' => '<span class="right badge badge-info">2</span>',
-                        'items' => [
-                            ['label' => 'Active Page', 'url' => ['site/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Inactive Page', 'iconStyle' => 'far'],
-                        ]
-                    ],*/
-                    //*['label' => 'Simple Link', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
-                    ['label' => 'Eventos', 'header' => true],
-                    ['label' => 'Ver Eventos', 'url' => ['..\evento\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user],
-                    ['label' => 'Criar Eventos',  'icon' => 'file-code', 'url' => ['..\evento\create']],
-                    //*['label' => '', 'icon' => 'bug', 'url' => ['/debug'], 'target' => '_blank'],
-                    ['label' => 'Utilizadores', 'header' => true],
-                    ['label' => 'Ver Users', 'url' => ['..\user\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user],
-                    ['label' => 'Criar User',  'icon' => 'file-code', 'url' => ['..\user\create']],
-                    ['label' => 'Categorias', 'header' => true],
-                    ['label' => 'Ver Categorias', 'url' => ['..\categoria\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user],
-                    ['label' => 'Criar Categorias',  'icon' => 'file-code', 'url' => ['..\categoria\create'],],
-                    ['label' => 'Locais', 'header' => true],
-                    ['label' => 'Ver Locais', 'url' => ['..\local\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user],
-                    ['label' => 'Criar Locais',  'icon' => 'file-code', 'url' => ['..\local\create'],],
+                    ['label' => 'Eventos', 'header' => true, 'visible' => Yii::$app->user->can('createEvents')],
+                    ['label' => 'Ver Eventos', 'url' => ['..\evento\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createEvents')],
+                    ['label' => 'Criar Eventos',  'icon' => 'file-code', 'url' => ['..\evento\create'], 'visible' => Yii::$app->user->can('createEvents')],
+
+                    ['label' => 'Utilizadores', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Ver Users', 'url' => ['..\user\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Criar User',  'icon' => 'file-code', 'url' => ['..\user\create'], 'visible' => Yii::$app->user->can('createUsers')],
+
+                    ['label' => 'Categorias', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Ver Categorias', 'url' => ['..\categoria\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Criar Categorias',  'icon' => 'file-code', 'url' => ['..\categoria\create'], 'visible' => Yii::$app->user->can('createUsers')],
+
+                    ['label' => 'Locais', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Ver Locais', 'url' => ['..\local\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
+                    ['label' => 'Criar Locais',  'icon' => 'file-code', 'url' => ['..\local\create'], 'visible' => Yii::$app->user->can('createUsers')],
 
                 ],
             ]);

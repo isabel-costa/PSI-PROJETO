@@ -19,7 +19,7 @@ class EventoController extends \yii\web\Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'roles' => ['admin'],
+                        'roles' => ['admin', 'organizer'],
                     ]
                 ],
             ],

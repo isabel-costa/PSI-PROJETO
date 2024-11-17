@@ -4,6 +4,7 @@ namespace console\controllers;
 use Yii;
 use yii\base\Exception;
 use yii\console\Controller;
+use yii\console\ExitCode;
 
 class RbacController extends Controller
 {
@@ -21,6 +22,21 @@ class RbacController extends Controller
             echo "Erro ao atribuir papel de admin ao usuário.\n";
         }
     }
+    public function actionAssign($roleName, $userId)
+    {
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole($roleName);
+
+        if ($role === null) {
+            echo "Role '$roleName' não encontrada.\n";
+            return ExitCode::DATAERR;
+        }
+
+        $auth->assign($role, $userId);
+        echo "Role '$roleName' atribuída ao usuário de ID $userId.\n";
+        return ExitCode::OK;
+    }
+
 
     public function actionInit()
     {

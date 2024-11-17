@@ -7,6 +7,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 
 
 class UserController extends \yii\web\Controller
@@ -107,6 +108,14 @@ class UserController extends \yii\web\Controller
 
         $event->delete();
         return $this->redirect(['index']);
+    }
+    protected function findModel($id)
+    {
+        if (($model = User::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 
 }
