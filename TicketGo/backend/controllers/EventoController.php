@@ -28,11 +28,6 @@ class EventoController extends \yii\web\Controller
 
     public function actionIndex()
     {
-        if (\Yii::$app->user->can('admin')) {
-            var_dump('user is admin');
-        } else {
-            var_dump('user is NOT admin');
-        }
         $dataProvider = new ActiveDataProvider([
             'query' => Evento::find(),
             'pagination' => [
