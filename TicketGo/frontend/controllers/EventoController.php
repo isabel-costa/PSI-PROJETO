@@ -44,10 +44,10 @@ class EventoController extends \yii\web\Controller
 
         //Inicializa a query
         $query = Evento::find()
-            ->joinWith(['local', 'categoria']) //Join com a tabela de 'local' e 'categoria'
+            ->joinWith(['locais', 'categorias']) //Join com a tabela de 'local' e 'categoria'
             ->joinWith(['bilhetes']); //Obter os bilhetes (preço e disponibilidade)
         $query = Evento::find()
-            ->joinWith(['local', 'categoria', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
+            ->joinWith(['locais', 'categorias', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
 
         //Obtem os parâmetros de filtro da URL (ou da requisição GET)
         $searchTerm = Yii::$app->request->get('search', '');

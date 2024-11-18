@@ -82,13 +82,6 @@ class RbacController extends Controller
         $updateProfile->description = 'Update user Profile Info';
         $auth->add($updateProfile);
 
-        //PÁGINAS
-
-        //Ver Página Principal
-        $viewHomePage = $auth->createPermission('viewHomePage');
-        $viewHomePage->description = 'View Home Page';
-        $auth->add($viewHomePage);
-
         //EVENTOS
 
         //Procurar Eventos
