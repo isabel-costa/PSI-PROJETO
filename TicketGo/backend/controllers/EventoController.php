@@ -15,7 +15,7 @@ class EventoController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update', 'delete'],
+                'only' => ['createEvents', 'updateEvents', 'deleteEvents'],
                 'rules' => [
                     [
                         'allow' => true,
@@ -52,7 +52,7 @@ class EventoController extends \yii\web\Controller
 
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // Salvar o modelo no banco de dados
+            //Guardar o Modelo na BD
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Evento criado com sucesso!');
                 return $this->redirect(['index']);
@@ -68,7 +68,7 @@ class EventoController extends \yii\web\Controller
 
     public function actionUpdate($id)
     {
-        // Verifica se o utilizador tem permissão para editar eventos
+        //Verifica se o utilizador tem permissão para editar eventos
         if (!Yii::$app->user->can('updateEvents')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para editar eventos.');
             return $this->redirect(['index']);
