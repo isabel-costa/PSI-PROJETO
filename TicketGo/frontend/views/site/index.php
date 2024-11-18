@@ -118,7 +118,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hallo.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -142,7 +142,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/cuca.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -166,7 +166,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/mariza.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -190,7 +190,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/open.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -214,7 +214,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hibrid.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
