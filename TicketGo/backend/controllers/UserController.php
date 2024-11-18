@@ -17,7 +17,7 @@ class UserController extends \yii\web\Controller
     return [
         'access' => [
             'class' => AccessControl::class,
-            'only' => ['create', 'update', 'delete'],
+            'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
             'rules' => [
                 [
                     'allow' => true,
