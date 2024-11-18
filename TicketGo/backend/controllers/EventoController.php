@@ -50,6 +50,7 @@ class EventoController extends \yii\web\Controller
         $model = new Evento();
 
 
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // Salvar o modelo no banco de dados
             if ($model->save()) {
@@ -113,10 +114,11 @@ class EventoController extends \yii\web\Controller
         } else {
             throw new \yii\web\NotFoundHttpException('A página solicitada não existe.');
         }
+    }
 
         //Exibe todos os eventos
 
-        /*public function actionViewEventDetails($id)
+        public function actionViewEventDetails($id)
         {
 
             $event = Evento::findOne($id);
@@ -128,7 +130,6 @@ class EventoController extends \yii\web\Controller
                 return $this->redirect(['index']);
             }
 
-            return $this->render('view', ['event' => $event]);
-        }*/
-    }
+            return $this->render('view', ['model' => $event]);
+        }
 }

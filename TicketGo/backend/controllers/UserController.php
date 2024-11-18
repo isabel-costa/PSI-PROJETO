@@ -51,11 +51,17 @@ class UserController extends \yii\web\Controller
 
         if ($model->load(Yii::$app->request->post())) {
             // O hash da senha será gerado automaticamente no modelo antes de salvar
-            if ($model->save()) {
-                Yii::$app->session->setFlash('success', 'Usuário criado com sucesso.');
+            if ($model->save(false)) {
+                $auth = Yii::$app->authManager;
+                $role = $auth->getRole($model->role);
+                if($role) {
+                    $auth->assign($role, $model->id);
+
+                }
+                Yii::$app->session->setFlash('success', 'user criado com sucesso.');
                 return $this->redirect(['index']);
             } else {
-                Yii::$app->session->setFlash('error', 'Erro ao criar usuário.');
+                Yii::$app->session->setFlash('error', 'Erro ao criar USer.');
             }
         }
 
@@ -79,7 +85,13 @@ class UserController extends \yii\web\Controller
         //Se o User foi atualizado e o formulário foi enviado com sucesso faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Atualiza o evento na bd
-            if ($model->save()) {
+            if ($model->save(false)) {
+                $auth = Yii::$app->authManager;
+                $auth->revokeAll($model->id);
+                $role = $auth->getRole($model->role);
+                if($role) {
+                    $auth->assign($role, $model->id);
+                }
                 Yii::$app->session->setFlash('success', 'User atualizado com sucesso!');
                 return $this->redirect(['index']);
             } else {

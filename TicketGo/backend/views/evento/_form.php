@@ -14,6 +14,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
 
+    <div class="form-group">
+        <?= Html::label('Imagem', 'imagem') ?>
+        <?= Html::fileInput('imagem', null, ['class' => 'form-control']) ?>
+    </div>
+
+    <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    </div>
+
     <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'datainicio')->input('datetime-local') ?>
