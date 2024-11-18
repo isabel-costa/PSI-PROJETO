@@ -26,6 +26,7 @@
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">
+
             <div class="col-md-3">
                 <div class="logo">
                     <a href="">
@@ -33,27 +34,25 @@
                     </a>
                 </div>
             </div>
+
             <div class="col-md-6">
                 <div class="search">
                     <input type="text" placeholder="Search">
                     <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
+
             <div class="col-md-3">
-                <div class="user">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
-                        </div>
-                    </div>
-                    <div class="cart">
-                        <i class="fa fa-cart-plus"></i>
-                        <span>(0)</span>
-                    </div>
+                <div class="perfil">
+                    <a href="site\login">
+                        <p>
+                            <img src="img/perfil.png" alt="Perfil" style="width: 50px; height: 50px;">
+                        </p>
+                    </a>
+
                 </div>
             </div>
+
         </div>
     </div>
 </div>

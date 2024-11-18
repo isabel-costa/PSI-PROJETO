@@ -59,6 +59,12 @@ class SiteController extends Controller
     {
         return $this->render('product-detail');
     }
+
+    public function actionGoToLogin()
+    {
+        return $this->render('login');
+    }
+
     public function actions()
     {
         return [
