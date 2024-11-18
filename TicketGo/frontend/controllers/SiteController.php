@@ -37,7 +37,7 @@ class SiteController extends Controller
                         'roles' => ['registeredUser'],
                     ],
                     [
-                        'actions' => ['register', 'searchEvents'],
+                        'actions' => ['register', 'searchEvents', 'viewHomePage'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
