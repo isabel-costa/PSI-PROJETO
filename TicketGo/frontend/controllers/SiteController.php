@@ -39,7 +39,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['register', 'searchEvents'],
                         'allow' => true,
-                        'roles' => ['guest'],
+                        'roles' => ['?'],
                     ],
                 ],
             ],

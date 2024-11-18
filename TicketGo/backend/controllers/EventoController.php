@@ -2,50 +2,59 @@
 
 namespace backend\controllers;
 
+use common\models\Evento;
 use Yii;
 use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
 
 class EventoController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update', 'delete'],
+                'only' => ['createEvents', 'updateEvents', 'deleteEvents'],
                 'rules' => [
                     [
-                        'actions' => ['create', 'update', 'delete'],
                         'allow' => true,
                         'roles' => ['admin', 'organizer'],
-                    ],
-                    [
-                        'actions' => ['index', 'view'],
-                        'allow' => true,
-                        'roles' => ['guest', 'registeredUser'],
-                    ],
+                    ]
                 ],
             ],
         ];
     }
 
-    public function actionCreateEvent()
+    public function actionIndex()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Evento::find(),
+            'pagination' => [
+                'pageSize' => 10, // Define o número de itens por página
+            ],
+        ]);
 
-        if (!Yii::$app->user->can('createEvent')) {
+        // Renderiza a view index e passa os eventos para a view
+        return $this->render('index', ['dataProvider' => $dataProvider]);
+
+    }
+
+    public function actionCreate()
+    {
+        //Verifica se o utilizador tem permissão para criar eventos
+        if (!Yii::$app->user->can('createEvents')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para criar eventos.');
-
             return $this->redirect(['index']);
         }
+        $model = new Evento();
 
-        $model = new Event();
 
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             // Salvar o modelo no banco de dados
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Evento criado com sucesso!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             } else {
                 Yii::$app->session->setFlash('error', 'Erro ao criar o evento.');
             }
@@ -56,39 +65,40 @@ class EventoController extends \yii\web\Controller
         ]);
     }
 
-    public function actionUpdateEvent($id)
+    public function actionUpdate($id)
     {
-        //Verifica se o utilizador tem permissão para editar eventos
-        if (!Yii::$app->user->can('updateEvent')) {
+        // Verifica se o utilizador tem permissão para editar eventos
+        if (!Yii::$app->user->can('updateEvents')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para editar eventos.');
             return $this->redirect(['index']);
         }
 
-        //Procura o evento pelo ID
+        // Procura o evento pelo ID
         $model = $this->findModel($id);
 
-        //Se o evento foi atualizado e o formulário foi enviado com sucesso faz:
+        // Se o evento foi atualizado e o formulário foi enviado com sucesso, faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            //Atualiza o evento na bd
+            // Atualiza o evento na BD
             if ($model->save()) {
                 Yii::$app->session->setFlash('success', 'Evento atualizado com sucesso!');
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);  // Corrigido: adicionando o parêntese de fechamento
             } else {
                 Yii::$app->session->setFlash('error', 'Erro ao atualizar o evento.');
             }
         }
 
-        //Se não houve um post ou houve falha na validação, renderiza o formulário de edição
+        // Se não houve um post ou houve falha na validação, renderiza o formulário de edição
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
-    public function actionDeleteEvent($id)
-    {
-        $event = Event::findOne($id);
 
-        if (!$event || !Yii::$app->user->can('deleteEvent', ['eventId' => $id])) {
+    public function actionDelete($id)
+    {
+        $event = Evento::findOne($id);
+
+        if (!$event || !Yii::$app->user->can('deleteEvents', ['eventId' => $id])) {
             throw new ForbiddenHttpException('Não tem permissão para eliminar eventos.');
         }
 
@@ -96,69 +106,29 @@ class EventoController extends \yii\web\Controller
         return $this->redirect(['index']);
     }
 
-    //Exibe todos os eventos
-    public function actionSearchEvents()
+    protected function findModel($id)
     {
-
-        //Inicializa a query
-        $query = Event::find()
-            ->joinWith(['local', 'categoria', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
-
-        //Obtem os parâmetros de filtro da URL (ou da requisição GET)
-        $searchTerm = Yii::$app->request->get('search', '');
-        $dataInicio = Yii::$app->request->get('data', '');
-        $localNome = Yii::$app->request->get('local_nome', '');
-        $categoriaNome = Yii::$app->request->get('categoria_nome', '');
-        $preco = Yii::$app->request->get('preco', '');
-        $disponibilidade = Yii::$app->request->get('disponibilidade', '');
-
-        //Aplica os filtros de acordo com os parâmetros recebidos
-        if (!empty($searchTerm)) {
-            $query->andFilterWhere(['like', 'titulo', $searchTerm]);  // Filtro para 'titulo'
+        if (($model = Evento::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new \yii\web\NotFoundHttpException('A página solicitada não existe.');
         }
 
-        if (!empty($dataInicio)) {
-            // Filtra pela data do evento, assumindo que você tenha o campo datainicio no seu modelo Event
-            $query->andFilterWhere(['like', 'datainicio', $dataInicio]);  // Filtro para 'data'
-        }
+        //Exibe todos os eventos
 
-        if (!empty($localNome)) {
-            $query->andFilterWhere(['like', 'local.nome', $localNome]);  // Filtro para 'local_nome'
-        }
+        /*public function actionViewEventDetails($id)
+        {
 
-        if (!empty($categoriaNome)) {
-            $query->andFilterWhere(['like', 'categoria.nome', $categoriaNome]);  // Filtro para 'categoria_nome'
-        }
+            $event = Evento::findOne($id);
 
-        if (!empty($preco)) {
-            // Filtra pela faixa de preço dos bilhetes (usando o campo preco unitário do bilhete)
-            $query->andFilterWhere(['like', 'precounitario', $preco]);  // Filtro para 'preco'
-        }
+            //Verifica se o evento foi encontrado
+            if (!$event) {
+                Yii::$app->session->setFlash('error', 'Evento não encontrado.');
 
-        if (!empty($disponibilidade)) {
-            // Filtra pela quantidade disponível dos bilhetes
-            $query->andFilterWhere(['>=', 'quantidadedisponivel', $disponibilidade]);  // Filtro para 'disponibilidade'
-        }
+                return $this->redirect(['index']);
+            }
 
-        //Executa a consulta e obtém os eventos filtrados
-        $events = $query->all();
-
-        //Devolve a view com os eventos filtrados
-        return $this->render('index', ['events' => $events]);
-    }
-
-    public function actionViewEventDetails($id)
-    {
-
-        $event = Event::findOne($id);
-
-        //Verifica se o evento foi encontrado
-        if (!$event) {
-            Yii::$app->session->setFlash('error', 'Evento não encontrado.');
-
-            return $this->redirect(['index']);
-        }
-
-        return $this->render('view', ['event' => $event]);
+            return $this->render('view', ['event' => $event]);
+        }*/
     }
 }

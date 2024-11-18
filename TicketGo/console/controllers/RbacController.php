@@ -4,6 +4,7 @@ namespace console\controllers;
 use Yii;
 use yii\base\Exception;
 use yii\console\Controller;
+use yii\console\ExitCode;
 
 class RbacController extends Controller
 {
@@ -11,6 +12,32 @@ class RbacController extends Controller
      * @throws Exception
      * @throws \Exception
      */
+    public function actionAssignAdmin($userId)
+    {
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole('admin');
+        if ($auth->assign($role, $userId)) {
+            echo "O utilizador com ID {$userId} agora é admin.\n";
+        } else {
+            echo "Erro ao atribuir o role de admin ao utilizador.\n";
+        }
+    }
+    public function actionAssign($roleName, $userId)
+    {
+        $auth = Yii::$app->authManager;
+        $role = $auth->getRole($roleName);
+
+        if ($role === null) {
+            echo "O role '$roleName' não foi encontrado.\n";
+            return ExitCode::DATAERR;
+        }
+
+        $auth->assign($role, $userId);
+        echo "O role '$roleName' foi atribuído ao utilizador com ID $userId.\n";
+        return ExitCode::OK;
+    }
+
+
     public function actionInit()
     {
         $auth=Yii::$app->authManager;
@@ -22,23 +49,18 @@ class RbacController extends Controller
 
         //Criar Utilizadores
         $createUsers = $auth->createPermission('createUsers');
-        $createUsers->description = 'Create an User';
+        $createUsers->description = 'Create an user';
         $auth->add($createUsers);
 
         //Atualizar Utilizadores
         $updateUsers = $auth->createPermission('updateUsers');
-        $updateUsers->description = 'Update an User';
+        $updateUsers->description = 'Update an user';
         $auth->add($updateUsers);
 
         //Apagar Utilizadores
         $deleteUsers = $auth->createPermission('deleteUsers');
         $deleteUsers->description = 'Permission to delete users';
         $auth->add($deleteUsers);
-
-        //Login
-        $loginPermission = $auth->createPermission('login');
-        $loginPermission->description = 'Login';
-        $auth->add($loginPermission);
 
         //Logout
         $logoutPermission = $auth->createPermission('logout');
@@ -52,7 +74,7 @@ class RbacController extends Controller
 
         //Atualizar Perfil
         $updateProfile = $auth->createPermission('updateProfile');
-        $updateProfile->description = 'Update User Profile Info';
+        $updateProfile->description = 'Update user Profile Info';
         $auth->add($updateProfile);
 
         //EVENTOS
@@ -76,6 +98,59 @@ class RbacController extends Controller
         $deleteEvents = $auth->createPermission('deleteEvents');
         $deleteEvents->description='Delete an Event';
         $auth->add($deleteEvents);
+
+        //CATEGORIAS
+
+        //Criar Categorias
+        $createCategories = $auth->createPermission('createCategories');
+        $createCategories->description='Create a Category';
+        $auth->add($createCategories);
+
+        //Atualizar Categorias
+        $updateCategories = $auth->createPermission('updateCategories');
+        $updateCategories->description='Update a Category';
+        $auth->add($updateEvents);
+
+        //Eliminar Categorias
+        $deleteCategories = $auth->createPermission('deleteCategories');
+        $deleteCategories->description='Delete a Category';
+        $auth->add($deleteCategories);
+
+        //LOCAIS
+
+        //Criar Locais
+        $createPlaces = $auth->createPermission('createPlaces');
+        $createPlaces->description='Create a Place';
+        $auth->add($createPlaces);
+
+        //Atualizar Locais
+        $updatePlaces = $auth->createPermission('updatePlaces');
+        $updatePlaces->description='Update a Place';
+        $auth->add($updatePlaces);
+
+        //Eliminar Locais
+        $deletePlaces = $auth->createPermission('deletePlaces');
+        $deletePlaces->description='Delete a Place';
+        $auth->add($deletePlaces);
+
+        //ZONAS
+
+        //Criar Zonas
+        $createZones = $auth->createPermission('createZones');
+        $createZones->description='Create a Zone';
+        $auth->add($createZones);
+
+        //Atualizar Zonas
+        $updateZones = $auth->createPermission('updateZones');
+        $updateZones->description='Update a Zone';
+        $auth->add($updateZones);
+
+        //Eliminar Zonas
+        $deleteZones = $auth->createPermission('deleteZones');
+        $deleteZones->description='Delete a Zone';
+        $auth->add($deleteZones);
+
+        //RELATÓRIOS
 
         //Ver Relatórios
         $viewReports = $auth->createPermission('viewReports');
@@ -106,7 +181,7 @@ class RbacController extends Controller
         $removeTicketsCart->description = 'Remove a Ticket from the Cart';
         $auth->add($removeTicketsCart);
 
-        //COMPRA
+        //COMPRAS
 
         //Comprar Bilhetes
         $purchaseTickets = $auth->createPermission('purchaseTickets');
@@ -130,9 +205,9 @@ class RbacController extends Controller
         $deletePaymentMethod->description = 'Delete a Payment Method';
         $auth->add($deletePaymentMethod);
 
-        //HISTÓRICO
+        //HISTÓRICO DE COMPRAS
 
-        // View Purchase History
+        //Ver Histórico de Compras
         $viewPurchaseHistory = $auth->createPermission('viewPurchaseHistory');
         $viewPurchaseHistory->description = 'Permission to view purchase history';
         $auth->add($viewPurchaseHistory);
@@ -144,8 +219,6 @@ class RbacController extends Controller
         $admin = $auth->createRole('admin');
         $auth->add($admin);
 
-        $auth->addChild($admin, $loginPermission);
-        $auth->addChild($admin, $logoutPermission);
         $auth->addChild($admin, $createUsers);
         $auth->addChild($admin, $updateUsers);
         $auth->addChild($admin, $deleteUsers);
@@ -162,8 +235,7 @@ class RbacController extends Controller
         $organizer = $auth->createRole('organizer');
         $auth->add($organizer);
 
-        $auth->addChild($organizer, $loginPermission);
-        $auth->addChild($organizer, $logoutPermission);
+
         $auth->addChild($organizer, $createEvents);
         $auth->addChild($organizer, $updateEvents);
         $auth->addChild($organizer, $deleteEvents);
@@ -172,16 +244,14 @@ class RbacController extends Controller
         $partner = $auth->createRole('partner');
         $auth->add($partner);
 
-        $auth->addChild($partner, $loginPermission);
-        $auth->addChild($partner, $logoutPermission);
+
         $auth->addChild($partner, $viewReports);
 
         //Utilizador Registado
         $registeredUser = $auth->createRole('registeredUser');
         $auth->add($registeredUser);
 
-        $auth->addChild($registeredUser, $loginPermission);
-        $auth->addChild($registeredUser, $logoutPermission);
+
         $auth->addChild($registeredUser, $updateProfile);
         $auth->addChild($registeredUser, $searchEvents);
         $auth->addChild($registeredUser, $addTicketsCart);
@@ -192,17 +262,16 @@ class RbacController extends Controller
         $auth->addChild($registeredUser, $removeFromFavorites);
 
         //Visitante
-        $guest = $auth->createRole('guest');
+       /* $guest = $auth->createRole('guest');
         $auth->add($guest);
 
         $auth->addChild($guest, $searchEvents);
-        $auth->addChild($guest, $registerPermission);
+        $auth->addChild($guest, $registerPermission);*/
 
         //Atribuir IDs aos Roles
         $auth->assign($admin, 1);
         $auth->assign($organizer, 2);
         $auth->assign($registeredUser, 3);
-        $auth->assign($guest, 4);
-        $auth->assign($partner, 5);
+        $auth->assign($partner, 4);
     }
 }

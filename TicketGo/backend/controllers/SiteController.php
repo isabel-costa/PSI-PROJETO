@@ -22,22 +22,32 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
+                'only' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'createCategories', 'updateCategories', 'deleteCategories', 'createPlaces', 'updatePlaces', 'deletePlaces', 'createZones', 'updateZones', 'deleteZones', 'viewReports'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'logout', 'createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
+                        'actions' => ['login'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions'=> ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'createCategories', 'updateCategories', 'deleteCategories', 'createPlaces', 'updatePlaces', 'deletePlaces', 'createZones', 'updateZones', 'deleteZones'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'createEvents', 'updateEvents', 'deleteEvents'],
+                        'actions' => ['createEvents', 'updateEvents', 'deleteEvents'],
                         'allow' => true,
                         'roles' => ['organizer'],
                     ],
                     [
-                        'actions' => ['login', 'logout', 'viewReports'],
+                        'actions' => ['viewReports'],
                         'allow' => true,
                         'roles' => ['partner'],
+                    ],
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
             ],
@@ -70,6 +80,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+
     }
 
     /**
@@ -77,6 +88,8 @@ class SiteController extends Controller
      *
      * @return string|Response
      */
+
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -86,6 +99,8 @@ class SiteController extends Controller
         $this->layout = 'blank';
 
         $model = new LoginForm();
+        //var_dump($model->login());
+        //dd($model->load(Yii::$app->request->post()));
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }
@@ -106,6 +121,6 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        return $this->goHome();
+        return $this->redirect(['site/login']);
     }
 }
