@@ -32,12 +32,12 @@ class SiteController extends Controller
                 'only' => ['logout', 'register', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                 'rules' => [
                     [
-                        'actions' => ['logout', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
+                        'actions' => ['logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                         'allow' => true,
                         'roles' => ['registeredUser'],
                     ],
                     [
-                        'actions' => ['register', 'searchEvents'],
+                        'actions' => ['register', 'searchEvents', 'viewHomePage'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
