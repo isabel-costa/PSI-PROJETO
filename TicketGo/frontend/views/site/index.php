@@ -1,96 +1,380 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TicketGo - Bem-vindo!</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title>E Shop - Bootstrap Ecommerce Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Bootstrap Ecommerce Template" name="keywords">
+    <meta content="Bootstrap Ecommerce Template Free Download" name="description">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="lib/slick/slick.css" rel="stylesheet">
+    <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
-
-<header class="header">
+<!-- Top Header Start -->
+<div class="top-header">
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-                <img src="logo.svg" alt="Logo TicketGo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Eventos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contato</a>
-                    </li>
-                </ul>
-                <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder=" Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <div class="container mt-4">
-        <h1>Bem-vindo ao TicketGo!</h1>
-        <p>Encontre os melhores eventos e compre seus ingressos de forma fácil e rápida.</p>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="event1.jpg" class="card-img-top" alt="Evento 1">
-                    <div class="card-body">
-                        <h5 class="card-title">Evento 1</h5>
-                        <p class="card-text">Descrição do evento 1.</p>
-                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                    </div>
+        <div class="row align-items-center">
+            <div class="col-md-3">
+                <div class="logo">
+                    <a href="">
+                        <img src="img/logoticketgo.png" alt="Logo">
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="event2.jpg" class="card-img-top" alt="Evento 2">
-                    <div class="card-body">
-                        <h5 class="card-title">Evento 2</h5>
-                        <p class="card-text">Descrição do evento 2.</p>
-                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
-                    </div>
+            <div class="col-md-6">
+                <div class="search">
+                    <input type="text" placeholder="Search">
+                    <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="event3.jpg" class="card-img-top" alt="Evento 3">
-                    <div class="card-body">
-                        <h5 class="card-title">Evento 3</h5>
-                        <p class="card-text">Descrição do evento 3.</p>
-                        <a href="#" class="btn btn-primary">Comprar Ingresso</a>
+            <div class="col-md-3">
+                <div class="user">
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Login</a>
+                            <a href="#" class="dropdown-item">Register</a>
+                        </div>
+                    </div>
+                    <div class="cart">
+                        <i class="fa fa-cart-plus"></i>
+                        <span>(0)</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
+<!-- Top Header End -->
 
-<footer class="footer mt-4">
+
+<!-- Header Start -->
+<!--<div class="header">
     <div class="container">
-        <p class="text-center">&copy; 2023 TicketGo. Todos os direitos reservados.</p>
-    </div>
-</footer>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a href="#" class="navbar-brand">MENU</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                <div class="navbar-nav m-auto">
+                    <a href="index.html" class="nav-item nav-link active">Home</a>
+                    <a href="product-list.html" class="nav-item nav-link">Products</a>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu">
+                            <a href="product-list.html" class="dropdown-item">Product</a>
+                            <a href="product-detail.html" class="dropdown-item">Product Detail</a>
+                            <a href="cart.html" class="dropdown-item">Cart</a>
+                            <a href="wishlist.html" class="dropdown-item">Wishlist</a>
+                            <a href="checkout.html" class="dropdown-item">Checkout</a>
+                            <a href="login.html" class="dropdown-item">Login & Register</a>
+                            <a href="my-account.html" class="dropdown-item">My Account</a>
+                        </div>
+                    </div>
+                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>--!>
+<!-- Header End -->
+
+
+<!-- Main Slider Start -->
+<div class="home-slider">
+    <div class="main-slider">
+        <div class="main-slider-item"><img src="img/CucaRoseta.jpg" alt="Slider Image" /></div>
+        <div class="main-slider-item"><img src="img/anjos.jpeg" alt="Slider Image" /></div>
+        <div class="main-slider-item"><img src="img/hans.jpg" alt="Slider Image" /></div>
+    </div>
+</div>
+<!-- Main Slider End -->
+
+
+
+
+<!-- Featured Product Start -->
+<div class="featured-product">
+    <div class="container">
+        <div class="section-header">
+            <h3>Eventos</h3>
+
+        </div>
+        <div class="row align-items-center product-slider product-slider-4">
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-image">
+                        <a href="product-detail.php">
+                            <img src="img/hallo.jpeg" alt="Product Image">
+                        </a>
+                        <div class="product-action">
+                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="title"><a href="#">Halloween</a></div>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="price">$22 <span>$25</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-image">
+                        <a href="product-detail.php">
+                            <img src="img/cuca.jpeg" alt="Product Image">
+                        </a>
+                        <div class="product-action">
+                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="title"><a href="#">Cuca Roseta</a></div>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="price">$22 <span>$25</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-image">
+                        <a href="product-detail.php">
+                            <img src="img/mariza.jpeg" alt="Product Image">
+                        </a>
+                        <div class="product-action">
+                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="title"><a href="#">Mariza</a></div>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="price">$22 <span>$25</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-image">
+                        <a href="product-detail.php">
+                            <img src="img/open.jpeg" alt="Product Image">
+                        </a>
+                        <div class="product-action">
+                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="title"><a href="#">Open Lisboa</a></div>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="price">$22 <span>$25</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="product-item">
+                    <div class="product-image">
+                        <a href="product-detail.php">
+                            <img src="img/hibrid.jpeg" alt="Product Image">
+                        </a>
+                        <div class="product-action">
+                            <a href="#"><i class="fa fa-cart-plus"></i></a>
+                            <a href="#"><i class="fa fa-heart"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <div class="title"><a href="#">Hibrid Park</a></div>
+                        <div class="ratting">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="price">$22 <span>$25</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Product End -->
+
+
+
+
+<!-- Brand Start -->
+<!--<div class="brand">
+    <div class="container">
+        <div class="section-header">
+            <h3>Our Brands</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra at massa sit amet ultricies. Nullam consequat, mauris non interdum cursus
+            </p>
+        </div>
+        <div class="brand-slider">
+            <div class="brand-item"><img src="img/brand-1.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-2.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-3.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-4.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-5.png" alt=""></div>
+            <div class="brand-item"><img src="img/brand-6.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+
+
+<!-- Footer Start -->
+<!--<div class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h1>E Shop</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sollicitudin rutrum massa. Suspendisse sollicitudin rutrum massa. Vestibulum porttitor, metus sed pretium elementum, nisi nibh sodales quam, non lobortis neque felis id mauris.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Useful Pages</h3>
+                    <ul>
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="product-detail.html">Product Detail</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="login.html">Login & Register</a></li>
+                        <li><a href="my-account.html">My Account</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Quick Links</h3>
+                    <ul>
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="cart.html">Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="login.html">Login & Register</a></li>
+                        <li><a href="my-account.html">My Account</a></li>
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Get in Touch</h3>
+                    <div class="contact-info">
+                        <p><i class="fa fa-map-marker"></i>123 E Shop, Los Angeles, CA, USA</p>
+                        <p><i class="fa fa-envelope"></i>email@example.com</p>
+                        <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                        <div class="social">
+                            <a href=""><i class="fa fa-twitter"></i></a>
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                            <a href=""><i class="fa fa-linkedin"></i></a>
+                            <a href=""><i class="fa fa-instagram"></i></a>
+                            <a href=""><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row payment">
+            <div class="col-md-6">
+                <div class="payment-method">
+                    <p>We Accept:</p>
+                    <img src="img/payment-method.png" alt="Payment Method" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="payment-security">
+                    <p>Secured By:</p>
+                    <img src="img/godaddy.svg" alt="Payment Security" />
+                    <img src="img/norton.svg" alt="Payment Security" />
+                    <img src="img/ssl.svg" alt="Payment Security" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+
+<!-- Footer Bottom Start -->
+<div class="footer-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 copyright">
+                <p>Copyright &copy; <a href="https://htmlcodex.com">HTML Codex</a>. All Rights Reserved</p>
+            </div>
+
+            <div class="col-md-6 template-by">
+                <p>Template By <a href="https://htmlcodex.com">HTML Codex</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer Bottom End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/slick/slick.min.js"></script>
+
+
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
 </body>
 </html>

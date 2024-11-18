@@ -52,6 +52,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'product-detail' => 'site/product-detail',
             ],
         ],
 
