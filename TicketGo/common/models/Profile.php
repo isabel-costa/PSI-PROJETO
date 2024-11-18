@@ -1,6 +1,11 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Carrinho;
+use common\models\Fatura;
+use common\models\Favorito;
 
 use Yii;
 
@@ -63,7 +68,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getCarrinhos()
     {
-        return $this->hasOne(Carrinhos::class, ['profile_id' => 'id']);
+        return $this->hasOne(Carrinho::class, ['profile_id' => 'id']);
     }
 
     /**
@@ -73,7 +78,7 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getFaturas()
     {
-        return $this->hasMany(Faturas::class, ['profile_id' => 'id']);
+        return $this->hasMany(Fatura::class, ['profile_id' => 'id']);
     }
 
     /**
@@ -83,6 +88,6 @@ class Profile extends \yii\db\ActiveRecord
      */
     public function getFavoritos()
     {
-        return $this->hasMany(Favoritos::class, ['profile_id' => 'id']);
+        return $this->hasMany(Favorito::class, ['profile_id' => 'id']);
     }
 }

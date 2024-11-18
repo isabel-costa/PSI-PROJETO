@@ -1,6 +1,9 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Fatura;
 
 use Yii;
 
@@ -50,6 +53,6 @@ class MetodoPagamento extends \yii\db\ActiveRecord
      */
     public function getFaturas()
     {
-        return $this->hasMany(Faturas::class, ['metodopagamento_id' => 'id']);
+        return $this->hasMany(Fatura::class, ['metodopagamento_id' => 'id']);
     }
 }

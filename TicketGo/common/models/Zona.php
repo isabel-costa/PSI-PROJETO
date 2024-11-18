@@ -1,6 +1,11 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Bilhete;
+use common\models\Evento;
+use common\models\Local;
 
 use Yii;
 
@@ -36,8 +41,8 @@ class Zona extends \yii\db\ActiveRecord
         return [
             [['porta', 'local_id', 'evento_id', 'quantidadedisponivel'], 'integer'],
             [['lugar'], 'string', 'max' => 100],
-            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Locais::class, 'targetAttribute' => ['local_id' => 'id']],
-            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Eventos::class, 'targetAttribute' => ['evento_id' => 'id']],
+            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
+            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evento::class, 'targetAttribute' => ['evento_id' => 'id']],
         ];
     }
 
@@ -63,7 +68,7 @@ class Zona extends \yii\db\ActiveRecord
      */
     public function getBilhetes()
     {
-        return $this->hasMany(Bilhetes::class, ['zona_id' => 'id']);
+        return $this->hasMany(Bilhete::class, ['zona_id' => 'id']);
     }
 
     /**
@@ -73,7 +78,7 @@ class Zona extends \yii\db\ActiveRecord
      */
     public function getEvento()
     {
-        return $this->hasOne(Eventos::class, ['id' => 'evento_id']);
+        return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
 
     /**
@@ -83,6 +88,6 @@ class Zona extends \yii\db\ActiveRecord
      */
     public function getLocal()
     {
-        return $this->hasOne(Locais::class, ['id' => 'local_id']);
+        return $this->hasOne(\common\models\Local::class, ['id' => 'local_id']);
     }
 }

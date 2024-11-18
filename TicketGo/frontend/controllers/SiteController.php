@@ -29,10 +29,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['login', 'logout', 'register', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
+                'only' => ['logout', 'register', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                 'rules' => [
                     [
-                        'actions' => ['login', 'logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
+                        'actions' => ['logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                         'allow' => true,
                         'roles' => ['registeredUser'],
                     ],
@@ -55,6 +55,10 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function actionProductDetail()
+    {
+        return $this->render('product-detail');
+    }
     public function actions()
     {
         return [

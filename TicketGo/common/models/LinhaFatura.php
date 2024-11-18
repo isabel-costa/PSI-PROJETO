@@ -1,6 +1,10 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Bilhete;
+use common\models\Fatura;
 
 use Yii;
 
@@ -36,7 +40,7 @@ class LinhaFatura extends \yii\db\ActiveRecord
             [['fatura_id', 'quantidade'], 'integer'],
             [['precounitario', 'valortotal'], 'number'],
             [['descricao'], 'string', 'max' => 200],
-            [['fatura_id'], 'exist', 'skipOnError' => true, 'targetClass' => Faturas::class, 'targetAttribute' => ['fatura_id' => 'id']],
+            [['fatura_id'], 'exist', 'skipOnError' => true, 'targetClass' => Fatura::class, 'targetAttribute' => ['fatura_id' => 'id']],
         ];
     }
 
@@ -62,7 +66,7 @@ class LinhaFatura extends \yii\db\ActiveRecord
      */
     public function getBilhetes()
     {
-        return $this->hasMany(Bilhetes::class, ['linhafatura_id' => 'id']);
+        return $this->hasMany(Bilhete::class, ['linhafatura_id' => 'id']);
     }
 
     /**
@@ -72,6 +76,6 @@ class LinhaFatura extends \yii\db\ActiveRecord
      */
     public function getFatura()
     {
-        return $this->hasOne(Faturas::class, ['id' => 'fatura_id']);
+        return $this->hasOne(Fatura::class, ['id' => 'fatura_id']);
     }
 }

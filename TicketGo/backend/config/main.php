@@ -50,6 +50,16 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+
+            ],
+        ],
+        'view' => [
+            'theme' => [
+                'basePath' => '@backend/views/layouts/adminlte/main.php',
+                'baseUrl' => '@web',
+                'pathMap' => [
+                    '@app/views' => '@backend/views/layouts/adminlte/main.php',
+                ],
             ],
         ],
 

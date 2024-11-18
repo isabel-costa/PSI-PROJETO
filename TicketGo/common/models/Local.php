@@ -1,11 +1,14 @@
 <?php
 
-namespace app\models;
+namespace common\models;
+
+use common\models\Evento;
+use common\models\Zona;
 
 use Yii;
 
 /**
- * This is the model class for table "Locais".
+ * This is the model class for table "Local".
  *
  * @property int $id
  * @property string|null $nome
@@ -23,7 +26,7 @@ class Local extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'Locais';
+        return 'locais';
     }
 
     /**
@@ -32,6 +35,7 @@ class Local extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['local_id'], 'exist', 'targetClass' => '\common\models\Local', 'targetAttribute' => 'id'],
             [['capacidade'], 'integer'],
             [['nome', 'cidade'], 'string', 'max' => 100],
             [['morada'], 'string', 'max' => 200],
@@ -59,7 +63,7 @@ class Local extends \yii\db\ActiveRecord
      */
     public function getEventos()
     {
-        return $this->hasMany(Eventos::class, ['local_id' => 'id']);
+        return $this->hasMany(Evento::class, ['local_id' => 'id']);
     }
 
     /**
@@ -69,6 +73,6 @@ class Local extends \yii\db\ActiveRecord
      */
     public function getZonas()
     {
-        return $this->hasMany(Zonas::class, ['local_id' => 'id']);
+        return $this->hasMany(Zona::class, ['local_id' => 'id']);
     }
 }

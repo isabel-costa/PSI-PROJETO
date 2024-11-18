@@ -1,6 +1,14 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Bilhete;
+use common\models\Categoria;
+use common\models\Favorito;
+use common\models\Imagem;
+use common\models\Local;
+use common\models\Zona;
 
 use Yii;
 
@@ -42,8 +50,8 @@ class Evento extends \yii\db\ActiveRecord
             [['datainicio', 'datafim'], 'safe'],
             [['local_id', 'categoria_id'], 'integer'],
             [['titulo'], 'string', 'max' => 100],
-            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Locais::class, 'targetAttribute' => ['local_id' => 'id']],
-            [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categorias::class, 'targetAttribute' => ['categoria_id' => 'id']],
+            [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
+            [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['categoria_id' => 'id']],
         ];
     }
 
@@ -70,7 +78,7 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getBilhetes()
     {
-        return $this->hasMany(Bilhetes::class, ['evento_id' => 'id']);
+        return $this->hasMany(Bilhete::class, ['evento_id' => 'id']);
     }
 
     /**
@@ -80,7 +88,7 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getCategoria()
     {
-        return $this->hasOne(Categorias::class, ['id' => 'categoria_id']);
+        return $this->hasOne(Categoria::class, ['id' => 'categoria_id']);
     }
 
     /**
@@ -90,7 +98,7 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getFavoritos()
     {
-        return $this->hasMany(Favoritos::class, ['evento_id' => 'id']);
+        return $this->hasMany(Favorito::class, ['evento_id' => 'id']);
     }
 
     /**
@@ -100,7 +108,7 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getImagens()
     {
-        return $this->hasOne(Imagens::class, ['evento_id' => 'id']);
+        return $this->hasOne(Imagem::class, ['evento_id' => 'id']);
     }
 
     /**
@@ -110,7 +118,7 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getLocal()
     {
-        return $this->hasOne(Locais::class, ['id' => 'local_id']);
+        return $this->hasOne(Local::class, ['id' => 'local_id']);
     }
 
     /**
@@ -120,6 +128,6 @@ class Evento extends \yii\db\ActiveRecord
      */
     public function getZonas()
     {
-        return $this->hasMany(Zonas::class, ['evento_id' => 'id']);
+        return $this->hasMany(Zona::class, ['evento_id' => 'id']);
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Evento;
 
 use Yii;
 
@@ -55,6 +58,6 @@ class Imagem extends \yii\db\ActiveRecord
      */
     public function getEvento()
     {
-        return $this->hasOne(Eventos::class, ['id' => 'evento_id']);
+        return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
 }

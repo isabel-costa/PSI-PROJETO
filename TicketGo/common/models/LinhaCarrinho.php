@@ -1,6 +1,10 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Bilhete;
+use common\models\Carrinho;
 
 use Yii;
 
@@ -62,7 +66,7 @@ class LinhaCarrinho extends \yii\db\ActiveRecord
      */
     public function getBilhete()
     {
-        return $this->hasOne(Bilhetes::class, ['id' => 'bilhete_id']);
+        return $this->hasOne(Bilhete::class, ['id' => 'bilhete_id']);
     }
 
     /**
@@ -72,6 +76,6 @@ class LinhaCarrinho extends \yii\db\ActiveRecord
      */
     public function getCarrinho()
     {
-        return $this->hasOne(Carrinhos::class, ['id' => 'carrinho_id']);
+        return $this->hasOne(Carrinho::class, ['id' => 'carrinho_id']);
     }
 }

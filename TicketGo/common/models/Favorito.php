@@ -1,6 +1,10 @@
 <?php
 
-namespace app\models;
+
+namespace common\models;
+
+use common\models\Evento;
+use common\models\Profile;
 
 use Yii;
 
@@ -31,8 +35,8 @@ class Favorito extends \yii\db\ActiveRecord
     {
         return [
             [['profile_id', 'evento_id'], 'integer'],
-            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profiles::class, 'targetAttribute' => ['profile_id' => 'id']],
-            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Eventos::class, 'targetAttribute' => ['evento_id' => 'id']],
+            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
+            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evento::class, 'targetAttribute' => ['evento_id' => 'id']],
         ];
     }
 
@@ -55,7 +59,7 @@ class Favorito extends \yii\db\ActiveRecord
      */
     public function getEvento()
     {
-        return $this->hasOne(Eventos::class, ['id' => 'evento_id']);
+        return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
 
     /**
@@ -65,6 +69,6 @@ class Favorito extends \yii\db\ActiveRecord
      */
     public function getProfile()
     {
-        return $this->hasOne(Profiles::class, ['id' => 'profile_id']);
+        return $this->hasOne(Profile::class, ['id' => 'profile_id']);
     }
 }
