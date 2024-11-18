@@ -40,14 +40,14 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="user">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
-                        </div>
-                    </div>
+                <div class="perfil">
+                    <a href="site\login">
+                        <p>
+                            <img src="img/perfil.png" alt="Perfil" style="width: 50px; height: 50px;">
+                        </p>
+                    </a>
+                </div>
+            </div>
                     <div class="cart">
                         <i class="fa fa-cart-plus"></i>
                         <span>(0)</span>
