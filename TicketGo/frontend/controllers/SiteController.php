@@ -55,6 +55,10 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function actionProductDetail()
+    {
+        return $this->render('product-detail');
+    }
     public function actions()
     {
         return [
