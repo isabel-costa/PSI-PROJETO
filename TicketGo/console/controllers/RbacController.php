@@ -17,9 +17,9 @@ class RbacController extends Controller
         $auth = Yii::$app->authManager;
         $role = $auth->getRole('admin');
         if ($auth->assign($role, $userId)) {
-            echo "Usuário com ID {$userId} agora é admin.\n";
+            echo "O utilizador com ID {$userId} agora é admin.\n";
         } else {
-            echo "Erro ao atribuir papel de admin ao usuário.\n";
+            echo "Erro ao atribuir o role de admin ao utilizador.\n";
         }
     }
     public function actionAssign($roleName, $userId)
@@ -28,12 +28,12 @@ class RbacController extends Controller
         $role = $auth->getRole($roleName);
 
         if ($role === null) {
-            echo "Role '$roleName' não encontrada.\n";
+            echo "O role '$roleName' não foi encontrado.\n";
             return ExitCode::DATAERR;
         }
 
         $auth->assign($role, $userId);
-        echo "Role '$roleName' atribuída ao usuário de ID $userId.\n";
+        echo "O role '$roleName' foi atribuído ao utilizador com ID $userId.\n";
         return ExitCode::OK;
     }
 
@@ -99,6 +99,59 @@ class RbacController extends Controller
         $deleteEvents->description='Delete an Event';
         $auth->add($deleteEvents);
 
+        //CATEGORIAS
+
+        //Criar Categorias
+        $createCategories = $auth->createPermission('createCategories');
+        $createCategories->description='Create a Category';
+        $auth->add($createCategories);
+
+        //Atualizar Categorias
+        $updateCategories = $auth->createPermission('updateCategories');
+        $updateCategories->description='Update a Category';
+        $auth->add($updateEvents);
+
+        //Eliminar Categorias
+        $deleteCategories = $auth->createPermission('deleteCategories');
+        $deleteCategories->description='Delete a Category';
+        $auth->add($deleteCategories);
+
+        //LOCAIS
+
+        //Criar Locais
+        $createPlaces = $auth->createPermission('createPlaces');
+        $createPlaces->description='Create a Place';
+        $auth->add($createPlaces);
+
+        //Atualizar Locais
+        $updatePlaces = $auth->createPermission('updatePlaces');
+        $updatePlaces->description='Update a Place';
+        $auth->add($updatePlaces);
+
+        //Eliminar Locais
+        $deletePlaces = $auth->createPermission('deletePlaces');
+        $deletePlaces->description='Delete a Place';
+        $auth->add($deletePlaces);
+
+        //ZONAS
+
+        //Criar Zonas
+        $createZones = $auth->createPermission('createZones');
+        $createZones->description='Create a Zone';
+        $auth->add($createZones);
+
+        //Atualizar Zonas
+        $updateZones = $auth->createPermission('updateZones');
+        $updateZones->description='Update a Zone';
+        $auth->add($updateZones);
+
+        //Eliminar Zonas
+        $deleteZones = $auth->createPermission('deleteZones');
+        $deleteZones->description='Delete a Zone';
+        $auth->add($deleteZones);
+
+        //RELATÓRIOS
+
         //Ver Relatórios
         $viewReports = $auth->createPermission('viewReports');
         $viewReports->description = 'View Reports';
@@ -128,7 +181,7 @@ class RbacController extends Controller
         $removeTicketsCart->description = 'Remove a Ticket from the Cart';
         $auth->add($removeTicketsCart);
 
-        //COMPRA
+        //COMPRAS
 
         //Comprar Bilhetes
         $purchaseTickets = $auth->createPermission('purchaseTickets');
@@ -152,9 +205,9 @@ class RbacController extends Controller
         $deletePaymentMethod->description = 'Delete a Payment Method';
         $auth->add($deletePaymentMethod);
 
-        //HISTÓRICO
+        //HISTÓRICO DE COMPRAS
 
-        // View Purchase History
+        //Ver Histórico de Compras
         $viewPurchaseHistory = $auth->createPermission('viewPurchaseHistory');
         $viewPurchaseHistory->description = 'Permission to view purchase history';
         $auth->add($viewPurchaseHistory);

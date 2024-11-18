@@ -22,7 +22,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'viewReports'],
+                'only' => ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'createCategories', 'updateCategories', 'deleteCategories', 'createPlaces', 'updatePlaces', 'deletePlaces', 'createZones', 'updateZones', 'deleteZones', 'viewReports'],
                 'rules' => [
                     [
                         'actions' => ['login'],
@@ -30,7 +30,7 @@ class SiteController extends Controller
                         'roles' => ['?'],
                     ],
                     [
-                        'actions'=> ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod'],
+                        'actions'=> ['createUsers', 'updateUsers', 'deleteUsers', 'createEvents', 'updateEvents', 'deleteEvents', 'createPaymentMethod', 'updatePaymentMethod', 'deletePaymentMethod', 'createCategories', 'updateCategories', 'deleteCategories', 'createPlaces', 'updatePlaces', 'deletePlaces', 'createZones', 'updateZones', 'deleteZones'],
                         'allow' => true,
                         'roles' => ['admin'],
                     ],

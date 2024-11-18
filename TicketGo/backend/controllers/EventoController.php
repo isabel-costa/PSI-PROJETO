@@ -15,7 +15,7 @@ class EventoController extends \yii\web\Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['create', 'update', 'delete'],
+                'only' => ['createEvents', 'updateEvents', 'deleteEvents'],
                 'rules' => [
                     [
                         'allow' => true,
