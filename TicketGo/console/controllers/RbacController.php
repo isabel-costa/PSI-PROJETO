@@ -62,6 +62,11 @@ class RbacController extends Controller
         $deleteUsers->description = 'Permission to delete users';
         $auth->add($deleteUsers);
 
+        //Login
+        $loginPermission = $auth->createPermission('login');
+        $loginPermission->description = 'Login';
+        $auth->add($loginPermission);
+
         //Logout
         $logoutPermission = $auth->createPermission('logout');
         $logoutPermission->description = 'Logout';
