@@ -37,9 +37,9 @@ class SiteController extends Controller
                         'roles' => ['registeredUser'],
                     ],
                     [
-                        'actions' => ['register', 'searchEvents'],
+                        'actions' => ['register', 'searchEvents', 'viewHomePage'],
                         'allow' => true,
-                        'roles' => ['guest'],
+                        'roles' => ['?'],
                     ],
                 ],
             ],
@@ -55,6 +55,10 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+    public function actionProductDetail()
+    {
+        return $this->render('product-detail');
+    }
     public function actions()
     {
         return [
