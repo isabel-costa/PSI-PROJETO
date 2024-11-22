@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use common\models\Eventos;
+use common\models\Evento;
 
 use Yii;
 
@@ -55,6 +55,6 @@ class Categoria extends \yii\db\ActiveRecord
      */
     public function getEventos()
     {
-        return $this->hasMany(Eventos::class, ['categoria_id' => 'id']);
+        return $this->hasMany(Evento::class, ['categoria_id' => 'id']);
     }
 }

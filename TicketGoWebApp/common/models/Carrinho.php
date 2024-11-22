@@ -3,8 +3,8 @@
 
 namespace common\models;
 
-use common\models\LinhasCarrinho;
-use common\models\Profiles;
+use common\models\LinhaCarrinho;
+use common\models\Profile;
 use Yii;
 
 /**
@@ -56,7 +56,7 @@ class Carrinho extends \yii\db\ActiveRecord
      */
     public function getLinhasCarrinhos()
     {
-        return $this->hasMany(LinhasCarrinho::class, ['carrinho_id' => 'id']);
+        return $this->hasMany(LinhaCarrinho::class, ['carrinho_id' => 'id']);
     }
 
     /**
@@ -66,6 +66,6 @@ class Carrinho extends \yii\db\ActiveRecord
      */
     public function getProfile()
     {
-        return $this->hasOne(Profiles::class, ['id' => 'profile_id']);
+        return $this->hasOne(Profile::class, ['id' => 'profile_id']);
     }
 }

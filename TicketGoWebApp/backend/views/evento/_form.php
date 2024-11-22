@@ -16,9 +16,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'datainicio')->textInput() ?>
+    <?= $form->field($model, 'datainicio')->input('datetime-local') ?>
 
-    <?= $form->field($model, 'datafim')->textInput() ?>
+    <?= $form->field($model, 'datafim')->input('datetime-local') ?>
 
     <?= $form->field($model, 'local_id')->textInput() ?>
 

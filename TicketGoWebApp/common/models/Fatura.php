@@ -3,9 +3,9 @@
 
 namespace common\models;
 
-use common\models\LinhasFatura;
-use common\models\MetodosPagamento;
-use common\models\Profiles;
+use common\models\LinhaFatura;
+use common\models\MetodoPagamentoagamento;
+use common\models\Profile;
 
 
 
@@ -46,8 +46,8 @@ class Fatura extends \yii\db\ActiveRecord
             [['dataemissao'], 'safe'],
             [['numerofatura'], 'string', 'max' => 50],
             [['numerofatura'], 'unique'],
-            [['metodopagamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => MetodosPagamento::class, 'targetAttribute' => ['metodopagamento_id' => 'id']],
-            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profiles::class, 'targetAttribute' => ['profile_id' => 'id']],
+            [['metodopagamento_id'], 'exist', 'skipOnError' => true, 'targetClass' => MetodoPagamento::class, 'targetAttribute' => ['metodopagamento_id' => 'id']],
+            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
         ];
     }
 
@@ -73,7 +73,7 @@ class Fatura extends \yii\db\ActiveRecord
      */
     public function getLinhasFaturas()
     {
-        return $this->hasMany(LinhasFatura::class, ['fatura_id' => 'id']);
+        return $this->hasMany(LinhaFatura::class, ['fatura_id' => 'id']);
     }
 
     /**
@@ -83,7 +83,7 @@ class Fatura extends \yii\db\ActiveRecord
      */
     public function getMetodopagamento()
     {
-        return $this->hasOne(MetodosPagamento::class, ['id' => 'metodopagamento_id']);
+        return $this->hasOne(MetodoPagamento::class, ['id' => 'metodopagamento_id']);
     }
 
     /**
@@ -93,6 +93,6 @@ class Fatura extends \yii\db\ActiveRecord
      */
     public function getProfile()
     {
-        return $this->hasOne(Profiles::class, ['id' => 'profile_id']);
+        return $this->hasOne(Profile::class, ['id' => 'profile_id']);
     }
 }
