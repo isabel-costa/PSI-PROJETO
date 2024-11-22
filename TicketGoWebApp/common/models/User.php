@@ -29,7 +29,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
-
+    public $role;
     /**
      * {@inheritdoc}
      */
@@ -62,6 +62,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['email'], 'email'],
             [['username', 'email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            [['role'], 'string'],
+            [['role'], 'required'],
         ];
     }
 
@@ -69,12 +71,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-                // Gerar o auth_key e os tokens ao criar um novo usuário
                 $this->auth_key = Yii::$app->security->generateRandomString();
                 $this->verification_token = Yii::$app->security->generateRandomString();
                 $this->created_at = time();
             }
-            // Gerar o hash da senha
             $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
 
             $this->updated_at = time();

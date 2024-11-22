@@ -29,15 +29,14 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'register', 'searchEvents', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                 'rules' => [
                     [
                         'actions' => ['logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                         'allow' => true,
-                        'roles' => ['registeredUser'],
+                        'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['register', 'searchEvents', 'viewHomePage'],
+                        'actions' => ['index', 'signup', 'login', 'register', 'searchEvents'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -59,6 +58,7 @@ class SiteController extends Controller
     {
         return $this->render('product-detail');
     }
+
     public function actions()
     {
         return [

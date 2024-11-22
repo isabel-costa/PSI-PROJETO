@@ -50,6 +50,8 @@
                     ['label' => 'Ver Locais', 'url' => ['..\local\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
                     ['label' => 'Criar Locais',  'icon' => 'file-code', 'url' => ['..\local\create'], 'visible' => Yii::$app->user->can('createUsers')],
 
+                    ['label' => 'Relatórios', 'header' => true, 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
+                    ['label' => 'Ver Relatórios', 'url' => ['..\relatorio\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
                 ],
             ]);
             ?>

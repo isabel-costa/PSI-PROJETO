@@ -20,11 +20,13 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'status')->dropDownList([
-            10 => 'Active',
-            0 => 'Inactive',
-        ], ['prompt' => 'Select Status']) ?>
-
+        <?= $form->field($model, 'role')->dropDownList(
+                [
+                        'partner' => 'Partner',
+                        'organizer' => 'Organizer',
+                        'admin' => 'Admin',
+                ]
+        ) ?>
         <div class="form-group">
             <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
         </div>
