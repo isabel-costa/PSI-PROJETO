@@ -35,7 +35,6 @@ class Local extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['local_id'], 'exist', 'targetClass' => '\common\models\Local', 'targetAttribute' => 'id'],
             [['capacidade'], 'integer'],
             [['nome', 'cidade'], 'string', 'max' => 100],
             [['morada'], 'string', 'max' => 200],
@@ -48,7 +47,7 @@ class Local extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'local_id' => 'ID',
             'nome' => 'Nome',
             'morada' => 'Morada',
             'cidade' => 'Cidade',

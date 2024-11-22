@@ -632,6 +632,9 @@ button.btn {
     right: 30px;
     opacity: 1;
 }
+.slider{
+    overflow: hidden;
+}
 
 
 

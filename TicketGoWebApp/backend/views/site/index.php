@@ -5,11 +5,15 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 <div class="container-fluid">
 
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <?php if (Yii::$app->user->can('createEvents')): ?>
+
             <?= \hail812\adminlte\widgets\SmallBox::widget([
                 'title' => 'Eventos',
                 'theme' => 'primary',
                 'linkUrl' => \yii\helpers\Url::to(['evento/index']),
                 ]); ?>
+            <?php endif; ?>
+
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <?php if (Yii::$app->user->can('createUsers')): ?>
@@ -44,13 +48,13 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 
     </div>
     <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-        <?php if (Yii::$app->user->can('createUsers')): ?>
+        <?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('partner')): ?>
 
         <?= \hail812\adminlte\widgets\SmallBox::widget([
             'title' => 'Relatórios',
             'theme' => 'primary',
 
-            'linkUrl' => \yii\helpers\Url::to(['relatorios/index']),
+            'linkUrl' => \yii\helpers\Url::to(['relatorio/index']),
         ]); ?>
         <?php endif; ?>
 

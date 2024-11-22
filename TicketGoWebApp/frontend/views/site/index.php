@@ -40,14 +40,14 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="user">
-                    <div class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Login</a>
-                            <a href="#" class="dropdown-item">Register</a>
-                        </div>
-                    </div>
+                <div class="perfil">
+                    <a href="site\login">
+                        <p>
+                            <img src="./img/perfil.jpeg" alt="Perfil" style="width: 50px; height: 50px;">
+                        </p>
+                    </a>
+                </div>
+            </div>
                     <div class="cart">
                         <i class="fa fa-cart-plus"></i>
                         <span>(0)</span>
@@ -118,7 +118,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hallo.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -142,7 +142,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/cuca.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -166,7 +166,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/mariza.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -190,7 +190,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/open.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -214,7 +214,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hibrid.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
