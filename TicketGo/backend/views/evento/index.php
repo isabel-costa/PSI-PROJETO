@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => ActionColumn::class,
-                'template' => '{update} {view} {delete}',
+                'template' => '{update} {delete}',
                 'urlCreator' => function ($action, Evento $model) {
                     return Url::to(['evento/' . $action, 'id' => $model->id]);
                 },
