@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\User $model */
 /** @var yii\widgets\ActiveForm $form */
+
 ?>
 
 <div class="user-create">
@@ -18,7 +19,7 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+        <?= $form->field($model, 'password_hash')->passwordInput(['value' =>'']) ?>
 
         <?= $form->field($model, 'role')->dropDownList(
                 [

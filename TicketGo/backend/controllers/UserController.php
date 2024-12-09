@@ -82,9 +82,16 @@ class UserController extends \yii\web\Controller
         //Procura o User pelo ID
         $model = $this->findModel($id);
 
+        $originalHash = $model->password_hash;
+
         //Se o User foi atualizado e o formulário foi enviado com sucesso faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Atualiza o evento na bd
+            if($model->password_hash == ''){
+                $model->password_hash = $originalHash;
+            }else{
+                $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
+            }
             if ($model->save(false)) {
                 $auth = Yii::$app->authManager;
                 $auth->revokeAll($model->id);
