@@ -13,20 +13,21 @@ use yii\web\NotFoundHttpException;
 class UserController extends \yii\web\Controller
 {
     public function behaviors()
-{
-    return [
-        'access' => [
-            'class' => AccessControl::class,
-            'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['admin'],
-                ]
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
+
             ],
-        ],
-    ];
-}
+        ];
+    }
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -43,7 +44,7 @@ class UserController extends \yii\web\Controller
     {
         //Verifica se o utilizador tem permissão para criar Users
         if (!Yii::$app->user->can('createUsers')) {
-            Yii::$app->session->setFlash('error', 'Não tem permissão para criar Users.');
+            Yii::$app->session->setFlash('error', 'Não tem permissão para criar Utilizadores.');
             return $this->redirect(['index']);
         }
         $model = new User();
@@ -58,10 +59,10 @@ class UserController extends \yii\web\Controller
                     $auth->assign($role, $model->id);
 
                 }
-                Yii::$app->session->setFlash('success', 'user criado com sucesso.');
+                Yii::$app->session->setFlash('success', 'Utilizador criado com sucesso.');
                 return $this->redirect(['index']);
             } else {
-                Yii::$app->session->setFlash('error', 'Erro ao criar USer.');
+                Yii::$app->session->setFlash('error', 'Erro ao criar Utilizador.');
             }
         }
 
@@ -75,7 +76,7 @@ class UserController extends \yii\web\Controller
     {
         //Verifica se o utilizador tem permissão para editar eventos
         if (!Yii::$app->user->can('updateUsers')) {
-            Yii::$app->session->setFlash('error', 'Não tem permissão para editar Users.');
+            Yii::$app->session->setFlash('error', 'Não tem permissão para editar Utilizadores.');
             return $this->redirect(['index']);
         }
 
@@ -99,10 +100,10 @@ class UserController extends \yii\web\Controller
                 if($role) {
                     $auth->assign($role, $model->id);
                 }
-                Yii::$app->session->setFlash('success', 'User atualizado com sucesso!');
+                Yii::$app->session->setFlash('success', 'Utilizador atualizado com sucesso!');
                 return $this->redirect(['index']);
             } else {
-                Yii::$app->session->setFlash('error', 'Erro ao atualizar o User.');
+                Yii::$app->session->setFlash('error', 'Erro ao atualizar o Utilizador.');
             }
         }
 
@@ -117,7 +118,7 @@ class UserController extends \yii\web\Controller
         $event = User::findOne($id);
 
         if (!$event || !Yii::$app->user->can('deleteUsers', ['userId' => $id])) {
-            throw new ForbiddenHttpException('Não tem permissão para eliminar Users.');
+            throw new ForbiddenHttpException('Não tem permissão para eliminar Utilizadores.');
         }
 
         $event->delete();
@@ -129,7 +130,7 @@ class UserController extends \yii\web\Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('A página solicitada não existe.');
     }
 
 }

@@ -63,10 +63,6 @@ class SignupForm extends Model
             if ($role) {
                 $auth->assign($role, $user->id);
             }
-
-            if ($this->sendEmail($user)) {
-                return $user;
-            }
         }
         return false;
     }
