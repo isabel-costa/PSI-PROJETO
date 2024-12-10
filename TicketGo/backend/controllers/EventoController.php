@@ -55,6 +55,7 @@ class EventoController extends \yii\web\Controller
         $categorias = Categoria::find()->all();
 
 
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Guardar o Modelo na BD
             if ($model->save()) {
