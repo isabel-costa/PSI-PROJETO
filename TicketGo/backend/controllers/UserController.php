@@ -24,6 +24,7 @@ class UserController extends \yii\web\Controller
                         'roles' => ['admin'],
                     ]
                 ],
+
             ],
         ];
     }

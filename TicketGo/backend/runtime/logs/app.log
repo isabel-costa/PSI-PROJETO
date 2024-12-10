@@ -50423,6 +50423,7 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1731946965.087
     'REQUEST_TIME' => 1731946965
 ]
+
 2024-11-18 17:22:04 [::1][-][-][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "login". in /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/base/Module.php:561
 Stack trace:
 #0 /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('login', Array)

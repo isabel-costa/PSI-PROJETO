@@ -8,7 +8,6 @@
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/common/tests/_support" isTestSource="true" packagePrefix="common\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests" isTestSource="true" packagePrefix="frontend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests/_support" isTestSource="true" packagePrefix="frontend\tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/TicketGo/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
@@ -109,6 +108,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="bootstrap.bundle" level="application" />
     <orderEntry type="library" name="jquery-3.4.1" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
     <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="library" name="font-awesome" level="application" />
   </component>
