@@ -26,7 +26,7 @@
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="logo">
                     <a href="">
                         <img src="img/logoticketgo.png" alt="Logo">
@@ -39,18 +39,22 @@
                     <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="perfil">
-                    <a href="site\login">
-                        <p>
-                            <img src="img/perfil.png" alt="Perfil" style="width: 50px; height: 50px;">
-                        </p>
-                    </a>
-                </div>
-            </div>
-                    <div class="cart">
-                        <i class="fa fa-cart-plus"></i>
-                        <span>(0)</span>
+            <div class="col-md-2 text-right">
+                <div class="user-icons d-flex justify-content-end">
+                    <div class="perfil">
+                        <a href="site/login">
+                            <img src="./img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                    <div class="favoritos">
+                        <a href="site/favorites">
+                            <img src="./img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                    <div class="carrinho">
+                        <a href="site/cart">
+                            <img src="./img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        </a>
                     </div>
                 </div>
             </div>
@@ -118,7 +122,7 @@
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hallo.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -135,14 +139,14 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">$22 <span>$25</span></div>
+                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/cuca.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -159,14 +163,14 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">$22 <span>$25</span></div>
+                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/mariza.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -183,14 +187,14 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">$22 <span>$25</span></div>
+                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/open.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -207,14 +211,14 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">$22 <span>$25</span></div>
+                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="product-item">
                     <div class="product-image">
-                        <a href="product-detail.php">
+                        <a href="product-detail">
                             <img src="img/hibrid.jpeg" alt="Product Image">
                         </a>
                         <div class="product-action">
@@ -231,7 +235,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">$22 <span>$25</span></div>
+                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
             </div>

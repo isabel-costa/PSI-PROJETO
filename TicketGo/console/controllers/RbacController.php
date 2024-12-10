@@ -12,30 +12,7 @@ class RbacController extends Controller
      * @throws Exception
      * @throws \Exception
      */
-    public function actionAssignAdmin($userId)
-    {
-        $auth = Yii::$app->authManager;
-        $role = $auth->getRole('admin');
-        if ($auth->assign($role, $userId)) {
-            echo "O utilizador com ID {$userId} agora é admin.\n";
-        } else {
-            echo "Erro ao atribuir o role de admin ao utilizador.\n";
-        }
-    }
-    public function actionAssign($roleName, $userId)
-    {
-        $auth = Yii::$app->authManager;
-        $role = $auth->getRole($roleName);
 
-        if ($role === null) {
-            echo "O role '$roleName' não foi encontrado.\n";
-            return ExitCode::DATAERR;
-        }
-
-        $auth->assign($role, $userId);
-        echo "O role '$roleName' foi atribuído ao utilizador com ID $userId.\n";
-        return ExitCode::OK;
-    }
 
 
     public function actionInit()

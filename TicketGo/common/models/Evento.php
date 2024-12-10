@@ -52,6 +52,8 @@ class Evento extends \yii\db\ActiveRecord
             [['titulo'], 'string', 'max' => 100],
             [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['categoria_id' => 'id']],
+            [['imagem'], 'file', 'extensions' => 'jpg, png, jpeg', 'maxSize' => 1024 * 1024 * 2], // Máx: 2 MB
+
         ];
     }
 
@@ -68,6 +70,8 @@ class Evento extends \yii\db\ActiveRecord
             'datafim' => 'Datafim',
             'local_id' => 'Local ID',
             'categoria_id' => 'Categoria ID',
+            'imagem' => 'Imagem',
+
         ];
     }
 
