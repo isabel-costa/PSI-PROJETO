@@ -52296,3 +52296,263 @@ $_SERVER = [
     'REQUEST_TIME_FLOAT' => 1732015027.3406
     'REQUEST_TIME' => 1732015027
 ]
+2024-11-22 10:17:42 [::1][5][jo2g7vqqm9cs92ogkecvsvkgvt][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "relatorio/index". in /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('relatorio/index', Array)
+#1 /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Applications/MAMP/htdocs/TicketGo/backend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGo/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /Applications/MAMP/htdocs/TicketGo/backend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2024-11-22 10:17:42 [::1][5][jo2g7vqqm9cs92ogkecvsvkgvt][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'dark-mode' => 'false'
+    'layout-navbar-fixed' => 'false'
+    'dropdown-legacy' => 'false'
+    '_identity-backend' => 'a24ed11d978085371fa1613defbb6ab6f69579834337c8f7b853d5ae8ef07a2aa:2:{i:0;s:17:\"_identity-backend\";i:1;s:35:\"[5,\"random_auth_key_value\",2592000]\";}'
+    'advanced-frontend' => 'acdavdip2u4ng126fa7udtthst'
+    '_csrf-frontend' => 'a37781b74a36baea148df1a271e2e2dada16d0471eef98f55495bbc76e4d3274a:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"jhNbwPqvkZ_g5zhD_3ovmRPURXFF-4to\";}'
+    'advanced-backend' => 'jo2g7vqqm9cs92ogkecvsvkgvt'
+    '_csrf-backend' => '310c9610088c4aaf75d43ba67e3a5614e1f2c78f26dfca62ea96fe6b0d6163a8a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"uvDKhYYWYlTYzqx1DKeXT7BJMJLChL_o\";}'
+]
+
+$_SESSION = [
+    '__flash' => []
+    '__id' => 5
+    '__authKey' => 'random_auth_key_value'
+]
+
+$_SERVER = [
+    'PHP_FCGI_CHILDREN' => '4'
+    'PWD' => '/Applications/MAMP/fcgi-bin'
+    'SHLVL' => '0'
+    'PHP_FCGI_MAX_REQUESTS' => '200'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x0:0x0'
+    'ORIG_SCRIPT_NAME' => '/fcgi-bin/php.fcgi'
+    'ORIG_PATH_TRANSLATED' => '/Applications/MAMP/htdocs/TicketGo/backend/web/index.php'
+    'ORIG_PATH_INFO' => '/TicketGo/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' => '/Applications/MAMP/fcgi-bin/php.fcgi'
+    'SCRIPT_NAME' => '/TicketGo/backend/web/index.php'
+    'REQUEST_URI' => '/TicketGo/backend/web/relatorio/index'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/TicketGo/backend/web/index.php'
+    'REMOTE_PORT' => '50617'
+    'SCRIPT_FILENAME' => '/Applications/MAMP/htdocs/TicketGo/backend/web/index.php'
+    'SERVER_ADMIN' => 'you@example.com'
+    'CONTEXT_DOCUMENT_ROOT' => '/Applications/MAMP/fcgi-bin/'
+    'CONTEXT_PREFIX' => '/fcgi-bin/'
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => '/Applications/MAMP/htdocs'
+    'REMOTE_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '::1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Unix) OpenSSL/1.1.1u mod_fastcgi/mod_fastcgi-SNAP-0910052141'
+    'SERVER_SIGNATURE' => ''
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'HTTP_COOKIE' => 'dark-mode=false; layout-navbar-fixed=false; dropdown-legacy=false; _identity-backend=a24ed11d978085371fa1613defbb6ab6f69579834337c8f7b853d5ae8ef07a2aa%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A35%3A%22%5B5%2C%22random_auth_key_value%22%2C2592000%5D%22%3B%7D; advanced-frontend=acdavdip2u4ng126fa7udtthst; _csrf-frontend=a37781b74a36baea148df1a271e2e2dada16d0471eef98f55495bbc76e4d3274a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22jhNbwPqvkZ_g5zhD_3ovmRPURXFF-4to%22%3B%7D; advanced-backend=jo2g7vqqm9cs92ogkecvsvkgvt; _csrf-backend=310c9610088c4aaf75d43ba67e3a5614e1f2c78f26dfca62ea96fe6b0d6163a8a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%22uvDKhYYWYlTYzqx1DKeXT7BJMJLChL_o%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_REFERER' => 'http://localhost/TicketGo/backend/web/evento/create'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_SEC_FETCH_USER' => '?1'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"macOS\"'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'REDIRECT_HANDLER' => 'php-fastcgi'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/TicketGo/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1732270662.0117
+    'REQUEST_TIME' => 1732270662
+]
+2024-12-09 14:14:07 [::1][-][5c14lmljbiu0dsrdt0u5qqmrnj][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "vendor/hail812/yii2-adminlte3/dist/css/adminlte.min.css". in /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('vendor/hail812/...', Array)
+#1 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2024-12-09 14:14:07 [::1][-][5c14lmljbiu0dsrdt0u5qqmrnj][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'dark-mode' => 'false'
+    'layout-navbar-fixed' => 'false'
+    'dropdown-legacy' => 'false'
+    'advanced-frontend' => 'c3o830glaov97j5im0n0rj4bcc'
+    '_csrf-frontend' => 'b1bb8b5459b8de48ece2e95dd6047c48c3f0cd3c98f2fb151a1b7c4132a08ed3a:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"QW6XMF4WYkjexBsVMs2E9YoH7OWytmwh\";}'
+    '_csrf-backend' => '27bdc8ef867603a067e998210713e75b25062204aa8e60ae2eaf2183f999e197a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6ETfzB6v4Ov5ubmvX0vHJXCsALjNZiCv\";}'
+    'advanced-backend' => '5c14lmljbiu0dsrdt0u5qqmrnj'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'PHP_FCGI_CHILDREN' => '4'
+    'PWD' => '/Applications/MAMP/fcgi-bin'
+    'SHLVL' => '0'
+    'PHP_FCGI_MAX_REQUESTS' => '200'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x0:0x0'
+    'ORIG_SCRIPT_NAME' => '/fcgi-bin/php.fcgi'
+    'ORIG_PATH_TRANSLATED' => '/Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php'
+    'ORIG_PATH_INFO' => '/TicketGoWebApp/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' => '/Applications/MAMP/fcgi-bin/php.fcgi'
+    'SCRIPT_NAME' => '/TicketGoWebApp/backend/web/index.php'
+    'REQUEST_URI' => '/TicketGoWebApp/backend/web/vendor/hail812/yii2-adminlte3/dist/css/adminlte.min.css'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/TicketGoWebApp/backend/web/index.php'
+    'REMOTE_PORT' => '49604'
+    'SCRIPT_FILENAME' => '/Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php'
+    'SERVER_ADMIN' => 'you@example.com'
+    'CONTEXT_DOCUMENT_ROOT' => '/Applications/MAMP/fcgi-bin/'
+    'CONTEXT_PREFIX' => '/fcgi-bin/'
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => '/Applications/MAMP/htdocs'
+    'REMOTE_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '::1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Unix) OpenSSL/1.1.1u mod_fastcgi/mod_fastcgi-SNAP-0910052141'
+    'SERVER_SIGNATURE' => ''
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'HTTP_COOKIE' => 'dark-mode=false; layout-navbar-fixed=false; dropdown-legacy=false; advanced-frontend=c3o830glaov97j5im0n0rj4bcc; _csrf-frontend=b1bb8b5459b8de48ece2e95dd6047c48c3f0cd3c98f2fb151a1b7c4132a08ed3a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22QW6XMF4WYkjexBsVMs2E9YoH7OWytmwh%22%3B%7D; _csrf-backend=27bdc8ef867603a067e998210713e75b25062204aa8e60ae2eaf2183f999e197a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226ETfzB6v4Ov5ubmvX0vHJXCsALjNZiCv%22%3B%7D; advanced-backend=5c14lmljbiu0dsrdt0u5qqmrnj'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_REFERER' => 'http://localhost/TicketGoWebApp/backend/web/site/login'
+    'HTTP_SEC_FETCH_DEST' => 'style'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => 'text/css,*/*;q=0.1'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"macOS\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'REDIRECT_HANDLER' => 'php-fastcgi'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/TicketGoWebApp/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1733753647.1853
+    'REQUEST_TIME' => 1733753647
+]
+2024-12-09 14:14:07 [::1][-][5c14lmljbiu0dsrdt0u5qqmrnj][error][yii\web\HttpException:404] yii\base\InvalidRouteException: Unable to resolve the request "vendor/hail812/yii2-adminlte3/dist/js/adminlte.min.js". in /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Module.php:561
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('vendor/hail812/...', Array)
+#1 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#2 /Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php(18): yii\base\Application->run()
+#3 {main}
+
+Next yii\web\NotFoundHttpException: Page not found. in /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/web/Application.php:115
+Stack trace:
+#0 /Applications/MAMP/htdocs/TicketGoWebApp/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#1 /Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php(18): yii\base\Application->run()
+#2 {main}
+2024-12-09 14:14:07 [::1][-][5c14lmljbiu0dsrdt0u5qqmrnj][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    'dark-mode' => 'false'
+    'layout-navbar-fixed' => 'false'
+    'dropdown-legacy' => 'false'
+    'advanced-frontend' => 'c3o830glaov97j5im0n0rj4bcc'
+    '_csrf-frontend' => 'b1bb8b5459b8de48ece2e95dd6047c48c3f0cd3c98f2fb151a1b7c4132a08ed3a:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"QW6XMF4WYkjexBsVMs2E9YoH7OWytmwh\";}'
+    '_csrf-backend' => '27bdc8ef867603a067e998210713e75b25062204aa8e60ae2eaf2183f999e197a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"6ETfzB6v4Ov5ubmvX0vHJXCsALjNZiCv\";}'
+    'advanced-backend' => '5c14lmljbiu0dsrdt0u5qqmrnj'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'PHP_FCGI_CHILDREN' => '4'
+    'PWD' => '/Applications/MAMP/fcgi-bin'
+    'SHLVL' => '0'
+    'PHP_FCGI_MAX_REQUESTS' => '200'
+    '__CF_USER_TEXT_ENCODING' => '0x1F5:0x0:0x0'
+    'ORIG_SCRIPT_NAME' => '/fcgi-bin/php.fcgi'
+    'ORIG_PATH_TRANSLATED' => '/Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php'
+    'ORIG_PATH_INFO' => '/TicketGoWebApp/backend/web/index.php'
+    'ORIG_SCRIPT_FILENAME' => '/Applications/MAMP/fcgi-bin/php.fcgi'
+    'SCRIPT_NAME' => '/TicketGoWebApp/backend/web/index.php'
+    'REQUEST_URI' => '/TicketGoWebApp/backend/web/vendor/hail812/yii2-adminlte3/dist/js/adminlte.min.js'
+    'QUERY_STRING' => ''
+    'REQUEST_METHOD' => 'GET'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REDIRECT_URL' => '/TicketGoWebApp/backend/web/index.php'
+    'REMOTE_PORT' => '49604'
+    'SCRIPT_FILENAME' => '/Applications/MAMP/htdocs/TicketGoWebApp/backend/web/index.php'
+    'SERVER_ADMIN' => 'you@example.com'
+    'CONTEXT_DOCUMENT_ROOT' => '/Applications/MAMP/fcgi-bin/'
+    'CONTEXT_PREFIX' => '/fcgi-bin/'
+    'REQUEST_SCHEME' => 'http'
+    'DOCUMENT_ROOT' => '/Applications/MAMP/htdocs'
+    'REMOTE_ADDR' => '::1'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '::1'
+    'SERVER_NAME' => 'localhost'
+    'SERVER_SOFTWARE' => 'Apache/2.4.58 (Unix) OpenSSL/1.1.1u mod_fastcgi/mod_fastcgi-SNAP-0910052141'
+    'SERVER_SIGNATURE' => ''
+    'PATH' => '/usr/bin:/bin:/usr/sbin:/sbin'
+    'HTTP_COOKIE' => 'dark-mode=false; layout-navbar-fixed=false; dropdown-legacy=false; advanced-frontend=c3o830glaov97j5im0n0rj4bcc; _csrf-frontend=b1bb8b5459b8de48ece2e95dd6047c48c3f0cd3c98f2fb151a1b7c4132a08ed3a%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22QW6XMF4WYkjexBsVMs2E9YoH7OWytmwh%22%3B%7D; _csrf-backend=27bdc8ef867603a067e998210713e75b25062204aa8e60ae2eaf2183f999e197a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%226ETfzB6v4Ov5ubmvX0vHJXCsALjNZiCv%22%3B%7D; advanced-backend=5c14lmljbiu0dsrdt0u5qqmrnj'
+    'HTTP_ACCEPT_LANGUAGE' => 'pt-PT,pt;q=0.9,en-US;q=0.8,en;q=0.7'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br, zstd'
+    'HTTP_REFERER' => 'http://localhost/TicketGoWebApp/backend/web/site/login'
+    'HTTP_SEC_FETCH_DEST' => 'script'
+    'HTTP_SEC_FETCH_MODE' => 'no-cors'
+    'HTTP_SEC_FETCH_SITE' => 'same-origin'
+    'HTTP_ACCEPT' => '*/*'
+    'HTTP_SEC_CH_UA_MOBILE' => '?0'
+    'HTTP_SEC_CH_UA' => '\"Google Chrome\";v=\"131\", \"Chromium\";v=\"131\", \"Not_A Brand\";v=\"24\"'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36'
+    'HTTP_SEC_CH_UA_PLATFORM' => '\"macOS\"'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'localhost'
+    'REDIRECT_STATUS' => '200'
+    'REDIRECT_HANDLER' => 'php-fastcgi'
+    'REDIRECT_REDIRECT_STATUS' => '200'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/TicketGoWebApp/backend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1733753647.307
+    'REQUEST_TIME' => 1733753647
+]
