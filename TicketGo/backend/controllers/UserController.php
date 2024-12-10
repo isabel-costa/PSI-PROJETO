@@ -13,20 +13,20 @@ use yii\web\NotFoundHttpException;
 class UserController extends \yii\web\Controller
 {
     public function behaviors()
-{
-    return [
-        'access' => [
-            'class' => AccessControl::class,
-            'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
-            'rules' => [
-                [
-                    'allow' => true,
-                    'roles' => ['admin'],
-                ]
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ]
+                ],
             ],
-        ],
-    ];
-}
+        ];
+    }
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -82,9 +82,16 @@ class UserController extends \yii\web\Controller
         //Procura o User pelo ID
         $model = $this->findModel($id);
 
+        $originalHash = $model->password_hash;
+
         //Se o User foi atualizado e o formulário foi enviado com sucesso faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Atualiza o evento na bd
+            if($model->password_hash == ''){
+                $model->password_hash = $originalHash;
+            }else{
+                $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
+            }
             if ($model->save(false)) {
                 $auth = Yii::$app->authManager;
                 $auth->revokeAll($model->id);
@@ -122,7 +129,7 @@ class UserController extends \yii\web\Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('A página solicitada não existe.');
     }
 
 }
