@@ -54,8 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'email'], 'required'],
-            [['password_hash' ], 'string'],
+            [['username', 'email', 'password_hash'], 'required'],
             [['username', 'email', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['status'], 'integer'],
@@ -63,8 +62,6 @@ class User extends ActiveRecord implements IdentityInterface
             [['email'], 'email'],
             [['username', 'email'], 'unique'],
             [['password_reset_token'], 'unique'],
-            [['role'], 'string'],
-            [['role'], 'required'],
         ];
     }
 
@@ -76,6 +73,8 @@ class User extends ActiveRecord implements IdentityInterface
                 $this->verification_token = Yii::$app->security->generateRandomString();
                 $this->created_at = time();
             }
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+
             $this->updated_at = time();
             return true;
         }
