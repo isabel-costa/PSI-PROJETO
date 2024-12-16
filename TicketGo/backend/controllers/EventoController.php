@@ -58,6 +58,7 @@ class EventoController extends \yii\web\Controller
 
 
 
+
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Guardar o Modelo na BD
             if ($model->save()) {
