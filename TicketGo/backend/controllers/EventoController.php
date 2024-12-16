@@ -5,6 +5,7 @@ namespace backend\controllers;
 
 use common\models\Evento;
 use common\models\Categoria;
+use common\models\Local;
 use Yii;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
@@ -53,6 +54,8 @@ class EventoController extends \yii\web\Controller
 
         // Categorias bd
         $categorias = Categoria::find()->all();
+        $locais = Local::find()->all(); // Buscar os locais
+
 
 
 
@@ -69,6 +72,7 @@ class EventoController extends \yii\web\Controller
         return $this->render('create', [
             'model' => $model,
             'categorias' => $categorias,
+            'locais' => $locais,
         ]);
     }
 
@@ -84,6 +88,7 @@ class EventoController extends \yii\web\Controller
         $model = $this->findModel($id);
 
         $categorias = Categoria::find()->all(); // Buscar as categorias
+        $locais = Local::find()->all(); // Buscar os locais
 
         // Se o evento foi atualizado e o formulário foi enviado com sucesso, faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -100,6 +105,7 @@ class EventoController extends \yii\web\Controller
         return $this->render('update', [
             'model' => $model,
             'categorias' => $categorias, // Passar categorias para a view
+            'locais' =>$locais,
         ]);
     }
 
