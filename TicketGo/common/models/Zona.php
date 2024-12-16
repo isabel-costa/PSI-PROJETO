@@ -55,7 +55,6 @@ class Zona extends \yii\db\ActiveRecord
             'lugar' => 'Lugar',
             'porta' => 'Porta',
             'local_id' => 'Local ID',
-            'evento_id' => 'Evento ID',
             'quantidadedisponivel' => 'Quantidadedisponivel',
         ];
     }
@@ -74,11 +73,12 @@ class Zona extends \yii\db\ActiveRecord
      * Gets query for [[Evento]].
      *
      * @return \yii\db\ActiveQuery
-     */
+
     public function getEvento()
     {
         return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
+     * \
 
     /**
      * Gets query for [[Local]].
