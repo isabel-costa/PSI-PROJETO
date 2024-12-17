@@ -32,10 +32,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'capacidade',
             [
                 'class' => ActionColumn::className(),
-                'template' => '{update} {delete}',
+                'template' => '{update} {delete} {zonas}',
+                'buttons' => [
+                    'zonas' => function ($url, $model, $key) {
+                        return Html::a('Gerir Zonas', ['zona/index', 'local_id' => $model->id], [
+                            'class' => 'btn btn-primary btn-sm',
+                            'title' => 'Gerir zonas deste local'
+                        ]);
+                    },
+                ],
                 'urlCreator' => function ($action, Local $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                },
             ],
         ],
     ]); ?>
