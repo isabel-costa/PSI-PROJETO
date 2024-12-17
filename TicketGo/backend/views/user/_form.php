@@ -19,7 +19,11 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'password_hash')->passwordInput(['value' =>'']) ?>
+        <?php if ($model->scenario === 'create'): ?>
+            <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+        <?php else: ?>
+            <?= $form->field($model, 'password_hash')->passwordInput(['maxlenght'=>true,   'value' => '', 'placeholder' => 'Deixe vazio para manter a senha atual']) ?>
+        <?php endif; ?>
 
         <?= $form->field($model, 'role')->dropDownList(
             [

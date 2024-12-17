@@ -30,6 +30,11 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public $role;
+
+    /**
+     * @var mixed|null
+     */
+
     /**
      * {@inheritdoc}
      */
@@ -47,6 +52,13 @@ class User extends ActiveRecord implements IdentityInterface
             TimestampBehavior::class,
         ];
     }
+    public function scenarios()
+{
+    $scenarios = parent::scenarios();
+    $scenarios['create'] = ['username', 'email', 'password_hash', 'role'];
+    $scenarios['update'] = ['username', 'email', 'password_hash', 'role'];
+    return $scenarios;
+}
 
     /**
      * {@inheritdoc}
@@ -54,7 +66,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            [['username', 'email', 'password_hash'], 'required'],
+            [['username', 'email'], 'required'],
+            [['password_hash' ], 'string'],
             [['username', 'email', 'password_reset_token', 'verification_token'], 'string', 'max' => 255],
             [['auth_key'], 'string', 'max' => 32],
             [['status'], 'integer'],
@@ -68,18 +81,39 @@ class User extends ActiveRecord implements IdentityInterface
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            if ($this->isNewRecord) {
+            // Lógica para o cenário de criação
+            if ($this->scenario === 'create') {
                 $this->auth_key = Yii::$app->security->generateRandomString();
                 $this->verification_token = Yii::$app->security->generateRandomString();
                 $this->created_at = time();
-            }
-            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+                $this->updated_at = time();
 
-            $this->updated_at = time();
+                // Se a senha for informada, gera o hash
+                if (!empty($this->password_hash)) {
+                    $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+                }
+            }
+
+            // Lógica para o cenário de atualização
+           if ($this->scenario === 'update') {
+                $this->updated_at = time();
+
+                // Se a senha foi fornecida, atualiza o hash
+                if (!empty($this->password_hash)) {
+                    $this->password_hash = Yii::$app->security->generatePasswordHash($this->password_hash);
+                } else {
+                    // Não altera o hash da senha
+                    $this->password_hash = $this->getOldAttribute('password_hash');
+                }
+            }
+
             return true;
         }
+
         return false;
     }
+
+
     /**
      * {@inheritdoc}
      */
