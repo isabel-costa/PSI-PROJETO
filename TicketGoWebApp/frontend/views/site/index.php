@@ -14,8 +14,7 @@
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/slick/slick.css" rel="stylesheet">
-    <link href="lib/slick/slick-theme.css" rel="stylesheet">
+
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -94,7 +93,7 @@
             </div>
         </nav>
     </div>
-</div>--!>
+</div>-->
 <!-- Header End -->
 
 
@@ -371,14 +370,14 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="lib/easing/easing.min.js"></script>
-<script src="lib/slick/slick.min.js"></script>
+<!-- Carregar o jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-
-<!-- Template Javascript -->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- Seu script customizado -->
 <script src="js/main.js"></script>
+
 </body>
 </html>

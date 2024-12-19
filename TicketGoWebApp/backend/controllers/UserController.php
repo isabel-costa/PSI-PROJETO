@@ -48,7 +48,7 @@ class UserController extends \yii\web\Controller
             return $this->redirect(['index']);
         }
         $model = new User();
-
+        $model->scenario = 'create';
 
         if ($model->load(Yii::$app->request->post())) {
             // O hash da senha será gerado automaticamente no modelo antes de salvar
@@ -82,17 +82,13 @@ class UserController extends \yii\web\Controller
 
         //Procura o User pelo ID
         $model = $this->findModel($id);
+        $model-> scenario = 'update';
 
         $originalHash = $model->password_hash;
 
         //Se o User foi atualizado e o formulário foi enviado com sucesso faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Atualiza o evento na bd
-            if($model->password_hash == ''){
-                $model->password_hash = $originalHash;
-            }else{
-                $model->password_hash = Yii::$app->security->generatePasswordHash($model->password_hash);
-            }
             if ($model->save(false)) {
                 $auth = Yii::$app->authManager;
                 $auth->revokeAll($model->id);
@@ -112,7 +108,6 @@ class UserController extends \yii\web\Controller
             'model' => $model,
         ]);
     }
-
     public function actionDelete($id)
     {
         $event = User::findOne($id);
