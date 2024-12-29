@@ -66,7 +66,7 @@ class EventoController extends \yii\web\Controller
                 $model->imagem_file = UploadedFile::getInstance($model, 'imagem_file');
                 if($model->imagem_file){
                     $filename = $model->imagem_file->baseName . '.' . $model->imagem_file->extension;
-                    $path = Yii::getAlias('@common/uploads/') . $filename;
+                    $path = Yii::getAlias('@frontend/web/uploads/') . $filename;
                     if($model->imagem_file->saveAs($path)){
                         // tabel imagens bd
                         $imagem = new Imagem();
@@ -110,7 +110,7 @@ class EventoController extends \yii\web\Controller
                 $model->imagem_file = UploadedFile::getInstance($model, 'imagem_file');
                 if ($model->imagem_file) {
                     $filename = uniqid() . '.' . $model->imagem_file->extension;
-                    $path = Yii::getAlias('@common/uploads/') . $filename;
+                    $path = Yii::getAlias('@frontend/web/uploads/') . $filename;
 
                     if ($model->imagem_file->saveAs($path)) {
                         // Substituir ou criar registro na tabela de imagens

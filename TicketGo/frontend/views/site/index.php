@@ -102,15 +102,23 @@ use yii\helpers\Html;
 <!-- Header End -->
 
 
-<!-- Main Slider Start -->
 <div class="home-slider">
     <div class="main-slider">
-        <div class="main-slider-item"><img src="img/slider-1.jpg" alt="Slider Image" /></div>
-        <div class="main-slider-item"><img src="img/slider-2.jpg" alt="Slider Image" /></div>
-        <div class="main-slider-item"><img src="img/slider-3.jpg" alt="Slider Image" /></div>
+        <?php
+        // Selecionar 3 eventos aleatórios
+        $eventosAleatorios = array_slice($eventos, 0, 3);
+        foreach ($eventosAleatorios as $evento): ?>
+            <div class="main-slider-item">
+                <a href="product-detail/<?= Html::encode($evento->id) ?>">
+                    <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>">
+                </a>
+                <div class="slider-caption">
+                    <h4><?= Html::encode($evento->titulo) ?></h4>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
-<!-- Main Slider End -->
 
 
 
@@ -129,7 +137,7 @@ use yii\helpers\Html;
                     <div class="product-item">
                         <div class="product-image">
                             <a href="product-detail/<?= Html::encode($evento->id) ?>">
-                                <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>>
+                                <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>">
                             </a>
                             <div class="product-action">
                                 <a href="#"><i class="fa fa-cart-plus"></i></a>
@@ -147,10 +155,6 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
-
-
-
-
 <!-- Featured Product End -->
 
 
@@ -280,12 +284,16 @@ use yii\helpers\Html;
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 
-<!-- Carregar o jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- CSS do Slick -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- JS do Slick -->
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <!-- Seu script customizado -->
 <script src="js/main.js"></script>
 
