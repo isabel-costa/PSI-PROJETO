@@ -35,7 +35,7 @@ class Imagem extends \yii\db\ActiveRecord
             [['evento_id'], 'integer'],
             [['nome'], 'string', 'max' => 50],
             [['evento_id'], 'unique'],
-            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Eventos::class, 'targetAttribute' => ['evento_id' => 'id']],
+            [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evento::class, 'targetAttribute' => ['evento_id' => 'id']],
         ];
     }
 

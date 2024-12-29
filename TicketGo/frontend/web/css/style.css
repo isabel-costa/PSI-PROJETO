@@ -567,6 +567,32 @@ button.btn {
 /**********************************/
 /******** Product Item CSS ********/
 /**********************************/
+.featured-product .product-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.featured-product .product-action a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+.featured-product .product-content .title a {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+}
+
+.featured-product .product-content .title a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+
 .product-item {
     position: relative;
     background-color: #f7f7f7;
@@ -576,6 +602,8 @@ button.btn {
 .product-item .product-image {
     position: relative;
     overflow: hidden;
+    width: 200px;
+    height: 200px;
 }
 
 .product-item .product-image a {

@@ -31,9 +31,9 @@
         $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
         return false;
     });
-
-
-    $(document).ready(function () {
+    
+    
+    // Home page slider
     $('.main-slider').slick({
         autoplay: true,
         dots: true,
@@ -43,9 +43,8 @@
         centerMode: true,
         variableWidth: true
     });
-    });
-
-
+    
+    
     // Product Slider 4 Column
     $('.product-slider-4').slick({
         autoplay: true,

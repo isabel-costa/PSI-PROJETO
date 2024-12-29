@@ -13,18 +13,11 @@ use yii\helpers\ArrayHelper;
 
 <div class="evento-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'titulo')->textInput(['maxlength' => true]) ?>
 
-    <div class="form-group">
-        <?= Html::label('Imagem', 'imagem') ?>
-        <?= Html::fileInput('imagem', null, ['class' => 'form-control']) ?>
-    </div>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-    </div>
+    <?= $form->field($model, 'imagem_file')->fileInput() ?>
 
     <?= $form->field($model, 'descricao')->textarea(['rows' => 6]) ?>
 
@@ -33,17 +26,17 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'datafim')->input('datetime-local') ?>
 
     <?= $form->field($model, 'local_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map($locais, 'id', 'nome'),
-        ['prompt'=> 'Selecione um Local']
+        ArrayHelper::map($locais, 'id', 'nome'),
+        ['prompt' => 'Selecione um Local']
     ) ?>
 
     <?= $form->field($model, 'categoria_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map($categorias, 'id', 'nome'),
+        ArrayHelper::map($categorias, 'id', 'nome'),
         ['prompt' => 'Selecione uma categoria']
     ) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

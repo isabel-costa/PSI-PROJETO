@@ -6,10 +6,12 @@ namespace backend\controllers;
 use common\models\Evento;
 use common\models\Categoria;
 use common\models\Local;
+use common\models\Imagem;
 use Yii;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
+use yii\web\UploadedFile;
 
 class EventoController extends \yii\web\Controller
 {
@@ -57,11 +59,22 @@ class EventoController extends \yii\web\Controller
         $locais = Local::find()->all(); // Buscar os locais
 
 
-
-
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             //Guardar o Modelo na BD
             if ($model->save()) {
+                //logica imagem
+                $model->imagem_file = UploadedFile::getInstance($model, 'imagem_file');
+                if($model->imagem_file){
+                    $filename = $model->imagem_file->baseName . '.' . $model->imagem_file->extension;
+                    $path = Yii::getAlias('@common/uploads/') . $filename;
+                    if($model->imagem_file->saveAs($path)){
+                        // tabel imagens bd
+                        $imagem = new Imagem();
+                        $imagem->nome = $filename;
+                        $imagem->evento_id = $model->id;
+                        $imagem->save();
+                    }
+                }
                 Yii::$app->session->setFlash('success', 'Evento criado com sucesso!');
                 return $this->redirect(['index']);
             } else {
@@ -78,36 +91,50 @@ class EventoController extends \yii\web\Controller
 
     public function actionUpdate($id)
     {
-        //Verifica se o utilizador tem permissão para editar eventos
+        // Verifica se o utilizador tem permissão para editar eventos
         if (!Yii::$app->user->can('updateEvents')) {
             Yii::$app->session->setFlash('error', 'Não tem permissão para editar eventos.');
             return $this->redirect(['index']);
         }
 
-        // Procura o evento pelo ID
         $model = $this->findModel($id);
 
-        $categorias = Categoria::find()->all(); // Buscar as categorias
-        $locais = Local::find()->all(); // Buscar os locais
+        // Categorias e locais
+        $categorias = Categoria::find()->all();
+        $locais = Local::find()->all();
 
-        // Se o evento foi atualizado e o formulário foi enviado com sucesso, faz:
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // Atualiza o evento na BD
+            // Atualizar o evento
             if ($model->save()) {
+                // Lógica para upload da nova imagem
+                $model->imagem_file = UploadedFile::getInstance($model, 'imagem_file');
+                if ($model->imagem_file) {
+                    $filename = uniqid() . '.' . $model->imagem_file->extension;
+                    $path = Yii::getAlias('@common/uploads/') . $filename;
+
+                    if ($model->imagem_file->saveAs($path)) {
+                        // Substituir ou criar registro na tabela de imagens
+                        $imagem = Imagem::findOne(['evento_id' => $model->id]) ?? new Imagem();
+                        $imagem->nome = $filename;
+                        $imagem->evento_id = $model->id;
+                        $imagem->save(false);
+                    }
+                }
+
                 Yii::$app->session->setFlash('success', 'Evento atualizado com sucesso!');
-                return $this->redirect(['index']);  // Corrigido: adicionando o parêntese de fechamento
+                return $this->redirect(['index']);
             } else {
                 Yii::$app->session->setFlash('error', 'Erro ao atualizar o evento.');
             }
         }
 
-        // Se não houve um post ou houve falha na validação, renderiza o formulário de edição
         return $this->render('update', [
             'model' => $model,
-            'categorias' => $categorias, // Passar categorias para a view
-            'locais' =>$locais,
+            'categorias' => $categorias,
+            'locais' => $locais,
         ]);
     }
+
 
 
     public function actionDelete($id)
