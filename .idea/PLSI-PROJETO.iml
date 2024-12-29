@@ -2,16 +2,12 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/TicketGo/backend/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/backend/tests" isTestSource="true" packagePrefix="backend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/backend/tests/_support" isTestSource="true" packagePrefix="backend\tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/TicketGo/common/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/common/tests" isTestSource="true" packagePrefix="common\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/common/tests/_support" isTestSource="true" packagePrefix="common\tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests" isTestSource="true" packagePrefix="frontend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests/_support" isTestSource="true" packagePrefix="frontend\tests\" />
-      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
