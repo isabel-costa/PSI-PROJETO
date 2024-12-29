@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -100,13 +105,12 @@
 <!-- Main Slider Start -->
 <div class="home-slider">
     <div class="main-slider">
-        <div class="main-slider-item"><img src="img/CucaRoseta.jpg" alt="Slider Image" /></div>
-        <div class="main-slider-item"><img src="img/anjos.jpeg" alt="Slider Image" /></div>
-        <div class="main-slider-item"><img src="img/hans.jpg" alt="Slider Image" /></div>
+        <div class="main-slider-item"><img src="img/slider-1.jpg" alt="Slider Image" /></div>
+        <div class="main-slider-item"><img src="img/slider-2.jpg" alt="Slider Image" /></div>
+        <div class="main-slider-item"><img src="img/slider-3.jpg" alt="Slider Image" /></div>
     </div>
 </div>
 <!-- Main Slider End -->
-
 
 
 
@@ -114,133 +118,39 @@
 <div class="featured-product">
     <div class="container">
         <div class="section-header">
-            <h3>Eventos</h3>
-
+            <h3>Eventos em Destaque</h3>
+            <p>
+                Descubra os eventos mais esperados! Garanta já o seu Bilhete.
+            </p>
         </div>
         <div class="row align-items-center product-slider product-slider-4">
-            <div class="col-lg-3">
-                <div class="product-item">
-                    <div class="product-image">
-                        <a href="product-detail">
-                            <img src="img/hallo.jpeg" alt="Product Image">
-                        </a>
-                        <div class="product-action">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
+            <?php foreach ($eventos as $evento): ?>
+                <div class="col-lg-3">
+                    <div class="product-item">
+                        <div class="product-image">
+                            <a href="product-detail/<?= Html::encode($evento->id) ?>">
+                                <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>>
+                            </a>
+                            <div class="product-action">
+                                <a href="#"><i class="fa fa-cart-plus"></i></a>
+                                <a href="#"><i class="fa fa-heart"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="title"><a href="#">Halloween</a></div>
-                        <div class="ratting">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
+                        <div class="product-content">
+                            <div class="title">
+                                <a href="product-detail/<?= Html::encode($evento->id) ?>"><?= Html::encode($evento->titulo) ?></a>
+                            </div>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="product-item">
-                    <div class="product-image">
-                        <a href="product-detail">
-                            <img src="img/cuca.jpeg" alt="Product Image">
-                        </a>
-                        <div class="product-action">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="title"><a href="#">Cuca Roseta</a></div>
-                        <div class="ratting">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="price">22€ <span>25€</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="product-item">
-                    <div class="product-image">
-                        <a href="product-detail">
-                            <img src="img/mariza.jpeg" alt="Product Image">
-                        </a>
-                        <div class="product-action">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="title"><a href="#">Mariza</a></div>
-                        <div class="ratting">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="price">22€ <span>25€</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="product-item">
-                    <div class="product-image">
-                        <a href="product-detail">
-                            <img src="img/open.jpeg" alt="Product Image">
-                        </a>
-                        <div class="product-action">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="title"><a href="#">Open Lisboa</a></div>
-                        <div class="ratting">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="price">22€ <span>25€</span></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="product-item">
-                    <div class="product-image">
-                        <a href="product-detail">
-                            <img src="img/hibrid.jpeg" alt="Product Image">
-                        </a>
-                        <div class="product-action">
-                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                            <a href="#"><i class="fa fa-heart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-content">
-                        <div class="title"><a href="#">Hibrid Park</a></div>
-                        <div class="ratting">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="price">22€ <span>25€</span></div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
+
+
+
+
 <!-- Featured Product End -->
 
 

@@ -10,6 +10,7 @@ use common\models\Imagem;
 use common\models\Local;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "Eventos".
@@ -30,6 +31,9 @@ use Yii;
  */
 class Evento extends \yii\db\ActiveRecord
 {
+    public $imagem_file;
+    public $imagemUrlCustom;
+
     /**
      * {@inheritdoc}
      */
@@ -50,7 +54,7 @@ class Evento extends \yii\db\ActiveRecord
             [['titulo'], 'string', 'max' => 100],
             [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['categoria_id' => 'id']],
-            //[['imagem'], 'file', 'extensions' => 'jpg, png, jpeg', 'maxSize' => 1024 * 1024 * 2], // Máx: 2 MB
+            [['imagem_file'], 'file', 'extensions' => 'jpg, png, jpeg'],
 
         ];
     }
@@ -108,9 +112,16 @@ class Evento extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getImagens()
+    public function getImagem()
     {
         return $this->hasOne(Imagem::class, ['evento_id' => 'id']);
+    }
+    public function getImagemUrl()
+    {
+        if ($this->imagem && !empty($this->imagem->nome)) {
+            return Yii::getAlias('@web') . '/uploads/' . $this->imagem->nome;
+        }
+        return Yii::getAlias('@web') . '/images/default-event.jpg'; // Caminho da imagem padrão
     }
 
     /**
