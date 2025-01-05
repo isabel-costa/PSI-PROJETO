@@ -101,3 +101,50 @@ a.desc:after {
 {
     text-decoration: none;
 }
+/* Estilo base para o dropdown */
+.custom-dropdown {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Remove o estilo padrão do navegador */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover e foco */
+.custom-dropdown:hover,
+.custom-dropdown:focus {
+    border-color: #007bff;
+    background-color: #e9ecef;
+}
+
+/* Setinha personalizada para a dropdown */
+.custom-dropdown::after {
+    content: '▼'; /* Símbolo de seta */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Para garantir que o dropdown seja estilizado corretamente em navegadores antigos */
+.custom-dropdown option {
+    color: #333;
+    background-color: #fff;
+    font-size: 16px;
+    padding: 10px;
+}
+
+/* Estilo do contêiner que envolve o dropdown */
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}

@@ -38,15 +38,17 @@ use yii\helpers\Html;
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="search">
-                    <input type="text" placeholder="Search">
-                    <button><i class="fa fa-search"></i></button>
-                </div>
+                <form method="get" action="<?= \yii\helpers\Url::to(['evento/product-list']) ?>">
+                    <div class="search">
+                        <input type="text" name="search" placeholder="Pesquisar eventos..." value="<?= Html::encode($search) ?>">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
             </div>
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="site/login">
+                        <a href="site/profile">
                             <img src="./img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
@@ -68,38 +70,6 @@ use yii\helpers\Html;
 <!-- Top Header End -->
 
 
-<!-- Header Start -->
-<!--<div class="header">
-    <div class="container">
-        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-            <a href="#" class="navbar-brand">MENU</a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                <div class="navbar-nav m-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="product-list.html" class="nav-item nav-link">Products</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu">
-                            <a href="product-list.html" class="dropdown-item">Product</a>
-                            <a href="product-detail.html" class="dropdown-item">Product Detail</a>
-                            <a href="cart.html" class="dropdown-item">Cart</a>
-                            <a href="wishlist.html" class="dropdown-item">Wishlist</a>
-                            <a href="checkout.html" class="dropdown-item">Checkout</a>
-                            <a href="login.html" class="dropdown-item">Login & Register</a>
-                            <a href="my-account.html" class="dropdown-item">My Account</a>
-                        </div>
-                    </div>
-                    <a href="contact.html" class="nav-item nav-link">Contact Us</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-</div>-->
-<!-- Header End -->
 
 
 <div class="home-slider">
@@ -109,12 +79,9 @@ use yii\helpers\Html;
         $eventosAleatorios = array_slice($eventos, 0, 3);
         foreach ($eventosAleatorios as $evento): ?>
             <div class="main-slider-item">
-                <a href="product-detail/<?= Html::encode($evento->id) ?>">
+                <a href="evento/product-detail/<?= Html::encode($evento->id) ?>">
                     <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>">
                 </a>
-                <div class="slider-caption">
-                    <h4><?= Html::encode($evento->titulo) ?></h4>
-                </div>
             </div>
         <?php endforeach; ?>
     </div>
@@ -136,17 +103,16 @@ use yii\helpers\Html;
                 <div class="col-lg-3">
                     <div class="product-item">
                         <div class="product-image">
-                            <a href="product-detail/<?= Html::encode($evento->id) ?>">
+                            <a href="evento/product-detail/<?= Html::encode($evento->id) ?>">
                                 <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>">
                             </a>
                             <div class="product-action">
-                                <a href="#"><i class="fa fa-cart-plus"></i></a>
                                 <a href="#"><i class="fa fa-heart"></i></a>
                             </div>
                         </div>
                         <div class="product-content">
                             <div class="title">
-                                <a href="product-detail/<?= Html::encode($evento->id) ?>"><?= Html::encode($evento->titulo) ?></a>
+                                <a href="evento/product-detail/<?= Html::encode($evento->id) ?>"><?= Html::encode($evento->titulo) ?></a>
                             </div>
                         </div>
                     </div>

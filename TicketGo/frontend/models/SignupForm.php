@@ -5,6 +5,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use common\models\Profile; // Certifique-se de importar o modelo Profile
 
 /**
  * Signup form
@@ -15,6 +16,10 @@ class SignupForm extends Model
     public $email;
     public $password;
 
+    public $nome; // Nome na tabela profiles
+    public $datanascimento; // Data de nascimento na tabela profiles
+    public $nif; // NIF na tabela profiles
+    public $morada; // Morada na tabela profiles
 
     /**
      * {@inheritdoc}
@@ -35,6 +40,12 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
+
+            // Adicione as regras de validação para os campos do perfil
+            ['nome', 'required'],
+            ['datanascimento', 'required'],
+            ['nif', 'required'],
+            ['morada', 'required'],
         ];
     }
 
@@ -49,6 +60,7 @@ class SignupForm extends Model
             return false;
         }
 
+        // Criar o usuário
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
@@ -56,15 +68,28 @@ class SignupForm extends Model
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
+        // Salvar o usuário
         if ($user->save(false)) {
-            $auth = \Yii::$app->authManager;
-            $role = $auth->getRole('registeredUser');
+            // Criar e salvar o perfil
+            $profile = new Profile(); // Supondo que você tenha o modelo Profile
+            $profile->user_id = $user->id; // Chave estrangeira para a tabela user
+            $profile->nome = $this->nome; // Atribuindo o valor do nome do formulário
+            $profile->datanascimento = $this->datanascimento; // Atribuindo o valor da data de nascimento
+            $profile->nif = $this->nif; // Atribuindo o valor do NIF
+            $profile->morada = $this->morada; // Atribuindo o valor da morada
 
-            if ($role) {
-                $auth->assign($role, $user->id);
-                return true;
+            if ($profile->save(false)) {
+                // Atribuir o papel de 'registeredUser'
+                $auth = \Yii::$app->authManager;
+                $role = $auth->getRole('registeredUser');
+
+                if ($role) {
+                    $auth->assign($role, $user->id);
+                    return true;
+                }
             }
         }
+
         return false;
     }
 

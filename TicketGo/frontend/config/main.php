@@ -52,7 +52,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'product-detail' => 'site/product-detail',
+                'evento/product-detail/<id:\d+>' => 'evento/product-detail',
             ],
         ],
 
