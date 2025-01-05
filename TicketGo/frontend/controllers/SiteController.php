@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Bilhete;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -33,7 +34,7 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['index', 'signup', 'login', 'register', 'searchEvents'],
+                        'actions' => ['index', 'signup', 'login', 'register', 'searchEvents', 'cart','favorites', 'profile'],
                         'allow' => true,
                     ],
                     [
@@ -55,10 +56,6 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
-    public function actionProductDetail()
-    {
-        return $this->render('product-detail');
-    }
 
     public function actions()
     {
@@ -78,15 +75,71 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($search = null)
     {
         $eventos = Evento::find()->with('imagem')->all();
 
         return $this->render('index', [
             'eventos' => $eventos,
+            'search' => $search,
+        ]);
+    }
+    public function actionFavorites()
+    {
+        return $this->render('favorites');
+    }
+    public function actionProfile()
+    {
+        // Obtém o usuário logado
+        $user = Yii::$app->user->identity;
+
+        // Verifica se o usuário está autenticado
+        if ($user) {
+            // Carrega o perfil do usuário (presumindo que você tenha uma relação entre o usuário e o perfil)
+            $profile = $user->profile; // Se você tiver uma relação com o modelo Profile
+
+            // Se o perfil não existir, cria um novo
+            if (!$profile) {
+                $profile = new Profile(); // Cria um novo perfil, caso não exista
+            }
+
+            // Passa os dados para a view
+            return $this->render('profile', [
+                'profile' => $profile,
+                'user' => $user,
+            ]);
+        }
+
+        // Se não estiver logado, redireciona para a página de login
+        return $this->redirect(['site/login']);
+    }
+
+    public function actionCart()
+    {
+        $carrinho = Yii::$app->session->get('carrinho', []);
+        $eventos = []; // Carregar detalhes do evento baseado no $carrinho
+
+        foreach ($carrinho as $item) {
+            $evento = Evento::findOne($item['evento_id']);
+            if ($evento) {
+                $eventos[] = [
+                    'evento' => $evento,
+                    'zona_id' => $item['zona_id'],
+                    'quantidade' => $item['quantidade'],
+                ];
+            }
+        }
+
+        return $this->render('cart', [
+            'eventos' => $eventos,
         ]);
     }
 
+
+    public function getBilhete()
+    {
+        return $this->hasOne(Bilhete::class(), ['id_evento' => 'id']);
+    }
     /**
      * Logs in a user.
      *
@@ -163,6 +216,7 @@ class SiteController extends Controller
     public function actionSignup()
     {
         $model = new SignupForm();
+
         if ($model->load(Yii::$app->request->post()) && $model->signup()) {
             Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
             return $this->goHome();

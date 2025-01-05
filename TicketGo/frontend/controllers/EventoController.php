@@ -3,12 +3,15 @@
 namespace frontend\controllers;
 
 use common\models\Evento;
+use common\models\Bilhete;
 use Yii;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
+use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
 
-class EventoController extends \yii\web\Controller
+
+class EventoController extends Controller
 {
     public function behaviors()
     {
@@ -17,14 +20,16 @@ class EventoController extends \yii\web\Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['searchEvents', 'viewEventDetails'],
+                        'actions' => ['searchEvents', 'viewEventDetails', 'product-list', 'product-detail'],
                         'allow' => true,
-                        'roles' => ['?', 'resgisteredUser'],
+                        'roles' => ['@'],
                     ],
                 ],
             ],
         ];
     }
+
+    // Ação para listar todos os eventos com paginação
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
@@ -34,76 +39,66 @@ class EventoController extends \yii\web\Controller
             ],
         ]);
 
-        // Renderiza a view index e passa os eventos para a view
+        // Renderiza a view com a lista de eventos
         return $this->render('index', ['dataProvider' => $dataProvider]);
     }
-
-    //Exibe todos os eventos
-    public function actionSearchEvents()
+    public function actionProductList($search)
     {
+        // Inicia a query para buscar os eventos
+        $query = Evento::find()->with('imagem');
 
-        //Inicializa a query
-        $query = Evento::find()
-            ->joinWith(['locais', 'categorias']) //Join com a tabela de 'local' e 'categoria'
-            ->joinWith(['bilhetes']); //Obter os bilhetes (preço e disponibilidade)
-        $query = Evento::find()
-            ->joinWith(['locais', 'categorias', 'bilhetes']); //Join com a tabela 'locais' 'categorias' e 'bilhetes'
-
-        //Obtem os parâmetros de filtro da URL (ou da requisição GET)
-        $searchTerm = Yii::$app->request->get('search', '');
-        $dataInicio = Yii::$app->request->get('data', '');
-        $localNome = Yii::$app->request->get('local_nome', '');
-        $categoriaNome = Yii::$app->request->get('categoria_nome', '');
-        $preco = Yii::$app->request->get('preco', '');
-        $disponibilidade = Yii::$app->request->get('disponibilidade', '');
-
-        //Aplica os filtros de acordo com os parâmetros recebidos
-        if (!empty($searchTerm)) {
-            $query->andFilterWhere(['like', 'titulo', $searchTerm]);  // Filtro para 'titulo'
+        // Se houver um termo de pesquisa, filtra os eventos pelo título
+        if ($search) {
+            $query->andWhere(['like', 'titulo', $search]);
         }
 
-        if (!empty($dataInicio)) {
-            // Filtra pela data do evento, assumindo que você tenha o campo datainicio no seu modelo Event
-            $query->andFilterWhere(['like', 'datainicio', $dataInicio]);  // Filtro para 'data'
-        }
+        // Executa a consulta e obtém os eventos
+        $eventos = $query->all();
 
-        if (!empty($localNome)) {
-            $query->andFilterWhere(['like', 'local.nome', $localNome]);  // Filtro para 'local_nome'
-        }
-
-        if (!empty($categoriaNome)) {
-            $query->andFilterWhere(['like', 'categoria.nome', $categoriaNome]);  // Filtro para 'categoria_nome'
-        }
-
-        if (!empty($preco)) {
-            // Filtra pela faixa de preço dos bilhetes (usando o campo preco unitário do bilhete)
-            $query->andFilterWhere(['like', 'precounitario', $preco]);  // Filtro para 'preco'
-        }
-
-        if (!empty($disponibilidade)) {
-            // Filtra pela quantidade disponível dos bilhetes
-            $query->andFilterWhere(['>=', 'quantidadedisponivel', $disponibilidade]);  // Filtro para 'disponibilidade'
-        }
-
-        //Executa a consulta e obtém os eventos filtrados
-        $events = $query->all();
-
-        //Devolve a view com os eventos filtrados
-        return $this->render('index', ['events' => $events]);
+        // Renderiza a view product-list com os eventos encontrados
+        return $this->render('product-list', [
+            'eventos' => $eventos,
+            'search' => $search,
+        ]);
     }
-
-    public function actionViewEventDetails($id)
+    public function actionProductDetail($id)
     {
+        // Obtém os eventos em destaque (limitados a 4)
+        $eventos = Evento::find()
+            ->with(['imagem', 'bilhetes']) // Carrega imagem e bilhetes para os eventos
+            ->limit(4)
+            ->all();
 
-        $event = Evento::findOne($id);
+        // Obtém o evento específico com suas zonas e bilhetes
+        $evento = Evento::find()
+            ->with(['imagem', 'local.zonas.bilhetes']) // Carrega imagem, zonas e bilhetes
+            ->where(['id' => $id])
+            ->one();
 
-        //Verifica se o evento foi encontrado
-        if (!$event) {
-            Yii::$app->session->setFlash('error', 'Evento não encontrado.');
 
-            return $this->redirect(['index']);
+        // Calcula os preços dos bilhetes para cada zona
+        $zonasPrecos = [];
+        if ($evento && !empty($evento->local->zonas)) {
+            foreach ($evento->local->zonas as $zona) {
+                // vai buscar os bilhetes do evento associado à zona
+                $bilhete = Bilhete::find()
+                    ->where(['evento_id' => $evento->id, 'zona_id' => $zona->id])
+                    ->one();
+
+                // Armazena o preço e o nome da plateia
+                $zonasPrecos[$zona->id] = [
+                    'preco' => $bilhete ? $bilhete->precounitario : 'N/A',
+                    'lugar' => $zona->lugar,
+                ];
+            }
         }
 
-        return $this->render('view', ['event' => $event]);
+
+        // Passa os dados para a view
+        return $this->render('product-detail', [
+            'evento' => $evento,  // O evento específico
+            'eventos' => $eventos, // Os outros eventos em destaque
+            'zonasPrecos' => $zonasPrecos, // Preços calculados por zona
+        ]);
     }
 }

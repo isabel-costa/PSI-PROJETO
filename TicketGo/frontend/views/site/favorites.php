@@ -8,20 +8,43 @@
 </head>
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- Topheader -->
+<div class="top-header">
     <div class="container">
-        <a class="navbar-brand" href="#">TicketGo</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="me-auto"></div>
-            <div class="user-icons d-flex align-items-center ms-3">
-                <a href="favorites.php" class="nav-link">Favorites</a>
-                <a href="site/login" class="nav-link">Login</a>
-                <a href="site/cart" class="nav-link">Cart</a>
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <div class="logo">
+                    <a href="../">
+                        <img src="../img/logoticketgo.png" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+            </div>
+            <div class="col-md-2 text-right">
+                <div class="user-icons d-flex justify-content-end">
+                    <div class="perfil">
+                        <a href="../site/login">
+                            <img src="../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                    <div class="favoritos">
+                        <a href="../site/favorites">
+                            <img src="../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                    <div class="carrinho">
+                        <a href="../site/cart">
+                            <img src="../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</nav>
+</div>
+<!-- Topheader -->
 
 <!-- Favorites Section -->
 <div class="container mt-5">
