@@ -30,8 +30,8 @@
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="../">
-                        <img src="../img/logoticketgo.png" alt="Logo">
+                    <a href="..">
+                        <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
@@ -41,17 +41,17 @@
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
                         <a href="login">
-                            <img src="../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
                         <a href="favorites">
-                            <img src="../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
                         <a href="cart">
-                            <img src="../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
