@@ -74,16 +74,9 @@ use yii\helpers\Html;
 
 <div class="home-slider">
     <div class="main-slider">
-        <?php
-        // Selecionar 3 eventos aleatórios
-        $eventosAleatorios = array_slice($eventos, 0, 3);
-        foreach ($eventosAleatorios as $evento): ?>
-            <div class="main-slider-item">
-                <a href="evento/product-detail/<?= Html::encode($evento->id) ?>">
-                    <img src="<?= Html::encode($evento->imagemUrl) ?>" alt="<?= Html::encode($evento->titulo) ?>">
-                </a>
-            </div>
-        <?php endforeach; ?>
+        <a href="./evento/product-detail/12" class="main-slider-item"><img src="./img/nininhoslider.jpeg" alt="Slider Image" /></a>
+        <a href="./evento/product-detail/13" class="main-slider-item"><img src="./img/quatroemeiaslider.jpeg" alt="Slider Image" /></a>
+        <a href="./evento/product-detail/9" class="main-slider-item"><img src="./img/hibridparkslider.jpeg" alt="Slider Image" /></a>
     </div>
 </div>
 

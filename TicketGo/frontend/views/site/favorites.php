@@ -14,8 +14,8 @@
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="../">
-                        <img src="../img/logoticketgo.png" alt="Logo">
+                    <a href="..">
+                        <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
@@ -25,18 +25,18 @@
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="../site/login">
-                            <img src="../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                        <a href="/login">
+                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
-                        <a href="../site/favorites">
-                            <img src="../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                        <a href="/favorites">
+                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="../site/cart">
-                            <img src="../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="/cart">
+                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
