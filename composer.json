@@ -1,5 +1,6 @@
 {
     "require": {
-        "intervention/image": "^3.10"
+        "intervention/image": "^3.10",
+        "php-mqtt/client": "^2.2"
     }
 }
