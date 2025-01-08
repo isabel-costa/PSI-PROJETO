@@ -55,6 +55,8 @@ use yii\helpers\Html;
                     <div class="carrinho">
                         <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="carrinho/cart">
+                            <img src="./img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>

@@ -27,6 +27,8 @@ use yii\widgets\ActiveForm;
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -59,6 +61,8 @@ use yii\widgets\ActiveForm;
                     <div class="carrinho">
                         <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
+                            <img src="../../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
@@ -89,7 +93,7 @@ use yii\widgets\ActiveForm;
                                 <div class="product-content">
                                     <?php
                                     $form = ActiveForm::begin([
-                                        'action' => ['site/add-to-cart'], // Ação para adicionar ao carrinho
+                                        'action' => ['carrinho/add-tickets-cart'],
                                         'method' => 'post',
                                     ]);
                                     ?>
@@ -114,9 +118,7 @@ use yii\widgets\ActiveForm;
                                     <div class="quantity">
                                         <h4>Quantidade:</h4>
                                         <div class="qty">
-                                            <button type="button" class="btn-minus"><i class="fa fa-minus"></i></button>
                                             <input type="number" name="quantidade" value="1" min="1" required>
-                                            <button type="button" class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
 
@@ -139,6 +141,9 @@ use yii\widgets\ActiveForm;
                                         <span class="text-muted"><i class="fa fa-heart"></i></span>
                                     <?php endif; ?>
                                 <?php endif; ?>
+                                <div class="action">
+                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -158,7 +163,6 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 <!-- Product Detail End -->
-
 
 <div class="featured-product">
     <div class="container">

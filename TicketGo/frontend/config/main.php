@@ -56,6 +56,7 @@ return [
                 'site/profile' => 'site/profile', // Perfil
                 'favorito/index' => 'favorito/index', // Página de Favoritos
                 'cart/index' => 'cart/index', // Carrinho
+                'add-tickets-cart' => 'site/add-tickets-cart',
             ],
         ],
 
