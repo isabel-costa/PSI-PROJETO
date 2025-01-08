@@ -1,5 +1,7 @@
 <?php
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
+
 ?>
 
 
@@ -73,24 +75,27 @@ use yii\helpers\Html;
                     <div class="col-md-7">
                         <div class="billing-address">
                             <h2>Dados Faturamento</h2>
+                            <?php $form = ActiveForm::begin(); ?>
+
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Nome</label>
-                                    <input class="form-control" type="text" placeholder="Nome Completo">
+                                    <?= $form->field($profile, 'nome')->textInput(['placeholder' => 'Name'])->label(false) ?>
                                 </div>
                                 <div class="col-md-6">
                                     <label>E-mail</label>
-                                    <input class="form-control" type="text" placeholder="E-mail">
+                                    <?= $form->field($user, 'email')->textInput(['placeholder' => 'Name'])->label(false) ?>
                                 </div>
                                 <div class="col-md-6">
                                     <label>NIF</label>
-                                    <input class="form-control" type="text" placeholder="NIF">
+                                    <?= $form->field($profile, 'nif')->textInput(['placeholder' => 'Name'])->label(false) ?>
                                 </div>
                                 <div class="col-md-12">
                                     <label>Morada</label>
-                                    <input class="form-control" type="text" placeholder="Morada">
+                                    <?= $form->field($profile, 'morada')->textInput(['placeholder' => 'Name'])->label(false) ?>
                                 </div>
                             </div>
+                            <?php ActiveForm::end(); ?>
                         </div>
                     </div>
                     <div class="col-md-5">
@@ -133,8 +138,9 @@ use yii\helpers\Html;
                                 </div>
                             </div>
                             <div class="checkout-btn">
-                                <button>Place Order</button>
-                            </div>
+                                <?php $form = ActiveForm::begin(['action' => ['checkout/finalizar-compra'], 'method' => 'post']); ?>
+                                <button type="submit">Finalizar Compra</button>
+                                <?php ActiveForm::end(); ?>
                         </div>
                     </div>
                 </div>
