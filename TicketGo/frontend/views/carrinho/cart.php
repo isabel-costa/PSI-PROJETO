@@ -61,7 +61,7 @@ use yii\helpers\Url;
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
+                        <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
@@ -151,13 +151,7 @@ use yii\helpers\Url;
         </div>
     </div>
 </div>
-    </div>
-</div>
 <!-- Cart End -->
-
-
-
-
 <!-- Footer Bottom Start -->
 <div class="footer-bottom">
     <div class="container">

@@ -52,6 +52,8 @@ class CheckoutController extends Controller
 
             $metodos = MetodoPagamento::find()->all();
 
+            $selectPaymentMethod = Yii::$app->request->post('payment_method', null);
+
             if (!$carrinho) {
                 Yii::$app->session->setFlash('info', 'O carrinho está vazio.');
                 return $this->redirect(['site/index']);
@@ -69,7 +71,8 @@ class CheckoutController extends Controller
                 'metodos' => $metodos,
                 'profile' => $profile,
                 'user' => $user,
-            ]);
+                'selectedPaymentMethod' => $selectPaymentMethod,
+                ]);
         }
     }
     public function actionFinalizarCompra()
@@ -117,6 +120,7 @@ class CheckoutController extends Controller
                 }
             }
         }
+        $this -> gerarFatura($carrinho, $profile);
 
         Yii::$app->session->setFlash('success', 'Compra finalizada com sucesso!');
 
@@ -124,4 +128,37 @@ class CheckoutController extends Controller
 
         return $this->redirect(['./site']);
     }
+    public function gerarFatura($carrinho, $profile)
+    {
+        Yii::error("A gerar a fatura para o carrinho {$carrinho->id} do perfil {$profile->id}");
+
+        $linhasCarrinho = LinhaCarrinho::find()
+            ->where(['carrinho_id' => $carrinho->id])
+            ->with(['bilhete.evento', 'bilhete.zona'])
+            ->all();
+
+        $mpdf = new \Mpdf\Mpdf();
+
+        $content = $this->renderPartial('fatura', [
+            'carrinho' => $carrinho,
+            'profile' => $profile,
+            'linhasCarrinho' => $linhasCarrinho,
+        ]);
+
+        try {
+            $mpdf->WriteHTML($content);
+
+            $pdfOutput = $mpdf->Output('', 'S');
+
+            Yii::error("PDF gerado com sucesso.");
+
+
+            return $mpdf->Output('fatura_compra.pdf', 'I'); // 'I' exibe o PDF no navegador
+
+
+        } catch (\Mpdf\MpdfException $e) {
+            Yii::error("Erro ao gerar o PDF: " . $e->getMessage());
+        }
+    }
+
 }
