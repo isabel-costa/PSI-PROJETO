@@ -68,7 +68,7 @@ class FavoritoController extends Controller
                 Yii::$app->session->setFlash('success', 'Evento adicionado aos favoritos.');
             }
 
-            return $this->redirect(['evento/view', 'id' => $evento->id]);
+            return $this->redirect(['evento/product-detail', 'id' => $evento->id]);
         } else {
             throw new \yii\web\ForbiddenHttpException('Você não tem permissão para adicionar ou remover eventos dos favoritos.');
         }
