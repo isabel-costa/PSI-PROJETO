@@ -22,7 +22,7 @@ use Yii;
  * @property string|null $dataemissao
  *
  * @property LinhasFatura[] $linhasFaturas
- * @property MetodosPagamento $metodopagamento
+ * @property MetodosPagamento $metodo-pagamento
  * @property Profiles $profile
  */
 class Fatura extends \yii\db\ActiveRecord
