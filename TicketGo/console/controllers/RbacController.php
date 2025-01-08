@@ -141,6 +141,11 @@ class RbacController extends Controller
 
         //FAVORITOS
 
+        //Ver Favoritos
+        $viewFavorites = $auth->createPermission('viewFavorites');
+        $viewFavorites->description = 'View Favorites List';
+        $auth->add($viewFavorites);
+
         //Adicionar aos Favoritos
         $addToFavorites = $auth->createPermission('addToFavorites');
         $addToFavorites->description = 'Favorite an Event';
@@ -240,11 +245,12 @@ class RbacController extends Controller
         $auth->addChild($registeredUser, $removeTicketsCart);
         $auth->addChild($registeredUser, $purchaseTickets);
         $auth->addChild($registeredUser, $viewPurchaseHistory);
+        $auth->addChild($registeredUser, $viewFavorites);
         $auth->addChild($registeredUser, $addToFavorites);
         $auth->addChild($registeredUser, $removeFromFavorites);
 
         //Visitante
-       /* $guest = $auth->createRole('guest');
+        /*$guest = $auth->createRole('guest');
         $auth->add($guest);
 
         $auth->addChild($guest, $searchEvents);

@@ -4,11 +4,13 @@ namespace frontend\controllers;
 
 use common\models\Evento;
 use common\models\Bilhete;
+use common\models\Favorito;
 use Yii;
 use yii\filters\AccessControl;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 
 
 class EventoController extends Controller
@@ -20,7 +22,7 @@ class EventoController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['searchEvents', 'viewEventDetails', 'product-list', 'product-detail'],
+                        'actions' => ['searchEvents', 'viewEventDetails', 'product-list', 'product-detail', 'toggle-favorite'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -61,6 +63,7 @@ class EventoController extends Controller
             'search' => $search,
         ]);
     }
+
     public function actionProductDetail($id)
     {
         // Obtém os eventos em destaque (limitados a 4)
@@ -100,5 +103,36 @@ class EventoController extends Controller
             'eventos' => $eventos, // Os outros eventos em destaque
             'zonasPrecos' => $zonasPrecos, // Preços calculados por zona
         ]);
+    }
+
+    public function actionToggleFavorite($eventId)
+    {
+        if (Yii::$app->user->isGuest) {
+            Yii::$app->session->setFlash('error', 'Você precisa estar logado para adicionar aos favoritos.');
+            return $this->redirect(['site/login']);
+        }
+
+        $evento = Evento::findOne($eventId);
+        $profile = Yii::$app->user->identity->profile;
+
+        if ($evento === null) {
+            throw new NotFoundHttpException('O evento solicitado não foi encontrado.');
+        }
+
+        $favorito = Favorito::findOne(['profile_id' => $profile->id, 'evento_id' => $evento->id]);
+
+        if ($favorito) {
+            // Se o evento já está nos favoritos, removemos
+            $favorito->delete();
+        } else {
+            // Caso contrário, adicionamos aos favoritos
+            $novoFavorito = new Favorito();
+            $novoFavorito->profile_id = $profile->id;
+            $novoFavorito->evento_id = $evento->id;
+            $novoFavorito->save();
+        }
+
+        // Redireciona para a página de detalhes do evento
+        return $this->redirect(['evento/view', 'id' => $evento->id]);
     }
 }

@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Html;
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +19,7 @@
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="..">
+                    <a href="<?= Yii::getAlias('@web') ?>/">
                         <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
@@ -25,17 +30,17 @@
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="/login">
+                        <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
                             <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
-                        <a href="/favorites">
+                        <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
                             <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="/cart">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
@@ -46,11 +51,38 @@
 </div>
 <!-- Topheader -->
 
+
 <!-- Favorites Section -->
 <div class="container mt-5">
-    <h2>Your Favorite Events</h2>
-    <div id="favorites-list" class="row">
-        <!-- Favorite items will be dynamically inserted here -->
+    <h2>Os Seus Favoritos</h2>
+    <div class="favorito-index">
+        <?php if (empty($favoritos)): ?>
+            <p>A sua lista de favoritos está vazia.</p>
+        <?php else: ?>
+            <ul class="list-unstyled">
+                <?php foreach ($favoritos as $favorito): ?>
+                    <li class="media mb-3">
+                        <img
+                                src="<?= Html::encode($favorito->evento->imagemUrl) ?>"
+                                class="mr-3"
+                                alt="<?= Html::encode($favorito->evento->titulo) ?>"
+                                style="width: 100px; height: auto;"
+                        >
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1"><?= Html::encode($favorito->evento->titulo) ?></h5>
+                            <!-- Botão para remover do favorito -->
+                            <?= Html::a('Remover dos Favoritos', ['favorito/toggle', 'eventoId' => $favorito->evento_id], [
+                                'class' => 'btn btn-danger btn-sm',
+                                'data' => [
+                                    'confirm' => 'Tem a certeza que deseja remover este evento dos favoritos?',
+                                    'method' => 'post',
+                                ],
+                            ]) ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
     </div>
 </div>
 

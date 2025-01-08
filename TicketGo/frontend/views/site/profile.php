@@ -37,7 +37,7 @@ use yii\widgets\ActiveForm;
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="..">
+                    <a href="<?= Yii::getAlias('@web') ?>/">
                         <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
@@ -48,17 +48,17 @@ use yii\widgets\ActiveForm;
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="/login">
+                        <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
                             <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
-                        <a href="/favorites">
+                        <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
                             <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="/cart">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
