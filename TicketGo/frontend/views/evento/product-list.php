@@ -25,40 +25,35 @@ use yii\helpers\Html;
 </head>
 
 <body>
-<!-- Top Header Start -->
+<!-- Topheader -->
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="..">
-                        <img src="../img/logoticketgo.png" alt="Logo">
+                    <a href="<?= Yii::getAlias('@web') ?>/">
+                        <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
             <div class="col-md-6">
-                <form method="get" action="<?= \yii\helpers\Url::to(['site/product-list']) ?>">
-                    <div class="search">
-                        <input type="text" name="search" placeholder="Pesquisar eventos..." value="<?= Html::encode($search) ?>">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </form>
+
             </div>
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="../site/login">
-                            <img src="../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
+                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
-                        <a href="../site/favorites">
-                            <img src="../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
+                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="../site/cart">
-                            <img src="../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
+                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
@@ -66,7 +61,7 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
-<!-- Top Header End -->
+<!-- Topheader -->
 
 <!-- Lista de Eventos Start -->
 <div class="product-list">

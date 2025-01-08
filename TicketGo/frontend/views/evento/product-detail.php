@@ -30,34 +30,35 @@ use yii\widgets\ActiveForm;
 </head>
 
 <body>
-<!-- Top Header Start -->
+<!-- Topheader -->
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="logo">
-                    <a href="../../">
-                        <img src="../../img/logoticketgo.png" alt="Logo">
+                    <a href="<?= Yii::getAlias('@web') ?>/">
+                        <img src="../../web/img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
             <div class="col-md-6">
+
             </div>
             <div class="col-md-2 text-right">
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
-                        <a href="<?= \yii\helpers\Url::to(['site/login']) ?>">
-                            <img src="../../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
+                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
-                        <a href="<?= \yii\helpers\Url::to(['site/favorites']) ?>">
-                            <img src="../../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
+                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['site/cart']) ?>">
-                            <img src="../../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
+                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
@@ -65,10 +66,9 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
 </div>
-<!-- Top Header End -->
+<!-- Topheader -->
 
 
-<!-- Product Detail Start -->
 <!-- Product Detail Start -->
 <div class="product-detail">
     <div class="container">
@@ -127,7 +127,18 @@ use yii\widgets\ActiveForm;
                                 </div>
                             </div>
                             <div class="action">
-                                <a href="#"><i class="fa fa-heart"></i></a>
+                                <?php if (Yii::$app->user->isGuest): ?>
+                                    <a href="#" title="É necessário fazer login para adicionar um evento aos favoritos"><i class="fa fa-heart"></i></a>
+                                <?php else: ?>
+                                    <!-- Verifica se o utilizador tem permissão para adicionar aos favoritos -->
+                                    <?php if (Yii::$app->user->can('addToFavorites')): ?>
+                                        <a href="<?= \yii\helpers\Url::to(['favorito/toggle', 'eventoId' => $evento->id]) ?>">
+                                            <i class="fa fa-heart"></i>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="text-muted"><i class="fa fa-heart"></i></span>
+                                    <?php endif; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -148,7 +159,6 @@ use yii\widgets\ActiveForm;
 </div>
 <!-- Product Detail End -->
 
-<!-- Product Detail End -->
 
 <div class="featured-product">
     <div class="container">
