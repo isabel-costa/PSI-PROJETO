@@ -39,7 +39,7 @@ use yii\widgets\ActiveForm;
             <div class="col-md-4">
                 <div class="logo">
                     <a href="<?= Yii::getAlias('@web') ?>/">
-                        <img src="../../web/img/logoticketgo.png" alt="Logo">
+                        <img src="../../img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
@@ -50,17 +50,15 @@ use yii\widgets\ActiveForm;
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
                         <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
-                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                            <img src="../../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
                         <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
-                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                            <img src="../../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
-                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
                             <img src="../../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
@@ -141,9 +139,6 @@ use yii\widgets\ActiveForm;
                                         <span class="text-muted"><i class="fa fa-heart"></i></span>
                                     <?php endif; ?>
                                 <?php endif; ?>
-                                <div class="action">
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                </div>
                             </div>
                         </div>
                     </div>
