@@ -53,7 +53,6 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'evento/product-detail/<id:\d+>' => 'evento/product-detail',
-                'add-tickets-cart' => 'site/add-tickets-cart',
             ],
         ],
 

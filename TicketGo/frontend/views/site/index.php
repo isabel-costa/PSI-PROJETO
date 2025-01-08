@@ -58,7 +58,7 @@ use yii\helpers\Html;
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="carrinho/cart">
+                        <a href="site/cart">
                             <img src="./img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>

@@ -101,5 +101,4 @@ class EventoController extends Controller
             'zonasPrecos' => $zonasPrecos, // Preços calculados por zona
         ]);
     }
-
 }

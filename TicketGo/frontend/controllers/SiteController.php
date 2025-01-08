@@ -114,6 +114,26 @@ class SiteController extends Controller
         return $this->redirect(['site/login']);
     }
 
+    public function actionCart()
+    {
+        $carrinho = Yii::$app->session->get('carrinho', []);
+        $eventos = []; // Carregar detalhes do evento baseado no $carrinho
+
+        foreach ($carrinho as $item) {
+            $evento = Evento::findOne($item['evento_id']);
+            if ($evento) {
+                $eventos[] = [
+                    'evento' => $evento,
+                    'zona_id' => $item['zona_id'],
+                    'quantidade' => $item['quantidade'],
+                ];
+            }
+        }
+
+        return $this->render('cart', [
+            'eventos' => $eventos,
+        ]);
+    }
 
 
     public function getBilhete()
