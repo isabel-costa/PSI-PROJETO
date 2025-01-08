@@ -69,87 +69,88 @@ use yii\widgets\ActiveForm;
     <!-- Top Header End -->
 
         <!-- Checkout Start -->
-        <div class="checkout">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="billing-address">
-                            <h2>Dados Faturamento</h2>
-                            <?php $form = ActiveForm::begin(); ?>
+    <div class="checkout">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="billing-address">
+                        <h2>Dados Faturamento</h2>
+                        <?php $form = ActiveForm::begin(); ?>
 
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Nome</label>
-                                    <?= $form->field($profile, 'nome')->textInput(['placeholder' => 'Name'])->label(false) ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>E-mail</label>
-                                    <?= $form->field($user, 'email')->textInput(['placeholder' => 'Name'])->label(false) ?>
-                                </div>
-                                <div class="col-md-6">
-                                    <label>NIF</label>
-                                    <?= $form->field($profile, 'nif')->textInput(['placeholder' => 'Name'])->label(false) ?>
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Morada</label>
-                                    <?= $form->field($profile, 'morada')->textInput(['placeholder' => 'Name'])->label(false) ?>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nome</label>
+                                <?= $form->field($profile, 'nome')->textInput(['placeholder' => 'Nome'])->label(false) ?>
                             </div>
-                            <?php ActiveForm::end(); ?>
+                            <div class="col-md-6">
+                                <label>E-mail</label>
+                                <?= $form->field($user, 'email')->textInput(['placeholder' => 'E-mail'])->label(false) ?>
+                            </div>
+                            <div class="col-md-6">
+                                <label>NIF</label>
+                                <?= $form->field($profile, 'nif')->textInput(['placeholder' => 'NIF'])->label(false) ?>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Morada</label>
+                                <?= $form->field($profile, 'morada')->textInput(['placeholder' => 'Morada'])->label(false) ?>
+                            </div>
+                        </div>
+                        <?php ActiveForm::end(); ?>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="checkout-summary">
+                        <h2>Resumo Carrinho</h2>
+                        <div class="checkout-content">
+                            <h3>Produtos</h3>
+                            <?php
+                            $total = 0;
+                            foreach ($linhasCarrinho as $linha): ?>
+                                <?php
+                                $subtotal = $linha->precounitario * $linha->quantidade;
+                                $total += $subtotal;
+                                ?>
+                                <p><?= Html::encode($linha->bilhete->evento->titulo) ?> |
+                                    <?= Html::encode($linha->bilhete->zona->lugar) ?> |
+                                    Quantidade : <?= Html::encode($linha->quantidade) ?>
+                                    <span><?= Html::encode($linha->precounitario) ?>€</span>
+                                </p>
+                            <?php endforeach; ?>
+                            <h4>Total<span><?= Html::encode($total) ?>€</span></h4>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <div class="checkout-summary">
-                            <h2>Resumo Carrinho</h2>
-                            <div class="checkout-content">
-                                <h3>Products</h3>
-                                <?php
-                                $total = 0;
-                                foreach ($linhasCarrinho as $linha): ?>
-                                    <?php
-                                    $subtotal = $linha->precounitario * $linha->quantidade;
-                                    $total += $subtotal;
-                                    ?>
-                                <p><?= Html:: encode($linha->bilhete->evento->titulo)?> |
-                                    <?= Html:: encode($linha->bilhete->zona->lugar)?> |
 
-                                    Quantidade : <?= Html:: encode($linha->quantidade)?>
-                                    <span><?= Html:: encode($linha->precounitario) ?>€</span>
-                                </p>
+                    <div class="checkout-payment">
+                        <h2>Métodos de Pagamento</h2>
+                        <div class="payment-methods">
+                            <div class="payment-method">
+                                <?php foreach ($metodos as $metodo): ?>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input"
+                                               id="payment-<?= $metodo->id ?>"
+                                               name="payment_method"
+                                               value="<?= $metodo->id ?>"
+                                            <?= ($selectedPaymentMethod == $metodo->id) ? 'checked' : '' ?>>
+                                        <label class="custom-control-label" for="payment-<?= $metodo->id ?>">
+                                            <?= Html::encode($metodo->nome) ?>
+                                        </label>
+                                    </div>
                                 <?php endforeach; ?>
-                                <h4>Total<span><?= Html::encode($total) ?>€</span></h4>
                             </div>
                         </div>
-
-                        <div class="checkout-payment">
-                            <h2>Metodos Pagamento</h2>
-                            <div class="payment-methods">
-                                <div class="payment-method">
-                                    <?php foreach ($metodos as $metodo): ?>
-                                        <div class="payment-method">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" class="custom-control-input" id="payment-<?= $metodo->id ?>" name="payment" value="<?= $metodo->id ?>">
-                                                <label class="custom-control-label" for="payment-<?= $metodo->id ?>">
-                                                    <?= Html::encode($metodo->nome) ?>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                            <div class="checkout-btn">
-                                <?php $form = ActiveForm::begin(['action' => ['checkout/finalizar-compra'], 'method' => 'post']); ?>
-                                <button type="submit">Finalizar Compra</button>
-                                <?php ActiveForm::end(); ?>
+                        <div class="checkout-btn">
+                            <?php $form = ActiveForm::begin(['action' => ['checkout/finalizar-compra'], 'method' => 'post']); ?>
+                            <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+                            <?php ActiveForm::end(); ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Checkout End -->
+    </div>
 
-        
-        <!-- Footer Bottom Start -->
+
+    <!-- Footer Bottom Start -->
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -164,19 +165,19 @@ use yii\widgets\ActiveForm;
             </div>
         </div>
         <!-- Footer Bottom End -->
-        
-        
+
+
         <!-- Back to Top -->
         <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-        
+
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
         <script src="lib/easing/easing.min.js"></script>
         <script src="lib/slick/slick.min.js"></script>
 
-        
+
         <!-- Template Javascript -->
         <script src="js/main.js"></script>
     </body>

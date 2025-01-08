@@ -70,21 +70,21 @@ class FavoritoController extends Controller
 
             return $this->redirect(['evento/product-detail', 'id' => $evento->id]);
         } else {
-            throw new \yii\web\ForbiddenHttpException('Você não tem permissão para adicionar ou remover eventos dos favoritos.');
+            throw new \yii\web\ForbiddenHttpException('Não tens permissão para adicionar ou remover eventos dos favoritos.');
         }
 
     }
 
-    // Ação para listar todos os favoritos do utilizador
+    // Ação para mostrar todos os favoritos do user
     public function actionIndex()
     {
-        // Verifique se o utilizador está autenticado
+        // verifica se tem sessao iniciada
         if (Yii::$app->user->isGuest) {
             Yii::$app->session->setFlash('error', 'É necessário fazer login para aceder aos favoritos.');
             return $this->redirect(['site/login']);
         }
 
-        //Obter todos os favoritos do utilizador autenticado
+        // obetem todos os favoritos do user logado
         $profile = Yii::$app->user->identity->profile;
         $favoritos = Favorito::find()
             ->where(['profile_id' => $profile->id])

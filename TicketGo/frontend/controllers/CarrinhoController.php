@@ -77,12 +77,12 @@ class CarrinhoController extends Controller
         $request = Yii::$app->request;
 
         if ($request->isPost) {
-            // Obter o usuário e seu perfil
+            // Obter o user e o profile
             $user = Yii::$app->user->identity;
             $profile = $user->profile;
             $profileId = $profile->id;
 
-            // Obter os parâmetros do evento, zona e quantidade da
+            // Obter o evento, zona e quantidade
             $eventoId = $request->post('evento_id');
             $zonaId = $request->post('zona_id');
             $quantidade = $request->post('quantidade', 1);
@@ -104,7 +104,7 @@ class CarrinhoController extends Controller
                 }
             }
 
-            // Verificar se a linha do bilhete já existe no carrinho
+            // verifica se a linha do bilhete já existe no carrinho
             $linhaExistente = LinhaCarrinho::findOne([
                 'carrinho_id' => $carrinho->id,
                 'bilhete_id' => $bilhete->id,
