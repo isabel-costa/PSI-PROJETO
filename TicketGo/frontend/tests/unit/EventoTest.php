@@ -15,7 +15,6 @@ class EventoControllerTest extends Unit
 
     protected function _before()
     {
-        // Create a mock user and log them in
         $user = $this->getMockBuilder(\common\models\User::class)
             ->setMethods(['getProfile'])
             ->getMock();
@@ -23,13 +22,11 @@ class EventoControllerTest extends Unit
 
         Yii::$app->user->setIdentity($user);
 
-        // Initialize the controller
         $this->controller = new EventoController('evento', Yii::$app);
     }
 
     public function testIndex()
     {
-        // Simulate accessing the index action
         $result = $this->controller->actionIndex();
 
         // Check if the result is a valid response
@@ -46,7 +43,6 @@ class EventoControllerTest extends Unit
         $evento2 = new Evento(['id' => 2, 'titulo' => 'Theater']);
         $evento2->save();
 
-        // Simulate searching for events
         $result = $this->controller->actionProductList('Concert');
 
         // Check if the result contains the searched event
@@ -57,14 +53,11 @@ class EventoControllerTest extends Unit
 
     public function testProductDetail()
     {
-        // Create a mock event
         $evento = new Evento(['id' => 3, 'titulo' => 'Test Event']);
         $evento->save();
 
-        // Simulate accessing the product detail action
         $result = $this->controller->actionProductDetail($evento->id);
 
-        // Check if the result is a valid response
         $this->assertInstanceOf(\yii\web\View::class, $result);
         $this->assertArrayHasKey('evento', $result->getData());
         $this->assertEquals('Test Event', $result->getData()['evento']->titulo);
@@ -72,64 +65,51 @@ class EventoControllerTest extends Unit
 
     public function testToggleFavoriteAdd()
     {
-        // Create a mock event
         $evento = new Evento(['id' => 4, 'titulo' => 'Favorite Event']);
         $evento->save();
 
-        // Simulate toggling favorite
         $this->controller->actionToggleFavorite($evento->id);
 
-        // Check if the favorite was added
         $favorito = Favorito::findOne(['profile_id' => 1, 'evento_id' => $evento->id]);
         $this->assertNotNull($favorito, 'Favorito should be added to the database.');
     }
 
     public function testToggleFavoriteRemove()
     {
-        // Create a mock event
         $evento = new Evento(['id' => 5, 'titulo' => 'Another Favorite Event']);
         $evento->save();
 
-        // Add the event to favorites first
         $favorito = new Favorito(['profile_id' => 1, 'evento_id' => $evento->id]);
         $favorito->save();
 
-        // Simulate toggling favorite to remove it
         $this->controller->actionToggleFavorite($evento->id);
 
-        // Check if the favorite was removed
         $favorito = Favorito::findOne(['profile_id' => 1, 'evento_id' => $evento->id]);
         $this->assertNull($favorito, 'Favorito should be removed from the database.');
     }
 
     public function testToggleFavoriteEventNotFound()
     {
-        // Simulate trying to toggle a non-existent event
         $this->expectException(NotFoundHttpException::class);
-        $this->controller->actionToggleFavorite(999); // Assuming 999 does not exist
+        $this->controller->actionToggleFavorite(999);
     }
 
     public function testToggleFavoriteAsGuest()
     {
-        // Log out the user
         Yii::$app->user->logout();
 
-        // Create a mock event
         $evento = new Evento(['id' => 6, 'titulo' => 'Guest Favorite Event']);
         $evento->save();
 
-        // Try to toggle favorite while logged out
         $this->controller->actionToggleFavorite($evento->id);
 
-        // Check if the user is redirected to the login page
-        $this->assertEquals(Yii::$app->response->statusCode, 302); // Check for redirect
-        $this->assertEquals(Yii::$app->request->url, '/site/login'); // Check if redirected to login
+        $this->assertEquals(Yii::$app->response->statusCode, 302);
+        $this->assertEquals(Yii::$app->request->url, '/site/login');
     }
 
     public function testProductDetailWithInvalidId()
     {
-        // Simulate accessing the product detail action with an invalid ID
         $this->expectException(NotFoundHttpException::class);
-        $this->controller->actionProductDetail(999); // Assuming 999 does not exist
+        $this->controller->actionProductDetail(999);
     }
 }

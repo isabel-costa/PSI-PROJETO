@@ -11,17 +11,14 @@ class ProfileTest extends Unit
     {
         $profile = new Profile();
 
-        // Test that the profile is not valid without required fields
         $this->assertFalse($profile->validate(), 'Profile should not be valid without required fields.');
 
-        // Set valid values
         $profile->nome = 'John Doe';
         $profile->datanascimento = '1990-01-01';
         $profile->nif = 123456789;
         $profile->morada = '123 Main St';
         $profile->dataregisto = date('Y-m-d H:i:s');
 
-        // Test that the profile is valid with all required fields
         $this->assertTrue($profile->validate(), 'Profile should be valid with all required fields.');
     }
 
@@ -40,7 +37,6 @@ class ProfileTest extends Unit
     {
         $profile = new Profile();
 
-        // Test relationships
         $this->assertInstanceOf(\yii\db\ActiveQuery::class, $profile->getCarrinhos());
         $this->assertInstanceOf(\yii\db\ActiveQuery::class, $profile->getFaturas());
         $this->assertInstanceOf(\yii\db\ActiveQuery::class, $profile->getFavoritos());
