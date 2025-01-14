@@ -17,12 +17,12 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:id="@+id/toolbar_title2"
+            android:id="@+id/toolbar_title_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
-            android:text="Favoritos"
+            android:text="Home"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -53,23 +53,37 @@
             android:layout_marginEnd="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Lista de favoritos (itens fixos para demonstração) -->
+    <!-- Mensagem de boas-vindas -->
+    <TextView
+        android:id="@+id/welcomeMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bem-vindo! Explore nossos eventos!"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Lista de eventos -->
     <ScrollView
-        android:id="@+id/scrollViewFavorites"
+        android:id="@+id/scrollViewHome"
         android:layout_width="409dp"
         android:layout_height="580dp"
         android:padding="8dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topBar">
+        app:layout_constraintTop_toBottomOf="@id/welcomeMessage">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Item 1 -->
+            <!-- Evento 1 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -78,7 +92,7 @@
                 android:padding="8dp">
 
                 <ImageView
-                    android:id="@+id/eventImage1"
+                    android:id="@+id/eventImageHome1"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:contentDescription="Imagem do Evento"
@@ -89,7 +103,7 @@
                     tools:layout_editor_absoluteX="1dp" />
 
                 <TextView
-                    android:id="@+id/eventName1"
+                    android:id="@+id/eventNameHome1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -98,22 +112,22 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/eventImage1"
-                    app:layout_constraintTop_toTopOf="@id/eventImage1" />
+                    app:layout_constraintStart_toEndOf="@id/eventImageHome1"
+                    app:layout_constraintTop_toTopOf="@id/eventImageHome1" />
 
                 <TextView
-                    android:id="@+id/eventLocation1"
+                    android:id="@+id/eventLocationHome1"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="Local do evento"
                     android:textColor="#777777"
                     android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="@id/eventName1"
-                    app:layout_constraintStart_toStartOf="@id/eventName1"
-                    app:layout_constraintTop_toBottomOf="@id/eventName1" />
+                    app:layout_constraintEnd_toEndOf="@id/eventNameHome1"
+                    app:layout_constraintStart_toStartOf="@id/eventNameHome1"
+                    app:layout_constraintTop_toBottomOf="@id/eventNameHome1" />
 
                 <TextView
-                    android:id="@+id/eventDateTime1"
+                    android:id="@+id/eventDateTimeHome1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -124,7 +138,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/eventPrice1"
+                    android:id="@+id/eventPriceHome1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
@@ -141,6 +155,7 @@
         </LinearLayout>
     </ScrollView>
 
+    <!-- Barra de navegação inferior -->
     <!-- Barra de navegação inferior -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomNavigation"
