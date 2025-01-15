@@ -41,7 +41,7 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_ticket"
+            android:src="@drawable/ticketgologo"
             android:contentDescription="Ticket Icon" />
     </LinearLayout>
 
@@ -66,7 +66,6 @@
         android:src="@drawable/check"
         android:layout_marginTop="50dp"
         android:contentDescription="Check Icon"
-        android:tint="#4CAF50"
         app:layout_constraintTop_toBottomOf="@id/thankYouMessage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -124,7 +123,7 @@
             <ImageView
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:src="@drawable/ic_ticket_image"
+                android:src="@drawable/ticketgologo"
                 android:contentDescription="Ticket Image"
                 android:layout_marginEnd="8dp" />
 

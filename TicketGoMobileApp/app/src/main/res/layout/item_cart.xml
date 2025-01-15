@@ -101,7 +101,7 @@
         android:id="@+id/trashIcon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:src="@drawable/ic_trash"
+        android:src="@drawable/check"
         android:contentDescription="Remover item"
         android:layout_marginEnd="8dp"
         app:layout_constraintTop_toTopOf="parent"

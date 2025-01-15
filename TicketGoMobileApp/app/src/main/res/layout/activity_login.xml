@@ -9,7 +9,7 @@
         android:id="@+id/logoImageView"
         android:layout_width="257dp"
         android:layout_height="96dp"
-        app:srcCompat="@drawable/TicketGoLogo"
+        app:srcCompat="@drawable/ticketgologo"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="77dp"
         tools:layout_editor_absoluteY="35dp" />

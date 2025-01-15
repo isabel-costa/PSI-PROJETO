@@ -17,7 +17,8 @@
         android:layout_height="692dp"
         tools:context=".FavoritosActivity"
         tools:layout_editor_absoluteX="-7dp"
-        tools:layout_editor_absoluteY="16dp">
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/heartIconView"
@@ -51,10 +52,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Total: €€€€"
-            android:textSize="18"
+            android:textSize="18dp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="12dp"
-            tools:layout_editor_absoluteY="534dp" />
+            tools:layout_editor_absoluteY="534dp"
+            tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btn_confirm_purchase"
@@ -62,7 +64,8 @@
             android:layout_height="50dp"
             android:text="Confirmar Compra"
             tools:layout_editor_absoluteX="6dp"
-            tools:layout_editor_absoluteY="573dp" />
+            tools:layout_editor_absoluteY="573dp"
+            tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/et_cvv"
@@ -70,7 +73,8 @@
             android:layout_height="39dp"
             android:hint="Data de Validade"
             tools:layout_editor_absoluteX="197dp"
-            tools:layout_editor_absoluteY="442dp" />
+            tools:layout_editor_absoluteY="442dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tv_event_details"
@@ -135,9 +139,10 @@
             android:id="@+id/event_image"
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:src="@drawable/ic_event"
+            android:src="@drawable/check"
             tools:layout_editor_absoluteX="-3dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/tv_event_name"

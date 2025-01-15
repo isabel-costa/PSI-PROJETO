@@ -45,7 +45,7 @@
             android:id="@+id/iconTicket"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/icon_ticket"
+            android:src="@drawable/ticketgologo"
             android:contentDescription="Tickets"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -63,7 +63,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/footerSection"
-        tools:listitem="@layout/item_cart1" /> <!-- Este atributo é apenas para o layout preview no editor -->
+        tools:listitem="@layout/item_cart" /> <!-- Este atributo é apenas para o layout preview no editor -->
 
     <!-- Seção inferior com o total e botão de compra -->
     <androidx.constraintlayout.widget.ConstraintLayout
