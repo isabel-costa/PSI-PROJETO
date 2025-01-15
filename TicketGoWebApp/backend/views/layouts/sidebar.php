@@ -36,23 +36,21 @@
                 'items' => [
                     ['label' => 'Eventos', 'header' => true, 'visible' => Yii::$app->user->can('createEvents')],
                     ['label' => 'Ver Eventos', 'url' => ['..\evento\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createEvents')],
-                    ['label' => 'Criar Eventos',  'icon' => 'file-code', 'url' => ['..\evento\create'], 'visible' => Yii::$app->user->can('createEvents')],
 
                     ['label' => 'Utilizadores', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
                     ['label' => 'Ver Users', 'url' => ['..\user\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
-                    ['label' => 'Criar User',  'icon' => 'file-code', 'url' => ['..\user\create'], 'visible' => Yii::$app->user->can('createUsers')],
 
                     ['label' => 'Categorias', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
                     ['label' => 'Ver Categorias', 'url' => ['..\categoria\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
-                    ['label' => 'Criar Categorias',  'icon' => 'file-code', 'url' => ['..\categoria\create'], 'visible' => Yii::$app->user->can('createUsers')],
 
                     ['label' => 'Locais', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
                     ['label' => 'Ver Locais', 'url' => ['..\local\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
-                    ['label' => 'Criar Locais',  'icon' => 'file-code', 'url' => ['..\local\create'], 'visible' => Yii::$app->user->can('createUsers')],
 
                     ['label' => 'Relatórios', 'header' => true, 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
                     ['label' => 'Ver Relatórios', 'url' => ['..\relatorio\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
-                ],
+
+
+                    ],
             ]);
             ?>
         </nav>

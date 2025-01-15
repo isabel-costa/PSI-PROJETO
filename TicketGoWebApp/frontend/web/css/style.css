@@ -60,7 +60,6 @@ h6 {
 }
 
 
-
 /**********************************/
 /********* Form Input CSS *********/
 /**********************************/
@@ -100,12 +99,68 @@ button.btn {
 
 
 
+
+
 /**********************************/
 /********* Top Header CSS *********/
 /**********************************/
 .top-header {
     padding: 15px 0;
     background: #ffffff;
+    position: relative; /* Ensure it stays above the slider */
+    z-index: 10; /* Ensure it is above other elements */
+}
+
+.top-header .search {
+    position: relative;
+    width: 100%;
+}
+
+.top-header .search input[type=text] {
+    width: 80%; /* Reduce the width of the search bar */
+    height: 40px;
+    padding: 0 15px;
+    color: #666666;
+    border: 1px solid #3F69AA;
+}
+
+.top-header .search button {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    top: 1px;
+    right: 5px; /* Adjusted to fit the smaller search bar */
+    padding: 0 15px;
+    border: none;
+    background: none;
+    color: #3F69AA;
+}
+
+.top-header .search button:hover {
+    background: #3F69AA;
+    color: #ffffff;
+}
+
+.icon-size {
+    width: 40px;  /* Set the width to 40px */
+    height: 40px; /* Set the height to 40px */
+}
+
+.user-icons {
+    display: flex; /* Use flexbox for alignment */
+    justify-content: flex-end; /* Align icons to the right */
+    align-items: center; /* Center icons vertically */
+}
+
+.user-icons div {
+    margin-left: 30px; /* Add some space between icons */
+}
+
+.top-header .perfil,
+.top-header .favoritos,
+.top-header .carrinho {
+    display: inline-block;
+    margin-left: 15px; /* Add some space between icons */
 }
 
 .top-header .logo {

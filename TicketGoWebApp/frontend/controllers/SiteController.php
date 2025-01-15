@@ -31,14 +31,13 @@ class SiteController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
+                        'actions' => ['index', 'signup', 'login', 'register', 'searchEvents'],
+                        'allow' => true,
+                    ],
+                    [
                         'actions' => ['logout', 'addToFavorites', 'removeFromFavorites', 'updateProfile', 'addTicketsCart', 'removeTicketsCart', 'purchaseTickets', 'viewPurchaseHistory'],
                         'allow' => true,
                         'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['index', 'signup', 'login', 'register', 'searchEvents'],
-                        'allow' => true,
-                        'roles' => ['?'],
                     ],
                 ],
             ],
