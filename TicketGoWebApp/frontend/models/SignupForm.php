@@ -46,7 +46,7 @@ class SignupForm extends Model
     public function signup()
     {
         if (!$this->validate()) {
-            return false;
+            return null;
         }
 
         $user = new User();
@@ -56,13 +56,12 @@ class SignupForm extends Model
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
 
-        if ($user->save(false)) {
+        if ($user->save()) {
             $auth = \Yii::$app->authManager;
             $role = $auth->getRole('registeredUser');
 
             if ($role) {
                 $auth->assign($role, $user->id);
-                return true;
             }
         }
         return false;

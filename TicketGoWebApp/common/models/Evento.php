@@ -8,6 +8,7 @@ use common\models\Categoria;
 use common\models\Favorito;
 use common\models\Imagem;
 use common\models\Local;
+use common\models\Zona;
 
 use Yii;
 
@@ -27,6 +28,7 @@ use Yii;
  * @property Favoritos[] $favoritos
  * @property Imagens $imagens
  * @property Locais $local
+ * @property Zonas[] $zonas
  */
 class Evento extends \yii\db\ActiveRecord
 {
@@ -50,7 +52,7 @@ class Evento extends \yii\db\ActiveRecord
             [['titulo'], 'string', 'max' => 100],
             [['local_id'], 'exist', 'skipOnError' => true, 'targetClass' => Local::class, 'targetAttribute' => ['local_id' => 'id']],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoria::class, 'targetAttribute' => ['categoria_id' => 'id']],
-            //[['imagem'], 'file', 'extensions' => 'jpg, png, jpeg', 'maxSize' => 1024 * 1024 * 2], // Máx: 2 MB
+            [['imagem'], 'file', 'extensions' => 'jpg, png, jpeg', 'maxSize' => 1024 * 1024 * 2], // Máx: 2 MB
 
         ];
     }
@@ -68,7 +70,7 @@ class Evento extends \yii\db\ActiveRecord
             'datafim' => 'Datafim',
             'local_id' => 'Local ID',
             'categoria_id' => 'Categoria ID',
-            //'imagem' => 'Imagem',
+            'imagem' => 'Imagem',
 
         ];
     }
@@ -123,4 +125,13 @@ class Evento extends \yii\db\ActiveRecord
         return $this->hasOne(Local::class, ['id' => 'local_id']);
     }
 
+    /**
+     * Gets query for [[Zonas]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getZonas()
+    {
+        return $this->hasMany(Zona::class, ['evento_id' => 'id']);
+    }
 }

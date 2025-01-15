@@ -44,8 +44,7 @@ class Bilhete extends \yii\db\ActiveRecord
     {
         return [
             [['evento_id', 'zona_id', 'vendido', 'linhafatura_id'], 'integer'],
-            [['evento_id', 'zona_id', 'precounitario'], 'required'],
-        [['precounitario'], 'number'],
+            [['precounitario'], 'number'],
             [['data'], 'safe'],
             [['codigobilhete'], 'string'],
             [['evento_id'], 'exist', 'skipOnError' => true, 'targetClass' => Evento::class, 'targetAttribute' => ['evento_id' => 'id']],

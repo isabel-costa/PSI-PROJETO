@@ -28,7 +28,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'descricao:ntext',
             'datainicio',
             'datafim',
-
             [
                 'attribute' => 'local_id',
                 'label' => 'Local',
@@ -45,15 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'class' => ActionColumn::class,
-                'template' => '{update} {delete} {bilhete}',
-                'buttons' => [
-                    'bilhete' => function ($url, $model, $key) {
-                        return Html::a('Criar Bilhetes', ['bilhete/create', 'evento_id' => $model->id], [
-                            'class' => 'btn btn-primary btn-sm',
-                            'title' => 'Criar Bilhetes'
-                        ]);
-                    },
-                ],
+                'template' => '{update} {view} {delete}',
                 'urlCreator' => function ($action, Evento $model) {
                     return Url::to(['evento/' . $action, 'id' => $model->id]);
                 },

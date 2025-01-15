@@ -60,5 +60,4 @@ class Imagem extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
-
 }

@@ -2,13 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 
 /** @var yii\web\View $this */
 /** @var common\models\Evento $model */
 /** @var yii\widgets\ActiveForm $form */
-/** @var common\models\Categoria[] $categorias */
-/** @var common\models\Local[] $locais */
 ?>
 
 <div class="evento-form">
@@ -32,15 +29,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'datafim')->input('datetime-local') ?>
 
-    <?= $form->field($model, 'local_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map($locais, 'id', 'nome'),
-        ['prompt'=> 'Selecione um Local']
-    ) ?>
+    <?= $form->field($model, 'local_id')->textInput() ?>
 
-    <?= $form->field($model, 'categoria_id')->dropDownList(
-            \yii\helpers\ArrayHelper::map($categorias, 'id', 'nome'),
-        ['prompt' => 'Selecione uma categoria']
-    ) ?>
+    <?= $form->field($model, 'categoria_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -14,7 +14,8 @@
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
+    <link href="lib/slick/slick.css" rel="stylesheet">
+    <link href="lib/slick/slick-theme.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
@@ -25,7 +26,7 @@
 <div class="top-header">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="logo">
                     <a href="">
                         <img src="img/logoticketgo.png" alt="Logo">
@@ -38,22 +39,18 @@
                     <button><i class="fa fa-search"></i></button>
                 </div>
             </div>
-            <div class="col-md-2 text-right">
-                <div class="user-icons d-flex justify-content-end">
-                    <div class="perfil">
-                        <a href="site/login">
-                            <img src="./img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
-                        </a>
-                    </div>
-                    <div class="favoritos">
-                        <a href="site/favorites">
-                            <img src="./img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
-                        </a>
-                    </div>
-                    <div class="carrinho">
-                        <a href="site/cart">
-                            <img src="./img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
-                        </a>
+            <div class="col-md-3">
+                <div class="perfil">
+                    <a href="site\login">
+                        <p>
+                            <img src="./img/perfil.jpeg" alt="Perfil" style="width: 50px; height: 50px;">
+                        </p>
+                    </a>
+                </div>
+            </div>
+                    <div class="cart">
+                        <i class="fa fa-cart-plus"></i>
+                        <span>(0)</span>
                     </div>
                 </div>
             </div>
@@ -93,7 +90,7 @@
             </div>
         </nav>
     </div>
-</div>-->
+</div>--!>
 <!-- Header End -->
 
 
@@ -138,7 +135,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
+                        <div class="price">$22 <span>$25</span></div>
                     </div>
                 </div>
             </div>
@@ -162,7 +159,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
+                        <div class="price">$22 <span>$25</span></div>
                     </div>
                 </div>
             </div>
@@ -186,7 +183,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
+                        <div class="price">$22 <span>$25</span></div>
                     </div>
                 </div>
             </div>
@@ -210,7 +207,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
+                        <div class="price">$22 <span>$25</span></div>
                     </div>
                 </div>
             </div>
@@ -234,7 +231,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
                         </div>
-                        <div class="price">22€ <span>25€</span></div>
+                        <div class="price">$22 <span>$25</span></div>
                     </div>
                 </div>
             </div>
@@ -370,14 +367,14 @@
 <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 
-<!-- Carregar o jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/slick/slick.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
-<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<!-- Seu script customizado -->
+
+<!-- Template Javascript -->
 <script src="js/main.js"></script>
-
 </body>
 </html>
