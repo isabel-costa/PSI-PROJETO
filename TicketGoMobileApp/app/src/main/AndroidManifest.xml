@@ -28,7 +28,7 @@
             android:name=".activities.DetalhesEventoActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.HomepageActivity"
+            android:name=".activities.HomePageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

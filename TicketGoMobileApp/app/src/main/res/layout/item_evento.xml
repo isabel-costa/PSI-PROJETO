@@ -1,55 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/border_black"
-    android:padding="8dp">
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp">
 
-    <ImageView
-        android:id="@+id/eventImage"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:contentDescription="Imagem do Evento"
-        android:src="@drawable/check"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/eventTitle"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Título do Evento"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/eventImage"
-        app:layout_constraintTop_toTopOf="@id/eventImage" />
+        android:background="@drawable/border_black"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/eventDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Descrição do evento"
-        android:textColor="#777777"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/eventTitle"
-        app:layout_constraintStart_toStartOf="@id/eventTitle"
-        app:layout_constraintTop_toBottomOf="@id/eventTitle" />
+        <ImageView
+            android:id="@+id/eventImage1"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="Imagem do Evento"
+            android:src="@drawable/check"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="1dp"
+            tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/eventDateRange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:text="2025-01-20 a 2025-01-21"
-        android:textSize="14sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Nome do Evento"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/eventImage1"
+            app:layout_constraintTop_toTopOf="@id/eventImage1" />
+
+        <TextView
+            android:id="@+id/lugar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Local do evento"
+            android:textColor="#777777"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/titulo"
+            app:layout_constraintStart_toStartOf="@id/titulo"
+            app:layout_constraintTop_toBottomOf="@id/titulo" />
+
+        <TextView
+            android:id="@+id/data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="DATA DO EVENTO\nHORA"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

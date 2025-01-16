@@ -9,9 +9,6 @@ public class Evento {
     private int localId;
     private int categoriaId;
 
-    // Construtores, getters e setters
-    public Evento() {}
-
     public Evento(int id, String titulo, String descricao, String datainicio, String datafim, int localId, int categoriaId) {
         this.id = id;
         this.titulo = titulo;
@@ -22,6 +19,7 @@ public class Evento {
         this.categoriaId = categoriaId;
     }
 
+    // Getters e Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getTitulo() { return titulo; }
@@ -36,4 +34,5 @@ public class Evento {
     public void setLocalId(int localId) { this.localId = localId; }
     public int getCategoriaId() { return categoriaId; }
     public void setCategoriaId(int categoriaId) { this.categoriaId = categoriaId; }
+
 }

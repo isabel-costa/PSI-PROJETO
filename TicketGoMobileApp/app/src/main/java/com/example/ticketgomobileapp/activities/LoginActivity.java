@@ -1,5 +1,6 @@
 package com.example.ticketgomobileapp.activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -12,6 +13,7 @@ import com.example.ticketgomobileapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

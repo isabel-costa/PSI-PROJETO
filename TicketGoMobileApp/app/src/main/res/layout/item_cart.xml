@@ -13,7 +13,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="8dp"
-        android:src="@drawable/ic_event_placeholder"
+        android:src="@drawable/check"
         android:contentDescription="Imagem do Evento"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

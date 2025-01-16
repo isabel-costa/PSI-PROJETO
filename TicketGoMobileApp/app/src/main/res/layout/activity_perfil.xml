@@ -45,7 +45,7 @@
             android:id="@+id/iconTicket"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/icon_ticket"
+            android:src="@drawable/ticketgologo"
             android:contentDescription="Tickets"
             android:layout_marginEnd="16dp"
             app:layout_constraintTop_toTopOf="parent"

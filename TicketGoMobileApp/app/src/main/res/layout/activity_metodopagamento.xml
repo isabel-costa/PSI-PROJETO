@@ -300,7 +300,7 @@
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
                 android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_cartão" />
+                android:src="@drawable/ic_cartao" />
 
             <TextView
                 android:layout_width="wrap_content"
