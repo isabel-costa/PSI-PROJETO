@@ -97,28 +97,15 @@
         tools:layout_editor_absoluteX="51dp" />
 
     <TextView
-        android:id="@+id/recoverPasswordTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Recuperar Palavra-Passe"
-        app:layout_constraintTop_toBottomOf="@id/loginButton"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/roxo"/>
-
-    <TextView
         android:id="@+id/createAccountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:text="Criar Conta"
-        app:layout_constraintTop_toBottomOf="@id/recoverPasswordTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:textColor="@color/roxo" />
+        android:text="Criar Conta"
+        android:textColor="@color/roxo"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="577dp" />
 
     <ImageView
         android:id="@+id/houseIconView"

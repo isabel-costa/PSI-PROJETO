@@ -1,6 +1,7 @@
 package com.example.ticketgomobileapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,12 +28,11 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String LOGIN_URL = "https://your-api-url.com/login"; // Replace with your API endpoint
+    private static final String LOGIN_URL = "https://localhost/SIS/TicketGo/backend/web/api/auth/login"; // Replace with your API endpoint
 
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private Button loginButton;
-    private TextView recoverPasswordTextView;
     private TextView createAccountTextView;
 
     @Override
@@ -44,7 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
-        recoverPasswordTextView = findViewById(R.id.recoverPasswordTextView);
         createAccountTextView = findViewById(R.id.createAccountTextView);
 
         // Definir click listener para o botão de login
@@ -59,15 +58,6 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     authenticateUser(username, password);
                 }
-            }
-        });
-
-        // Definir click listener para navegação
-        recoverPasswordTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RecuperarPasswordActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -94,17 +84,27 @@ public class LoginActivity extends AppCompatActivity {
                             String message = jsonObject.getString("message");
 
                             if (success) {
+                                // Recuperar o token de autenticação (ajuste conforme sua resposta)
+                                String authToken = jsonObject.getString("auth_token");
+
+                                // Salvar o token no SharedPreferences
+                                SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("auth_token", authToken);  // Salvar o token
+                                editor.putBoolean("is_authenticated", true); // Atualizar o estado de autenticação
+                                editor.apply();
+
                                 Toast.makeText(LoginActivity.this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show();
 
-                                // Navegar para a atividade da página principal
-                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                // Navegar para a MainActivity
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
-                                finish();
+                                finish(); // Finalizar a LoginActivity para que o usuário não volte para ela
                             } else {
                                 Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
-                            Log.e("LoginActivity", "JSON parsing error: " + e.getMessage());
+                            Log.e("LoginActivity", "Erro ao analisar a resposta: " + e.getMessage());
                             Toast.makeText(LoginActivity.this, "Erro ao processar a resposta do servidor.", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -112,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("LoginActivity", "API call failed: " + error.getMessage());
+                        Log.e("LoginActivity", "Falha na requisição API: " + error.getMessage());
                         Toast.makeText(LoginActivity.this, "Falha na conexão. Verifique sua internet.", Toast.LENGTH_SHORT).show();
                     }
                 }) {
@@ -126,7 +126,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        // Adicionar o pedido à queue (fila)
+        // Adicionar o pedido à fila de requisições
         requestQueue.add(stringRequest);
+    }
+
+    // Método para recuperar o token de autenticação
+    private String getAuthToken() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        return sharedPreferences.getString("auth_token", null);
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tituloTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Título do Evento"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/descricaoTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição do Evento"
+        app:layout_constraintTop_toBottomOf="@id/tituloTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dataInicioTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Data de Início"
+        app:layout_constraintTop_toBottomOf="@id/descricaoTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dataFimTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Data de Fim"
+        app:layout_constraintTop_toBottomOf="@id/dataInicioTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/localNomeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Local do Evento"
+        app:layout_constraintTop_toBottomOf="@id/dataFimTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/categoriaNomeTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Categoria do Evento"
+        app:layout_constraintTop_toBottomOf="@id/localNomeTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

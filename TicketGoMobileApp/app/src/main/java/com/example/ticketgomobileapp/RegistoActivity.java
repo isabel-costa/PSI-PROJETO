@@ -1,9 +1,9 @@
 package com.example.ticketgomobileapp;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,18 +25,23 @@ import com.google.android.material.textfield.TextInputEditText;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class RegistoActivity extends AppCompatActivity {
 
-    private static final String REGISTER_URL = "https://your-api-url.com/register"; // Replace with your API endpoint
+    private static final String REGISTER_URL = "https://localhost/SIS/TicketGo/backend/web/api/auth/signup"; // Replace with your API endpoint
 
     private TextInputEditText nameEditText;
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private TextInputEditText confirmPasswordEditText;
+    private TextInputEditText dataNascimentoEditText;
+    private TextInputEditText nifEditText;
+    private TextInputEditText moradaEditText;
     private Button registerButton;
+    private Button dataNascimentoPickerButton;
     private TextView loginTextView;
 
     @Override
@@ -55,34 +60,57 @@ public class RegistoActivity extends AppCompatActivity {
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
+        dataNascimentoEditText = findViewById(R.id.dataNascimentoEditText);
+        nifEditText = findViewById(R.id.nifEditText);
+        moradaEditText = findViewById(R.id.moradaEditText);
         registerButton = findViewById(R.id.registerButton);
+        dataNascimentoPickerButton = findViewById(R.id.dataNascimentoPickerButton);
         loginTextView = findViewById(R.id.loginTextView);
+
+        // Configurar o DatePickerDialog
+        dataNascimentoPickerButton.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    RegistoActivity.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
+                        dataNascimentoEditText.setText(selectedDate);
+                    },
+                    year, month, day);
+            datePickerDialog.show();
+        });
 
         // Definir click listener para o botão de registo
         registerButton.setOnClickListener(v -> {
-            String name = nameEditText.getText().toString().trim();
+            String nome = nameEditText.getText().toString().trim();
             String username = usernameEditText.getText().toString().trim();
             String password = passwordEditText.getText().toString().trim();
             String confirmPassword = confirmPasswordEditText.getText().toString().trim();
+            String dataNascimento = dataNascimentoEditText.getText().toString().trim();
+            String nif = nifEditText.getText().toString().trim();
+            String morada = moradaEditText.getText().toString().trim();
 
-            if (name.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+            if (nome.isEmpty() || username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() ||
+                    dataNascimento.isEmpty() || nif.isEmpty() || morada.isEmpty()) {
                 Toast.makeText(RegistoActivity.this, "Por favor, preencha todos os campos.", Toast.LENGTH_SHORT).show();
             } else if (!password.equals(confirmPassword)) {
                 Toast.makeText(RegistoActivity.this, "As palavras-passe não coincidem.", Toast.LENGTH_SHORT).show();
             } else {
-                registerUser(name, username, password);
+                registerUser(nome, username, password, dataNascimento, nif, morada);
             }
         });
 
-        // Definir click listener para o link de login
         loginTextView.setOnClickListener(v -> {
             Intent intent = new Intent(RegistoActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();
         });
     }
 
-    private void registerUser(String name, String username, String password) {
+    private void registerUser(String nome, String username, String password, String dataNascimento, String nif, String morada) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
@@ -122,9 +150,12 @@ public class RegistoActivity extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Enviar os detalhes de registo como parâmetros do método POST
                 Map<String, String> params = new HashMap<>();
-                params.put("name", name);
+                params.put("nome", nome);
                 params.put("username", username);
                 params.put("password", password);
+                params.put("dataNascimento", dataNascimento);
+                params.put("nif", nif);
+                params.put("morada", morada);
                 return params;
             }
         };
