@@ -9,6 +9,7 @@ use common\models\LinhaFatura;
 use common\models\Zona;
 
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Bilhetes".

@@ -6,6 +6,7 @@ namespace common\models;
 use common\models\LinhaCarrinho;
 use common\models\Profile;
 use Yii;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Carrinhos".
