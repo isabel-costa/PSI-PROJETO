@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white" /> <!-- Cor de fundo do layout -->
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/black" /> <!-- Cor da borda -->
+    <corners android:radius="8dp" /> <!-- Ajuste o raio dos cantos se necessário -->
+</shape>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TicketGoMobileApp</string>
+    <string name="event_image">Imagem do Evento</string>
+
+</resources>
