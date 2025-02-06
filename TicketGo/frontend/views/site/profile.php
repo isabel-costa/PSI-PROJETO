@@ -156,21 +156,6 @@ use yii\widgets\ActiveForm;
                             <?php ActiveForm::end(); ?>
 
                         </div>
-                        <h4>Password change</h4>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="password" placeholder="Current Password">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" placeholder="New Password">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" placeholder="Confirm Password">
-                            </div>
-                            <div class="col-md-12">
-                                <button>Save Changes</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
