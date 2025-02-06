@@ -27,6 +27,11 @@ use yii\helpers\Html;
 
 </div>
 
+<div class="payment-info">
+    <h2>Método de Pagamento</h2>
+    <p><strong>Selecionado</strong> <?= Html::encode($selectedPaymentMethod)?></p>
+</div>
+
 <div class="purchase-info">
     <h3>Detalhes dos Bilhetes:</h3>
     <table>

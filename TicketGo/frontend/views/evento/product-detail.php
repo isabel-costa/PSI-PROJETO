@@ -99,7 +99,7 @@ use yii\widgets\ActiveForm;
 
                                     <?php if (!empty($zonasPrecos)): ?>
                                         <div class="price">
-                                            <h3>Escolha a sua Plateia:</h3>
+                                            <h5>Escolha a sua Plateia:</h5>
                                             <div class="dropdown-container">
                                                 <select name="zona_id" class="custom-dropdown" required>
                                                     <option value="">Escolha uma zona...</option>
@@ -121,24 +121,22 @@ use yii\widgets\ActiveForm;
                                     </div>
 
                                     <div class="action">
-                                        <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+                                        <button type="submit" class="btn btn-primary" id="addcart">Adicionar ao Carrinho</button>
+                                        <?php if (Yii::$app->user->isGuest): ?>
+                                            <a href="#" title="É necessário fazer login para adicionar um evento aos favoritos"><i class="fa fa-heart"></i></a>
+                                        <?php else: ?>
+                                            <!-- Verifica se o utilizador tem permissão para adicionar aos favoritos -->
+                                            <?php if (Yii::$app->user->can('addToFavorites')): ?>
+                                                <a href="<?= \yii\helpers\Url::to(['favorito/toggle', 'eventoId' => $evento->id]) ?>">
+                                                    <i class="fa fa-heart"></i>
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="text-muted"><i class="fa fa-heart"></i></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
                                     <?php ActiveForm::end(); ?>
                                 </div>
-                            </div>
-                            <div class="action">
-                                <?php if (Yii::$app->user->isGuest): ?>
-                                    <a href="#" title="É necessário fazer login para adicionar um evento aos favoritos"><i class="fa fa-heart"></i></a>
-                                <?php else: ?>
-                                    <!-- Verifica se o utilizador tem permissão para adicionar aos favoritos -->
-                                    <?php if (Yii::$app->user->can('addToFavorites')): ?>
-                                        <a href="<?= \yii\helpers\Url::to(['favorito/toggle', 'eventoId' => $evento->id]) ?>">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    <?php else: ?>
-                                        <span class="text-muted"><i class="fa fa-heart"></i></span>
-                                    <?php endif; ?>
-                                <?php endif; ?>
                             </div>
                         </div>
                     </div>

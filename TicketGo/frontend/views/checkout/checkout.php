@@ -120,6 +120,8 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
 
+                    <?php $form = ActiveForm::begin(['action' => ['checkout/finalizar-compra'], 'method' => 'post']); ?>
+
                     <div class="checkout-payment">
                         <h2>Métodos de Pagamento</h2>
                         <div class="payment-methods">
@@ -139,7 +141,6 @@ use yii\widgets\ActiveForm;
                             </div>
                         </div>
                         <div class="checkout-btn">
-                            <?php $form = ActiveForm::begin(['action' => ['checkout/finalizar-compra'], 'method' => 'post']); ?>
                             <button type="submit" class="btn btn-primary">Finalizar Compra</button>
                             <?php ActiveForm::end(); ?>
                         </div>

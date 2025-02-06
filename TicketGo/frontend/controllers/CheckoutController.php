@@ -36,34 +36,32 @@ class CheckoutController extends Controller
     public function actionCheckout()
     {
         if (Yii::$app->user->isGuest) {
-            Yii::$app->session->setFlash('error', 'precisas de  estar logado para acessar o carrinho.');
+            Yii::$app->session->setFlash('error', 'Precisas de estar logado para acessar o carrinho.');
             return $this->redirect(['site/login']);
         }
+
         $user = Yii::$app->user->identity;
 
         if ($user) {
             $profile = $user->profile;
-            $userProfile = Yii::$app->user->identity->profile;
-
-
-            $profileId = $userProfile->id;
+            $profileId = $profile->id;
 
             $carrinho = Carrinho::findOne(['profile_id' => $profileId]);
 
             $metodos = MetodoPagamento::find()->all();
-
             $selectPaymentMethod = Yii::$app->request->post('payment_method', null);
 
-            if (!$carrinho) {
-                Yii::$app->session->setFlash('info', 'O carrinho está vazio.');
-                return $this->redirect(['site/index']);
-            }
+
 
             $linhasCarrinho = LinhaCarrinho::find()
                 ->where(['carrinho_id' => $carrinho->id])
                 ->with(['bilhete.evento'])
                 ->all();
 
+            if (!$linhasCarrinho) {
+                Yii::$app->session->setFlash('info', 'O carrinho está vazio.');
+                return $this->redirect(['./']);
+            }
 
             return $this->render('checkout', [
                 'carrinho' => $carrinho,
@@ -72,7 +70,7 @@ class CheckoutController extends Controller
                 'profile' => $profile,
                 'user' => $user,
                 'selectedPaymentMethod' => $selectPaymentMethod,
-                ]);
+            ]);
         }
     }
     public function actionFinalizarCompra()
@@ -98,6 +96,15 @@ class CheckoutController extends Controller
             ->with(['bilhete.evento', 'bilhete.zona'])
             ->all();
 
+        $selectedPaymentMethod = Yii::$app->request->post('payment_method', null);
+
+        if (!MetodoPagamento::findOne($selectedPaymentMethod)) {
+            Yii::$app->session->setFlash('error', 'Método de pagamento inválido.');
+            return $this->redirect(['checkout/checkout']);
+        }
+
+        $bilhetesComprados =[];
+
         foreach ($linhasCarrinho as $linha) {
             $bilhete = $linha->bilhete;
             $quantidadeCompra = $linha->quantidade;
@@ -118,9 +125,10 @@ class CheckoutController extends Controller
                     Yii::$app->session->setFlash('error', 'Erro ao atualizar o bilhete para vendido.');
                     return $this->redirect(['checkout/checkout']);
                 }
+                $bilhetesComprados[] = $bilheteDisponivel -> id;
             }
         }
-        $this -> gerarFatura($carrinho, $profile);
+        $this -> gerarFatura($carrinho, $profile, $selectedPaymentMethod, $bilhetesComprados);
 
         Yii::$app->session->setFlash('success', 'Compra finalizada com sucesso!');
 
@@ -128,7 +136,7 @@ class CheckoutController extends Controller
 
         return $this->redirect(['./site']);
     }
-    public function gerarFatura($carrinho, $profile)
+    public function gerarFatura($carrinho, $profile, $selectedPaymentMethod,$bilhetesComprados)
     {
         Yii::error("A gerar a fatura para o carrinho {$carrinho->id} do perfil {$profile->id}");
 
@@ -137,13 +145,28 @@ class CheckoutController extends Controller
             ->with(['bilhete.evento', 'bilhete.zona'])
             ->all();
 
+        $metodoPagamento = MetodoPagamento::findOne($selectedPaymentMethod);
+        $metodoPagamentoNome = $metodoPagamento ? $metodoPagamento->nome : 'Metodo nao enconradao';
+
         $mpdf = new \Mpdf\Mpdf();
 
         $content = $this->renderPartial('fatura', [
             'carrinho' => $carrinho,
             'profile' => $profile,
             'linhasCarrinho' => $linhasCarrinho,
+            'selectedPaymentMethod' => $metodoPagamentoNome,
         ]);
+
+        $mpdf->WriteHTML($content);
+        $mpdf->AddPage();
+
+        foreach ($bilhetesComprados as $bilhete){
+            $content = $this->renderPartial('bilhete', [
+                'bilhete' => Bilhete::findOne($bilhete),
+            ]);
+            $mpdf->WriteHTML($content);
+            $mpdf->AddPage();
+        }
 
         try {
             $mpdf->WriteHTML($content);

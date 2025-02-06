@@ -9,16 +9,12 @@ use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-
-$this->title = "Zonas de " . Html::encode($local->nome) ;
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="zona-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Zona', ['create' , 'local_id'=> $local_id], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Zona',['create' , 'local_id'=> $local_id], ['class' => 'btn btn-success']) ?>
     </p>
 
 

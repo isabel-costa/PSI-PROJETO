@@ -142,9 +142,9 @@ use yii\helpers\Url;
                         <h4>Total do Carrinho<span><?= number_format($totalCarrinho, 2) ?> €</span></h4>
                     </div>
                     <div class="cart-btn">
-                        <a href="<?= Url::to(['checkout/checkout']) ?>" class="btn btn-primary">
+                        <button class="btn btn-primary" onclick="window.location.href='<?= Url::to(['checkout/checkout']) ?>'">
                             Checkout
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
