@@ -10,6 +10,13 @@
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/frontend/tests/_support" isTestSource="true" packagePrefix="frontend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/TicketGo/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/backend/tests" isTestSource="true" packagePrefix="backend\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/backend/tests/_support" isTestSource="true" packagePrefix="backend\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/common/tests" isTestSource="true" packagePrefix="common\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/common/tests/_support" isTestSource="true" packagePrefix="common\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/frontend/tests" isTestSource="true" packagePrefix="frontend\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/frontend/tests/_support" isTestSource="true" packagePrefix="frontend\tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/almasaeed2010/adminlte" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/behat/gherkin" />
@@ -102,6 +109,11 @@
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/yiisoft/yii2-faker" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/yiisoft/yii2-gii" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/yiisoft/yii2-symfonymailer" />
+      <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/codeception/module-db" />
+      <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/mpdf/mpdf" />
+      <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/mpdf/psr-http-message-shim" />
+      <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/mpdf/psr-log-aware-trait" />
+      <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/setasign/fpdi" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
