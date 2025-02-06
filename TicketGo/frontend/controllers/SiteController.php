@@ -3,7 +3,6 @@
 namespace frontend\controllers;
 
 use common\models\Bilhete;
-use common\models\Profile;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -91,25 +90,27 @@ class SiteController extends Controller
     }
     public function actionProfile()
     {
-        // Obtém o user logado
+        // Obtém o usuário logado
         $user = Yii::$app->user->identity;
 
-        // Verifica se o user está autenticado
+        // Verifica se o usuário está autenticado
         if ($user) {
-            // Carrega o perfil do user/profile
-            $profile = $user->profile;
+            // Carrega o perfil do usuário (presumindo que você tenha uma relação entre o usuário e o perfil)
+            $profile = $user->profile; // Se você tiver uma relação com o modelo Profile
 
-            // Se o profile não existir, cria um novo
+            // Se o perfil não existir, cria um novo
             if (!$profile) {
-                $profile = new Profile(); // Cria um novo profile, caso não exista
+                $profile = new Profile(); // Cria um novo perfil, caso não exista
             }
 
+            // Passa os dados para a view
             return $this->render('profile', [
                 'profile' => $profile,
                 'user' => $user,
             ]);
         }
 
+        // Se não estiver logado, redireciona para a página de login
         return $this->redirect(['site/login']);
     }
 

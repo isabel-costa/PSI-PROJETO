@@ -9,8 +9,6 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var common\models\Zona $model */
 /** @var yii\widgets\ActiveForm $form */
-$this->title = "Zonas de " . Html::encode($local->nome) ;
-
 ?>
 
 <div class="zona-form">

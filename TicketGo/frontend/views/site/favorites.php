@@ -40,7 +40,7 @@ use yii\helpers\Html;
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
