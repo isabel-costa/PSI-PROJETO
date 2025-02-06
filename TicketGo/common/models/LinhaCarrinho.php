@@ -39,8 +39,8 @@ class LinhaCarrinho extends \yii\db\ActiveRecord
         return [
             [['carrinho_id', 'bilhete_id', 'quantidade'], 'integer'],
             [['precounitario', 'valortotal'], 'number'],
-            [['carrinho_id'], 'exist', 'skipOnError' => true, 'targetClass' => Carrinho::class, 'targetAttribute' => ['carrinho_id' => 'id']],
-            [['bilhete_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bilhete::class, 'targetAttribute' => ['bilhete_id' => 'id']],
+            [['carrinho_id'], 'exist', 'skipOnError' => true, 'targetClass' => Carrinhos::class, 'targetAttribute' => ['carrinho_id' => 'id']],
+            [['bilhete_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bilhetes::class, 'targetAttribute' => ['bilhete_id' => 'id']],
         ];
     }
 

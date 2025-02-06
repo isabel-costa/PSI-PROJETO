@@ -53,12 +53,9 @@ return [
             'showScriptName' => false,
             'rules' => [
                 'evento/product-detail/<id:\d+>' => 'evento/product-detail',
-                'site/profile' => 'site/profile',
-                'favorito/index' => 'favorito/index',
-                'carrinho/cart' => 'carrinho/cart',
-                'add-tickets-cart' => 'site/add-tickets-cart',
-                'checkout/finalizar-compra' => 'checkout/finalizar-compra',
-
+                'site/profile' => 'site/profile', // Perfil
+                'favorito/index' => 'favorito/index', // Página de Favoritos
+                'cart/index' => 'cart/index', // Carrinho
             ],
         ],
 

@@ -58,7 +58,7 @@ use yii\widgets\ActiveForm;
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
+                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
                             <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
@@ -135,19 +135,19 @@ use yii\widgets\ActiveForm;
 
                         <div class="row">
                             <div class="col-md-6">
-                                <?= $form->field($profile, 'nome')->textInput(['placeholder' => 'Nome'])->label(false) ?>
+                                <?= $form->field($profile, 'nome')->textInput(['placeholder' => 'Name'])->label(false) ?>
                             </div>
                             <div class="col-md-6">
-                                <?= $form->field($profile, 'datanascimento')->textInput(['placeholder' => 'Data Nascimento'])->label(false) ?>
+                                <?= $form->field($profile, 'datanascimento')->textInput(['placeholder' => 'Name'])->label(false) ?>
                             </div>
                             <div class="col-md-6">
-                                <?= $form->field($profile, 'nif')->textInput(['placeholder' => 'Nif'])->label(false) ?>
+                                <?= $form->field($profile, 'nif')->textInput(['placeholder' => 'Name'])->label(false) ?>
                             </div>
                             <div class="col-md-6">
-                                <?= $form->field($user, 'email')->textInput(['placeholder' => 'email'])->label(false) ?>
+                                <?= $form->field($user, 'email')->textInput(['placeholder' => 'Name'])->label(false) ?>
                             </div>
                             <div class="col-md-12">
-                                <?= $form->field($profile, 'morada')->textInput(['placeholder' => 'morada'])->label(false) ?>
+                                <?= $form->field($profile, 'morada')->textInput(['placeholder' => 'Name'])->label(false) ?>
                             </div>
                             <div class="col-md-12">
                                 <button>Update Account</button>
@@ -155,6 +155,21 @@ use yii\widgets\ActiveForm;
                             </div>
                             <?php ActiveForm::end(); ?>
 
+                        </div>
+                        <h4>Password change</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="password" placeholder="Current Password">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="New Password">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Confirm Password">
+                            </div>
+                            <div class="col-md-12">
+                                <button>Save Changes</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -178,6 +193,68 @@ use yii\widgets\ActiveForm;
                 </div>
             </div>
 
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Useful Pages</h3>
+                    <ul>
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/product-detail.html">Product Detail</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/cart.html">Cart</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/checkout.html">Checkout</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/login.html">Login & Register</a></li>
+                        <li><a href="my-account.html">My Account</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Quick Links</h3>
+                    <ul>
+                        <li><a href="product.html">Product</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/cart.html">Cart</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/checkout.html">Checkout</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/login.html">Login & Register</a></li>
+                        <li><a href="my-account.html">My Account</a></li>
+                        <li><a href="../../../../../../../Users/Vasco/Desktop/site/wishlist.html">Wishlist</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <h3 class="title">Get in Touch</h3>
+                    <div class="contact-info">
+                        <p><i class="fa fa-map-marker"></i>123 E Shop, Los Angeles, CA, USA</p>
+                        <p><i class="fa fa-envelope"></i>email@example.com</p>
+                        <p><i class="fa fa-phone"></i>+123-456-7890</p>
+                        <div class="social">
+                            <a href=""><i class="fa fa-twitter"></i></a>
+                            <a href=""><i class="fa fa-facebook"></i></a>
+                            <a href=""><i class="fa fa-linkedin"></i></a>
+                            <a href=""><i class="fa fa-instagram"></i></a>
+                            <a href=""><i class="fa fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row payment">
+            <div class="col-md-6">
+                <div class="payment-method">
+                    <p>We Accept:</p>
+                    <img src="../../../../../../../Users/Vasco/Desktop/site/img/payment-method.png" alt="Payment Method" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="payment-security">
+                    <p>Secured By:</p>
+                    <img src="../../../../../../../Users/Vasco/Desktop/site/img/godaddy.svg" alt="Payment Security" />
+                    <img src="../../../../../../../Users/Vasco/Desktop/site/img/norton.svg" alt="Payment Security" />
+                    <img src="../../../../../../../Users/Vasco/Desktop/site/img/ssl.svg" alt="Payment Security" />
+                </div>
+            </div>
         </div>
     </div>
 </div>
