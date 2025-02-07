@@ -22,7 +22,7 @@ class MetodoPagamento extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'MetodosPagamento';
+        return 'metodospagamento';
     }
 
     /**

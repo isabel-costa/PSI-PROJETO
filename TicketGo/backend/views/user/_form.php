@@ -1,6 +1,5 @@
 <?php
 
-use common\models\User;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -20,18 +19,24 @@ use yii\widgets\ActiveForm;
 
         <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
-        <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+        <?php if ($model->scenario === 'create'): ?>
+            <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true]) ?>
+        <?php else: ?>
+            <?= $form->field($model, 'password_hash')->passwordInput(['maxlenght'=>true,   'value' => '', 'placeholder' => 'Deixe vazio para manter a senha atual']) ?>
+        <?php endif; ?>
 
-        <?= $form->field($model, 'status')->dropDownList([
-            User::STATUS_ACTIVE => 'Active',
-            User::STATUS_INACTIVE => 'Inactive',
-            User::STATUS_DELETED => 'Deleted'
-        ], ['prompt' => 'Select the status']) ?>
-
+        <?= $form->field($model, 'role')->dropDownList(
+            [
+                'partner' => 'Partner',
+                'organizer' => 'Organizer',
+                'admin' => 'Admin',
+            ]
+        ) ?>
         <div class="form-group">
-            <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Create', ['class' => 'btn btn-success']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
+
     </div>
 </div>

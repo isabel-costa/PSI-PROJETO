@@ -52,7 +52,6 @@ return [
             'rules' => [
             ],
         ],
-
         'view' => [
             'theme' => [
                 'basePath' => '@backend/views/layouts/adminlte/main.php',

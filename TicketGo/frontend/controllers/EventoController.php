@@ -132,7 +132,6 @@ class EventoController extends Controller
             $novoFavorito->save();
         }
 
-        // Redireciona para a página de detalhes do evento
         return $this->redirect(['evento/view', 'id' => $evento->id]);
     }
 }
