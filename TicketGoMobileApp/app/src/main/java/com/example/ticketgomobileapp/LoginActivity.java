@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private static final String LOGIN_URL = "http://10.0.2.2/SIS-PROJETO/TicketGo/backend/web/api/auth/login"; // Use o IP correto
+    private static final String LOGIN_URL = "http://10.0.2.2/TicketGoAPI/backend/web/api/auth/login"; // Use o IP correto
 
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     private void authenticateUser (String username, String password) {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
-        Log.d("LoginActivity", "Iniciando autenticação para: " + username); // Log do username
+        Log.d("LoginActivity", "Iniciar autenticação para: " + username); // Log do username
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, LOGIN_URL,
                 new Response.Listener<String>() {
@@ -87,16 +87,15 @@ public class LoginActivity extends AppCompatActivity {
                             // Verifique se a resposta contém o campo "auth_key"
                             if (jsonObject.has("auth_key")) {
                                 String authKey = jsonObject.getString("auth_key");
-                                String message = jsonObject.getString("message");
 
                                 // Salvar o token no SharedPreferences
                                 SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("auth_key", authKey);  // Salvar o token
                                 editor.putBoolean("is_authenticated", true); // Atualizar o estado de autenticação
-                                editor.apply();
+                                editor.commit();
                                 Log.d("LoginActivity", "Token de autenticação: " + authKey); // Log do token de autenticação
-                                Toast.makeText(LoginActivity.this, "Login bem-sucedido! " + message, Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login bem-sucedido! ", Toast.LENGTH_SHORT).show();
 
                                 // Navegar para a MainActivity
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -118,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
                         if (error.networkResponse != null) {
                             Log.e("LoginActivity", "Código de erro: " + error.networkResponse.statusCode);
                         }
-                        Toast.makeText(LoginActivity.this, "Falha na conexão. Verifique sua internet.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Falha na conexão. Verifique a sua internet.", Toast.LENGTH_SHORT).show();
                     }
                 }) {
             @Override

@@ -68,7 +68,7 @@ public class Singleton {
     }
 
     private String BASE_URL(String ip) {
-        return "http://" + ip + "/SIS-PROJETO/TicketGo/backend/web/api/";
+        return "http://" + ip + "/TicketGoAPI/backend/web/api/";
     }
 
     private boolean isNetworkAvailable(Context context) {
@@ -137,71 +137,62 @@ public class Singleton {
     public void verDetalhesEvento(Context context, int id, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         if (!isNetworkAvailable(context)) {
             Toast.makeText(context, "Sem ligação à internet", Toast.LENGTH_SHORT).show();
-        } else {
-            SharedPreferences prefs = context.getSharedPreferences("IP", Context.MODE_PRIVATE);
-            String ip = prefs.getString("ip", BaseIp);
-            JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, BASE_URL(ip) + "eventos/" + id, null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    try {
-                        // Obter o ID do local e da categoria do evento
-                        int localId = response.getInt("local_id");
-                        int categoriaId = response.getInt("categoria_id");
-                        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, BASE_URL(ip) + "eventos/" + id, null, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                // Verifique se o campo "datainicio" está presente
-                                if (response.has("datainicio")) {
-                                    // Continue com o processamento
-                                } else {
-                                    Log.e("Erro", "Campo 'datainicio' não encontrado na resposta");
-                                }
-                            }
-                        }, errorListener);
-
-                        // Fazer novos pedidos para obter os nomes do local e da categoria
-                        JsonObjectRequest localReq = new JsonObjectRequest(Request.Method.GET, BASE_URL(ip) + "locals/" + localId, null, new Response.Listener<JSONObject>() {
-                            @Override
-                            public void onResponse(JSONObject localResponse) {
-                                try {
-                                    String nomeLocal = localResponse.getString("nome");
-                                    response.put("nome_local", nomeLocal);
-
-                                    JsonObjectRequest categoriaReq = new JsonObjectRequest(Request.Method.GET, BASE_URL(ip) + "categorias/" + categoriaId, null, new Response.Listener<JSONObject>() {
-                                        @Override
-                                        public void onResponse(JSONObject categoriaResponse) {
-                                            try {
-                                                String nomeCategoria = categoriaResponse.getString("nome");
-                                                response.put("nome_categoria", nomeCategoria);
-
-                                                // Chame o listener aqui para retornar a resposta final
-                                                listener.onResponse(response);
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                                errorListener.onErrorResponse(new VolleyError("Erro ao processar resposta da categoria"));
-                                            }
-                                        }
-                                    }, errorListener);
-
-                                    volleyQueue.add(categoriaReq);
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    errorListener.onErrorResponse(new VolleyError("Erro ao processar resposta do local"));
-                                }
-                            }
-                        }, errorListener);
-
-                        volleyQueue.add(localReq);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        errorListener.onErrorResponse(new VolleyError("Erro ao processar resposta do evento"));
-                    }
-                }
-            }, errorListener);
-
-            volleyQueue.add(req);
+            return;
         }
+
+        SharedPreferences prefs = context.getSharedPreferences("IP", Context.MODE_PRIVATE);
+        String ip = prefs.getString("ip", BaseIp);
+        String url = BASE_URL(ip) + "eventos/" + id;
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try {
+                response.put("nome_local", "Carregando...");
+                response.put("nome_categoria", "Carregando...");
+
+                int localId = response.getInt("local_id");
+                int categoriaId = response.getInt("categoria_id");
+
+                obterNomeLocal(ip, localId, response, listener, errorListener);
+                obterNomeCategoria(ip, categoriaId, response, listener, errorListener);
+
+            } catch (JSONException e) {
+                errorListener.onErrorResponse(new VolleyError("Erro ao processar evento"));
+            }
+        }, errorListener);
+
+        volleyQueue.add(req);
     }
+
+    private void obterNomeLocal(String ip, int localId, JSONObject response, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String url = BASE_URL(ip) + "locals/" + localId;
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, null, localResponse -> {
+            try {
+                response.put("nome_local", localResponse.getString("nome"));
+                listener.onResponse(response);
+            } catch (JSONException e) {
+                errorListener.onErrorResponse(new VolleyError("Erro ao processar local"));
+            }
+        }, errorListener);
+
+        volleyQueue.add(req);
+    }
+
+    private void obterNomeCategoria(String ip, int categoriaId, JSONObject response, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        String url = BASE_URL(ip) + "categorias/" + categoriaId;
+
+        JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, url, null, categoriaResponse -> {
+            try {
+                response.put("nome_categoria", categoriaResponse.getString("nome"));
+                listener.onResponse(response);
+            } catch (JSONException e) {
+                errorListener.onErrorResponse(new VolleyError("Erro ao processar categoria"));
+            }
+        }, errorListener);
+
+        volleyQueue.add(req);
+    }
+
 
     public void verImagens(Context context, Response.Listener<JSONArray> listener, Response.ErrorListener errorListener) {
         if (!isNetworkAvailable(context)) {
@@ -222,7 +213,7 @@ public class Singleton {
         } else {
             SharedPreferences prefs = context.getSharedPreferences("IP", Context.MODE_PRIVATE);
             String ip = prefs.getString("ip", BaseIp);
-            Log.d("API", "Pesquisando eventos com query: " + query);
+            Log.d("API", "Pesquisar eventos com query: " + query);
             JsonObjectRequest req = new JsonObjectRequest(Request.Method.GET, BASE_URL(ip) + "eventos?search=" + query, null, listener, errorListener);
             volleyQueue.add(req);
         }
@@ -325,7 +316,7 @@ public class Singleton {
     public void selecionarMetodoPagamento(Context context, String metodoId, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
         SharedPreferences prefs = context.getSharedPreferences("IP", Context.MODE_PRIVATE);
         String ip = prefs.getString("ip", BaseIp);
-        String url = BASE_URL(ip) + "pagamento/" + metodoId;
+        String url = BASE_URL(ip) + "metodopagamento/" + metodoId;
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, null, listener, errorListener);
         volleyQueue.add(request);
     }

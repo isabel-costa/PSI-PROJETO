@@ -52,6 +52,10 @@ public class DetalhesEventoActivity extends AppCompatActivity {
         eventImage1 = findViewById(R.id.eventImage1); // Inicialize o ImageView
         zonasSpinner = findViewById(R.id.zonasSpinner); // Inicialize o Spinner
 
+        ImageView houseIconView = findViewById(R.id.houseIconView);
+        ImageView heartIconView = findViewById(R.id.heartIconView);
+        ImageView profileIconView = findViewById(R.id.profileIconView);
+
         // Obter o ID do evento passado pela Intent
         int eventoId = getIntent().getIntExtra("evento_id", -1);
         if (eventoId != -1) {
@@ -61,6 +65,7 @@ public class DetalhesEventoActivity extends AppCompatActivity {
             Toast.makeText(this, "Evento não encontrado", Toast.LENGTH_SHORT).show();
             finish();
         }
+
     }
 
     private void carregarDetalhesEvento(int eventoId) {
@@ -183,7 +188,7 @@ public class DetalhesEventoActivity extends AppCompatActivity {
                         JSONObject imagemObject = response.getJSONObject(i);
                         if (imagemObject.getInt("evento_id") == eventoId) {
                             String nomeImagem = imagemObject.getString("nome");
-                            imagemUrl = "http://10.0.2.2/SIS-PROJETO/TicketGo/backend/web/imagens/" + nomeImagem;
+                            imagemUrl = "http://localhost/SIS/TicketGo/backend/web/imagem/" + nomeImagem;
                             break; // Encontrou a imagem, pode sair do loop
                         }
                     }
