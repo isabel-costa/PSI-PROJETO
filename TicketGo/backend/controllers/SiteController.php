@@ -49,6 +49,14 @@ class SiteController extends Controller
                         'allow' => true,
                         'roles' => ['@'],
                     ],
+                    [
+                        'actions' => ['index'],
+                        'roles' => ['admin', 'organizer', 'partner'],
+                        'denyCallback' => function ($rule, $action) {
+                            Yii::$app->session->setFlash('error', 'Não tem permissão para o backend.');
+                            return $this->redirect(['site/login']); // Redireciona para o login em caso de negação
+                        },
+                    ],
                 ],
             ],
             'verbs' => [
@@ -80,8 +88,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
-
     }
+
+
 
     /**
      * Login action.
@@ -90,27 +99,25 @@ class SiteController extends Controller
      */
 
 
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+            // Usuário já está logado, redireciona para o índice
+            return $this->goHome();  // Isso vai levar para a página principal (index)
         }
-
-        $this->layout = 'blank';
 
         $model = new LoginForm();
-        //var_dump($model->login());
-        //dd($model->load(Yii::$app->request->post()));
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
 
-        $model->password = '';
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack(); // Redireciona para a página anterior
+        }
 
         return $this->render('login', [
             'model' => $model,
         ]);
     }
+
 
     /**
      * Logout action.

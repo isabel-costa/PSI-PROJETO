@@ -34,7 +34,7 @@ class Carrinho extends \yii\db\ActiveRecord
         return [
             [['profile_id'], 'integer'],
             [['profile_id'], 'unique'],
-            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profiles::class, 'targetAttribute' => ['profile_id' => 'id']],
+            [['profile_id'], 'exist', 'skipOnError' => true, 'targetClass' => Profile::class, 'targetAttribute' => ['profile_id' => 'id']],
         ];
     }
 
