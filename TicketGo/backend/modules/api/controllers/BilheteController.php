@@ -3,40 +3,128 @@
 namespace backend\modules\api\controllers;
 
 use Yii;
+use backend\modules\api\components\QueryParamAuth;
 use common\models\Bilhete;
 use common\models\Evento;
+use common\models\User;
+use common\models\Zona;
 use yii\rest\ActiveController;
-use backend\modules\api\components\QueryParamAuth;
+use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
-use common\models\mqttPublisher;
+use yii\web\NotFoundHttpException;
+use yii\web\UnauthorizedHttpException;
 
 class BilheteController extends ActiveController
 {
     public $modelClass = 'common\models\Bilhete';
 
-    // Método para verificar o acesso às ações
+
+    // configura os comportamentos do controlador
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        
+        // adiciona autenticação via query parameter
+        $behaviors['authenticator'] = [
+            'class' => QueryParamAuth::class,
+        ];
+        
+        return $behaviors;
+    }
+
+
+    // método para verificar o acesso às ações
     public function checkAccess($action, $model = null, $params = [])
     {
-        // Bloqueia qualquer método que não seja GET
+        // bloqueia qualquer método que não seja GET
         if (in_array($action, ['create', 'update', 'delete'])) {
-            throw new \yii\web\ForbiddenHttpException('You are not allowed to perform this action');
+            throw new ForbiddenHttpException('Você não tem permissão para realizar esta ação.');
         }
     }
 
-    // Método para obter bilhetes de um evento específico
-    public function actionGetEvento($evento_id)
-    {
-        // Encontra todos os bilhetes associados ao evento
-        $bilhetes = $this->modelClass::find()->where(['evento_id' => $evento_id])->all();
 
-        // Verifica se existem bilhetes para o evento
-        if ($bilhetes) {
-            return $bilhetes;
-        } else {
-            return [
-                'success' => false,
-                'message' => 'Este evento não tem bilhetes associados.',
-            ];
+     // método para validar autenticação via query params
+    public function verifyCredentials($profile_id, $token)
+    {
+        $user = User::find()->where(['id' => $profile_id])->andWhere(['auth_key' => $token])->one();
+        
+        if (!$user) {
+            throw new UnauthorizedHttpException('Token de autenticação inválido ou usuário não encontrado.');
         }
+    }
+
+
+    // método para obter bilhetes por evento
+    public function actionGetBilhetesEvento($evento_id)
+    {
+        // obtém o token e o profile_id dos query params
+        $token = Yii::$app->request->get('token');
+        $profile_id = Yii::$app->request->get('profile_id');
+
+        // verifica se o token e o profile_id são válidos
+        $this->verifyCredentials($token, $profile_id);
+
+        // verifica se o parâmetro é válido
+        if (!$evento_id || !is_numeric($evento_id)) {
+            throw new BadRequestHttpException('ID do evento inválido.');
+        }
+
+        // encontra o evento pelo ID
+        $evento = Evento::findOne($evento_id);
+
+        // caso não encontre
+        if (!$evento) {
+            throw new NotFoundHttpException('Evento não encontrado.');
+        }
+
+        // encontra todos os bilhetes associados ao evento
+        $bilhetes = Bilhete::find()->where(['evento_id' => $evento_id])->all();
+
+        if (empty($bilhetes)) {
+            throw new NotFoundHttpException('Nenhum bilhete encontrado para este evento.');
+        }
+
+        return [
+            'message' => "Foram encontrados os seguintes bilhetes para o evento {$evento_id}:",
+            'evento' => $evento,
+            'bilhetes' => $bilhetes
+        ];
+    }
+
+
+    // método para obter bilhetes por zona
+    public function actionGetBilhetesZona($zona_id)
+    {
+        // obtém o token e o profile_id dos query params
+        $token = Yii::$app->request->get('token');
+        $profile_id = Yii::$app->request->get('profile_id');
+
+        $this->verifyCredentials($token, $profile_id);
+
+        // verifica se o parâmetro é válido
+        if (!$zona_id || !is_numeric($zona_id)) {
+            throw new BadRequestHttpException('ID da zona inválido.');
+        }
+
+        // encontra a zona pelo ID
+        $zona = Zona::findOne($zona_id);
+
+        // caso não encontre
+        if (!$zona) {
+            throw new NotFoundHttpException('Zona não encontrada.');
+        }
+
+        // encontra todos os bilhetes associados à zona
+        $bilhetes = Bilhete::find()->where(['zona_id' => $zona_id])->all();
+
+        if (empty($bilhetes)) {
+            throw new NotFoundHttpException('Nenhum bilhete encontrado para esta zona.');
+        }
+
+        return [
+            'message' => "Foram encontrados os seguintes bilhetes para a zona {$zona_id}:",
+            'zona' => $zona,
+            'bilhetes' => $bilhetes
+        ];
     }
 }

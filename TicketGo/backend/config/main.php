@@ -11,33 +11,38 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'api' => [
+            'class' => 'backend\modules\api\ModuleAPI',
+        ],
+    ],
     'components' => [
-
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
-            'itemTable' => '{{%auth_item}}',
-            'itemChildTable' => '{{%auth_item_child}}',
-            'assignmentTable' => '{{%auth_assignment}}',
         ],
-
         'request' => [
             'csrfParam' => '_csrf-backend',
+            'enableCsrfValidation' => false,
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ],
         ],
-        'user' => [
+       'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => true, // permite login automático baseado em cookies
+            'enableSession' => false,
+            'loginUrl' => null,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+
         ],
         'session' => [
-            // this is the name of the session cookie used for login on the backend
-            'name' => 'advanced-backend',
+            'name' => 'advanced-backend', // define o nome do cookie de sessão
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
                 [
-                    'class' => \yii\log\FileTarget::class,
+                    'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -45,112 +50,105 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+            'showScriptName' => false, // remove index.php das URLs
             'rules' => [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/bilhete',
-                    'pluralize' => true,
+                    'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {evento_id}' => 'getevento',
+                        'GET evento/<evento_id>' => 'getbilhetesevento',    // mostra todos os bilhetes de um evento específico
+                        'GET zona/<zona_id>' => 'getbilheteszona',          // mostra todos os bilhetes de uma zona específica
                     ],
-
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/carrinho',
-                    'pluralize' => true,
+                    'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile',
+                        'GET {profile_id}' => 'getprofile',         // mostra todos o carrinho de compras de um utilizador específico
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/favorito',
-                    'pluralize' => true,
+                    'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile', //actionGetProfile
+                        'GET {profile_id}' => 'getprofile',         //actionGetProfile
                         'POST /api/favorito/addfav' => 'addfav',
-                        'DELETE {evento_id}' => 'deletefav', //actionDeleteFav
+                        'DELETE {evento_id}' => 'deletefav',        //actionDeleteFav
                     ],
-
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/categoria',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/evento',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/fatura',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/profile',
-                    'pluralize' => true,
+                    'pluralize' => false,
                     'extraPatterns' => [
-                        'PUT {profile_id}' => 'updateprofile',
+                        'GET {profile_id}' => 'getprofile',     // busca o perfil a partir das query params
+                        'PUT {profile_id}' => 'updateprofile',  // atualiza o perfil a partir das query params
                     ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/metodopagamento',
-                    'pluralize' => true,
+                    'pluralize' => false,
+                    'extraPatterns' => [
+                        'GET {metodopagamento_id}' => 'getmetodopagamento',     //  mostra todos os métodos de pagamento
+                    ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/linhacarrinho',
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/linhafatura',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/local',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/zona',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/user',
-                    'pluralize' => true,
+                    'pluralize' => false,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/auth',
+                    'pluralize' => false,
                     'extraPatterns' => [
-                        'POST /api/auth/login' => 'api/auth/login',  // Endpoint de login
-                        'POST /api/auth/signup' => 'api/auth/signup',  // Endpoint signup
+                        'POST login' => 'login',                    // endpoint de login
+                        'POST signup' => 'signup',                  // endpoint de signup
                     ]
                 ],
             ],
         ],
-
-        'view' => [
-            'theme' => [
-                'basePath' => '@backend/views/layouts/adminlte/main.php',
-                'baseUrl' => '@web',
-                'pathMap' => [
-                    '@app/views' => '@backend/views/layouts/adminlte/main.php',
-                ],
-            ],
-        ],
-
     ],
     'params' => $params,
 ];

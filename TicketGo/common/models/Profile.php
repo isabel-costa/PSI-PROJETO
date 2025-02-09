@@ -94,4 +94,19 @@ class Profile extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Favorito::class, ['profile_id' => 'id']);
     }
+
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $topico = "ticketgo/profile/update-profile/{$this->id}";
+
+        $jsonAttributes = Json::encode($this->attributes);
+        
+        $mensagem = "O perfil com ID {$this->id} foi atualizado.";
+
+        mqttPublisher::publish($topico, $mensagem);
+        mqttPublisher::publish($topico, $jsonAttributes);
+    }
 }

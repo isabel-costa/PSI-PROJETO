@@ -1,28 +1,31 @@
 <?php
+
 namespace backend\modules\api\controllers;
 
-use common\models\Favorito;
 use Yii;
-use backend\modules\api\components\QueryParamAuth;
 use yii\rest\ActiveController;
-use yii\filters\ContentNegotiator;
-use yii\web\NotFoundHttpException;
-use yii\web\ForbiddenHttpException;
 use yii\web\BadRequestHttpException;
-use common\models\mqttPublisher;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
+use yii\web\UnauthorizedHttpException;
+use backend\modules\api\components\QueryParamAuth;
+use common\models\Evento;
+use common\models\Favorito;
 
-class FavoritoController extends ActiveController {
-
+class FavoritoController extends ActiveController
+{
     public $modelClass = 'common\models\Favorito';
 
-    // Configura os comportamentos do controlador
+    // configura os comportamentos do controlador
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        // Adiciona autenticação via query parameter
+        
+        // adiciona autenticação via query parameter
         $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::className(),
+            'class' => QueryParamAuth::class,
         ];
+        
         return $behaviors;
     }
     
