@@ -1,3 +1,9 @@
+Configurando Composer
+=====================
+
+Después de instalar el proyecto plantilla es una buena idea ajustar el archivo `composer.json` por defecto que puedes encontrar en el directorio raíz:
+
+```json
 {
     "name": "yiisoft/yii2-app-advanced",
     "description": "Yii 2 Advanced Project Template",
@@ -12,13 +18,12 @@
         "irc": "ircs://irc.libera.chat:6697/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.4.0",
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "yiisoft/yii2-symfonymailer": "~2.0.3",
-        "bluerhinos/phpmqtt": "^1.0"
+        "yiisoft/yii2-symfonymailer": "~2.0.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -56,3 +61,11 @@
         }
     ]
 }
+```
+
+En primer lugar estamos actualizando la informatión básica. Cambie el `name`, `description`, `keywords`, `homepage` y `support` para que coincida con tu proyecto.
+
+Ahora la parte interesante. Puedes añadir mas paquetes que necesites para tu application en la sección `require`.
+Todos estos paquetes están alojadas en [packagist.org](https://packagist.org/) asi que sientete libre de navegar por el sitio web para buscar código util.
+
+Después de cambiar tu `composer.json` puedes ejecutar `composer update --prefer-dist`, espera a que se descarguen los paquetes y se instalen y después ya están listos para usarlos. El carga automatica de clases será manejado de forma automatica.

@@ -75,8 +75,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
-        mqttPublisher::publish('teste', 'Mensagem de teste e é bom que funciones');
         return $this->render('index');
     }
 

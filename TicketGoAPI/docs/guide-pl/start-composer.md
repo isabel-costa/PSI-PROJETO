@@ -1,3 +1,10 @@
+Konfiguracja Composera
+======================
+
+Po zainstalowaniu szablonu projektu dobrze jest zmodyfikować domyślny plik `composer.json`, znajdujący się w głównym 
+folderze:
+
+```json
 {
     "name": "yiisoft/yii2-app-advanced",
     "description": "Yii 2 Advanced Project Template",
@@ -12,13 +19,12 @@
         "irc": "ircs://irc.libera.chat:6697/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.4.0",
         "yiisoft/yii2": "~2.0.45",
         "yiisoft/yii2-bootstrap5": "~2.0.2",
-        "yiisoft/yii2-symfonymailer": "~2.0.3",
-        "bluerhinos/phpmqtt": "^1.0"
+        "yiisoft/yii2-symfonymailer": "~2.0.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -56,3 +62,14 @@
         }
     ]
 }
+```
+
+Zacznijmy od podstawowych informacji. Zmień `name` (nazwę), `description` (opis), `keywords` (słowa kluczowe), 
+`homepage` (stronę domową) i `support` (adresy serwisów wsparcia projektu) na odpowiednie dla Twojego projektu.
+
+Teraz czas na interesującą część - w sekcji `require` możesz dodać więcej pakietów zależności, których wymaga Twoja 
+aplikacja. Pakiety te są pobierane poprzez serwis [packagist.org](https://packagist.org/) - zerknij na jego zasoby 
+w poszukiwaniu przydatnego kodu.
+
+Po aktualizacji pliku `composer.json` możesz uruchomić komendę `composer update --prefer-dist` - nowe pakiety zostaną 
+pobrane i zainstalowane i będą od razu gotowe do użycia. Autoładowanie klas jest obsługiwane automatycznie.
