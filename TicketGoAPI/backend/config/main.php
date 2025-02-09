@@ -88,6 +88,9 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/evento',
                     'pluralize' => true,
+                    'extraPatterns' => [
+                        'GET,HEAD search' => 'search', // Adiciona a rota de pesquisa
+                    ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
