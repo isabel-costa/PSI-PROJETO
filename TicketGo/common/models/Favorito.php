@@ -1,12 +1,12 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Evento;
 use common\models\Profile;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Favoritos".
@@ -18,7 +18,7 @@ use Yii;
  * @property Eventos $evento
  * @property Profiles $profile
  */
-class Favorito extends \yii\db\ActiveRecord
+class Favorito extends ActiveRecord
 {
     /**
      * {@inheritdoc}

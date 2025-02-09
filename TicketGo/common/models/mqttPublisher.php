@@ -3,13 +3,14 @@
 namespace common\models;
 
 use Bluerhinos\phpMQTT;
+use Yii;
+use yii\db\ActiveRecord;
 
 require ('../libs/phpMQTT.php');
 
 
-class mqttPublisher extends \yii\db\ActiveRecord
+class mqttPublisher extends ActiveRecord
 {
-
     public static function publish($topico, $mensagem, $qos = 0)
     {
         $server = "127.0.0.1";
@@ -25,8 +26,5 @@ class mqttPublisher extends \yii\db\ActiveRecord
             $mqtt->publish($topico, $mensagem, $qos);
             $mqtt->close();
         }
-
     }
-
-
 }

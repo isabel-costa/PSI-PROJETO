@@ -1,11 +1,11 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Fatura;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "MetodosPagamento".
@@ -15,7 +15,8 @@ use Yii;
  *
  * @property Faturas[] $faturas
  */
-class MetodoPagamento extends \yii\db\ActiveRecord
+
+class MetodoPagamento extends ActiveRecord
 {
     /**
      * {@inheritdoc}

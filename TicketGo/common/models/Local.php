@@ -4,8 +4,9 @@ namespace common\models;
 
 use common\models\Evento;
 use common\models\Zona;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Local".
@@ -19,7 +20,7 @@ use Yii;
  * @property Eventos[] $eventos
  * @property Zonas[] $zonas
  */
-class Local extends \yii\db\ActiveRecord
+class Local extends ActiveRecord
 {
     /**
      * {@inheritdoc}

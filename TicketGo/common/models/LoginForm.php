@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * Login form

@@ -2,12 +2,12 @@
 
 namespace backend\modules\api\controllers;
 
-use Yii;
 use backend\modules\api\components\QueryParamAuth;
 use common\models\Bilhete;
 use common\models\Evento;
 use common\models\User;
 use common\models\Zona;
+use Yii;
 use yii\rest\ActiveController;
 use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
@@ -24,7 +24,7 @@ class BilheteController extends ActiveController
     {
         $behaviors = parent::behaviors();
         
-        // adiciona autenticação via query parameter
+        // adiciona autenticação via Query Params
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::class,
         ];
@@ -43,13 +43,15 @@ class BilheteController extends ActiveController
     }
 
 
-     // método para validar autenticação via query params
-    public function verifyCredentials($profile_id, $token)
+    // método para validar a autenticação do utilizador enviado nas Query Params
+    public function verifyCredentials($token, $profile_id)
     {
+        // procura o utilizador enviado através das Query Params na tabela User
         $user = User::find()->where(['id' => $profile_id])->andWhere(['auth_key' => $token])->one();
         
+        // caso o token e o profile_id não coincidam
         if (!$user) {
-            throw new UnauthorizedHttpException('Token de autenticação inválido ou usuário não encontrado.');
+            throw new UnauthorizedHttpException('Token ou ID inválidos.');
         }
     }
 
@@ -57,7 +59,7 @@ class BilheteController extends ActiveController
     // método para obter bilhetes por evento
     public function actionGetBilhetesEvento($evento_id)
     {
-        // obtém o token e o profile_id dos query params
+        // obtém o token e o profile_id
         $token = Yii::$app->request->get('token');
         $profile_id = Yii::$app->request->get('profile_id');
 
@@ -95,10 +97,11 @@ class BilheteController extends ActiveController
     // método para obter bilhetes por zona
     public function actionGetBilhetesZona($zona_id)
     {
-        // obtém o token e o profile_id dos query params
+        // obtém o token e o profile_id
         $token = Yii::$app->request->get('token');
         $profile_id = Yii::$app->request->get('profile_id');
 
+        // verifica se o token e o profile_id são válidos
         $this->verifyCredentials($token, $profile_id);
 
         // verifica se o parâmetro é válido

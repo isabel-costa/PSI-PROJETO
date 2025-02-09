@@ -5,10 +5,9 @@ namespace common\models;
 use common\models\LinhaFatura;
 use common\models\MetodoPagamentoagamento;
 use common\models\Profile;
-
-
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Faturas".
@@ -24,7 +23,7 @@ use Yii;
  * @property MetodosPagamento $metodopagamento
  * @property Profiles $profile
  */
-class Fatura extends \yii\db\ActiveRecord
+class Fatura extends ActiveRecord
 {
     /**
      * {@inheritdoc}

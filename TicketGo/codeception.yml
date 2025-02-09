@@ -1,9 +1,24 @@
-# global codeception file to run tests from all apps
-include:
-    - common
-    - frontend
-    - backend
+namespace: Tests
+support_namespace: Support
+actor: Tester
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
 paths:
-    output: console/runtime/output
+    tests: tests
+    output: tests/_output
+    data: tests/Support/Data
+    support: tests/Support
+    envs: tests/_envs
 settings:
     colors: true
+suites:
+    functional:
+        path: tests/functional
+        actor: FunctionalTester
+        modules:
+            enabled:
+                - Yii2:
+                    part: [orm, fixtures, email, database]
+                - \Helper\Functional

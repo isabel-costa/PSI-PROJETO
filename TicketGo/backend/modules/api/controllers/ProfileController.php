@@ -2,10 +2,10 @@
 
 namespace backend\modules\api\controllers;
 
-use Yii;
 use backend\modules\api\components\QueryParamAuth;
 use common\models\Profile;
 use common\models\User;
+use Yii;
 use yii\rest\ActiveController;
 use yii\web\BadRequestHttpException;
 use yii\web\ForbiddenHttpException;
@@ -22,7 +22,7 @@ class ProfileController extends ActiveController
     {
         $behaviors = parent::behaviors();
         
-        // adiciona autenticação via query parameter
+        // adiciona autenticação via Query Params
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::class,
         ];
@@ -41,79 +41,76 @@ class ProfileController extends ActiveController
     }
 
 
-    // método para validar autenticação via query params
-    public function verifyCredentials($profile_id, $token)
+    // método para validar a autenticação do utilizador enviado nas Query Params
+    public function verifyCredentials($token, $profile_id)
     {
+        // procura o utilizador enviado através das Query Params na tabela User
         $user = User::find()->where(['id' => $profile_id])->andWhere(['auth_key' => $token])->one();
         
+        // caso o token e o profile_id não coincidam
         if (!$user) {
-            throw new UnauthorizedHttpException('Token de autenticação inválido ou usuário não encontrado.');
+            throw new UnauthorizedHttpException('Token ou ID inválidos.');
         }
     }
 
 
-    // método para obter o profile correspondente ao token e ao profile_id
+    // método para obter o profile do utilizador enviado nas Query Params
     public function actionGetProfile()
     {
-        // obtém o token e o profile_id dos query params
+        // obtém o token e o profile_id
         $token = Yii::$app->request->get('token');
         $profile_id = Yii::$app->request->get('profile_id');
 
         // verifica se o token e o profile_id são válidos
         $this->verifyCredentials($token, $profile_id);
         
-        // mostra o perfil associado ao ID enviado na query param
+        // busca o profile associado ao profile_id
         $profile = Profile::findOne(['user_id' => $profile_id]);
-        
-        if ($profile) {
-            return [
-                'message' => "O seguinte perfil {$profile_id} foi encontrado:",
-                'data' => $profile,
-            ];
+        if (!$profile) {
+            throw new NotFoundHttpException('Nenhum perfil foi encontrado para este utilizador.');
         }
 
+        // retorna os detalhes do profile encontrado
         return [
-            'message' => "Nenhum perfil encontrado para este ID associado ao utilizador."
+            'message' => "Perfil do utilizador {$profile_id}:",
+            'profile' => $profile,
         ];
     }
 
 
-   // método para atualizar o profile correspondente ao token e ao profile_id
-   public function actionUpdateProfile()
-   {
-        // obtém o token e o profile_id dos query params
+    // método para atualizar o profile do utilizador enviado nas Query Params
+    public function actionUpdateProfile()
+    {
+        // obtém o token e o profile_id
         $token = Yii::$app->request->get('token');
         $profile_id = Yii::$app->request->get('profile_id');
 
         // verifica se o token e o profile_id são válidos
         $this->verifyCredentials($token, $profile_id);
-
-            // mostra o perfil associado ao ID enviado na query param
+        
+        // busca o profile associado ao profile_id
         $profile = Profile::findOne(['user_id' => $profile_id]);
-
         if (!$profile) {
-            return [
-                'message' => "O perfil não foi encontrado ou não pertence ao utilizador autenticado."
-            ];
+            throw new NotFoundHttpException('Nenhum perfil foi encontrado para este utilizador.');
         }
 
         $request = Yii::$app->request;
 
+        // atualiza os campos do profile do utilizador
         $profile->nome = $request->post('nome', $profile->nome);
         $profile->datanascimento = $request->post('datanascimento', $profile->datanascimento);
         $profile->nif = $request->post('nif', $profile->nif);
         $profile->morada = $request->post('morada', $profile->morada);
 
+        // guarda as alterações no banco de dados
         if ($profile->save()) {
             return [
-                'message' => "O perfil {$profile_id} foi atualizado com sucesso:",
-                'data' => $profile
+                'message' => "O perfil do utilizador {$profile_id} foi atualizado com sucesso!",
+                'profile' => $profile
             ];
         }
 
-        return [
-            'message' => "Falha ao atualizar os detalhes do perfil", 
-            'errors' => $profile->errors
-        ];
-   }
+        throw new BadRequestHttpException("Erro ao atualizar os detalhes do perfil do utilizador {$profile_id}.", $profile->errors);
+    }
+
 }

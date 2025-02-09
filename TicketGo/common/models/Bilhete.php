@@ -1,14 +1,14 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Evento;
 use common\models\LinhaCarrinho;
 use common\models\LinhaFatura;
 use common\models\Zona;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Bilhetes".
@@ -27,7 +27,8 @@ use Yii;
  * @property LinhasCarrinho[] $linhasCarrinhos
  * @property Zonas $zona
  */
-class Bilhete extends \yii\db\ActiveRecord
+
+class Bilhete extends ActiveRecord
 {
     /**
      * {@inheritdoc}

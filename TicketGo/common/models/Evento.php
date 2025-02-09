@@ -1,6 +1,5 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Bilhete;
@@ -8,9 +7,9 @@ use common\models\Categoria;
 use common\models\Favorito;
 use common\models\Imagem;
 use common\models\Local;
-
 use Yii;
-use yii\helpers\Url;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Eventos".
@@ -29,7 +28,7 @@ use yii\helpers\Url;
  * @property Imagens $imagens
  * @property Locais $local
  */
-class Evento extends \yii\db\ActiveRecord
+class Evento extends ActiveRecord
 {
     public $imagem_file;
     public $imagemUrlCustom;
@@ -134,4 +133,17 @@ class Evento extends \yii\db\ActiveRecord
         return $this->hasOne(Local::class, ['id' => 'local_id']);
     }
 
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        $topico = "ticketgo/evento";
+
+        $jsonAttributes = Json::encode($this->attributes);
+
+        $mensagem = 'Um novo evento foi criado ou modificado:';
+
+        mqttPublisher::publish($topico,$mensagem);
+        mqttPublisher::publish($topico,$jsonAttributes);
+    }
 }

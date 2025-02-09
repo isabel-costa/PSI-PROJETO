@@ -1,13 +1,15 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Carrinho;
 use common\models\Fatura;
 use common\models\Favorito;
-
+use common\models\MqttPublisher;
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
+
 
 /**
  * This is the model class for table "Profiles".
@@ -23,7 +25,7 @@ use Yii;
  * @property Faturas[] $faturas
  * @property Favoritos[] $favoritos
  */
-class Profile extends \yii\db\ActiveRecord
+class Profile extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -96,6 +98,7 @@ class Profile extends \yii\db\ActiveRecord
     }
 
 
+    /*
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -109,4 +112,5 @@ class Profile extends \yii\db\ActiveRecord
         mqttPublisher::publish($topico, $mensagem);
         mqttPublisher::publish($topico, $jsonAttributes);
     }
+    */
 }

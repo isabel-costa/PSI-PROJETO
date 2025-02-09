@@ -1,12 +1,12 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Bilhete;
 use common\models\Carrinho;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "LinhasCarrinho".
@@ -21,7 +21,7 @@ use Yii;
  * @property Bilhetes $bilhete
  * @property Carrinhos $carrinho
  */
-class LinhaCarrinho extends \yii\db\ActiveRecord
+class LinhaCarrinho extends ActiveRecord
 {
     /**
      * {@inheritdoc}

@@ -68,7 +68,7 @@ return [
                     'controller' => 'api/carrinho',
                     'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile',         // mostra todos o carrinho de compras de um utilizador específico
+                        'GET {profile_id}' => 'getcarrinho',                // mostra os itens do carrinho a partir das query params
                     ],
                 ],
                 [
@@ -76,9 +76,10 @@ return [
                     'controller' => 'api/favorito',
                     'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile',         //actionGetProfile
-                        'POST /api/favorito/addfav' => 'addfav',
-                        'DELETE {evento_id}' => 'deletefav',        //actionDeleteFav
+                        'GET {profile_id}' => 'getfavorito',                // mostra os favoritos a partir das query params
+                        'POST {evento_id}' => 'addfavorito',                // adiciona um favorito
+                        'PUT {evento_id}' => 'updatefavorito',              // atualiza um favorito
+                        'DELETE {evento_id}' => 'deletefavorito',           // remove um favorito
                     ],
                 ],
                 [
@@ -101,8 +102,8 @@ return [
                     'controller' => 'api/profile',
                     'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile',     // busca o perfil a partir das query params
-                        'PUT {profile_id}' => 'updateprofile',  // atualiza o perfil a partir das query params
+                        'GET {profile_id}' => 'getprofile',                 // mostra o perfil a partir das query params
+                        'PUT {profile_id}' => 'updateprofile',              // atualiza o perfil a partir das query params
                     ],
                 ],
                 [
@@ -110,7 +111,7 @@ return [
                     'controller' => 'api/metodopagamento',
                     'pluralize' => false,
                     'extraPatterns' => [
-                        'GET {metodopagamento_id}' => 'getmetodopagamento',     //  mostra todos os métodos de pagamento
+                        'GET {metodopagamento_id}' => 'getmetodopagamento',     // mostra todos os métodos de pagamento
                     ],
                 ],
                 [
@@ -143,8 +144,8 @@ return [
                     'controller' => 'api/auth',
                     'pluralize' => false,
                     'extraPatterns' => [
-                        'POST login' => 'login',                    // endpoint de login
-                        'POST signup' => 'signup',                  // endpoint de signup
+                        'POST login' => 'login',                            // endpoint de login
+                        'POST signup' => 'signup',                          // endpoint de signup
                     ]
                 ],
             ],

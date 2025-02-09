@@ -1,11 +1,11 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Evento;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Imagens".
@@ -16,7 +16,7 @@ use Yii;
  *
  * @property Eventos $evento
  */
-class Imagem extends \yii\db\ActiveRecord
+class Imagem extends ActiveRecord
 {
     /**
      * {@inheritdoc}

@@ -3,8 +3,9 @@
 namespace common\models;
 
 use common\models\Evento;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Categorias".
@@ -15,7 +16,7 @@ use Yii;
  *
  * @property Eventos[] $eventos
  */
-class Categoria extends \yii\db\ActiveRecord
+class Categoria extends ActiveRecord
 {
     /**
      * {@inheritdoc}

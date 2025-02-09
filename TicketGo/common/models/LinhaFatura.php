@@ -1,12 +1,12 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Bilhete;
 use common\models\Fatura;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "LinhasFatura".
@@ -21,7 +21,7 @@ use Yii;
  * @property Bilhetes[] $bilhetes
  * @property Faturas $fatura
  */
-class LinhaFatura extends \yii\db\ActiveRecord
+class LinhaFatura extends ActiveRecord
 {
     /**
      * {@inheritdoc}

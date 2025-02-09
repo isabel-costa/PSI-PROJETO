@@ -2,4 +2,6 @@ suite_namespace: backend\tests\functional
 actor: FunctionalTester
 modules:
     enabled:
-        - Yii2
+        - Yii2:
+            part: [orm, fixtures, email, database]
+        - \Helper\Functional

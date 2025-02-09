@@ -1,13 +1,13 @@
 <?php
 
-
 namespace common\models;
 
 use common\models\Bilhete;
 use common\models\Evento;
 use common\models\Local;
-
 use Yii;
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "Zonas".
@@ -23,7 +23,8 @@ use Yii;
  * @property Eventos $evento
  * @property Locais $local
  */
-class Zona extends \yii\db\ActiveRecord
+
+class Zona extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -73,12 +74,12 @@ class Zona extends \yii\db\ActiveRecord
      * Gets query for [[Evento]].
      *
      * @return \yii\db\ActiveQuery
-
+    * \
     public function getEvento()
     {
         return $this->hasOne(Evento::class, ['id' => 'evento_id']);
     }
-     * \
+
 
     /**
      * Gets query for [[Local]].
