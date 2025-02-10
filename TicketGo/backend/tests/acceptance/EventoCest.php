@@ -1,8 +1,9 @@
 <?php
 
-namespace tests\acceptance;
+namespace backend\tests\acceptance;
 
 use Codeception\Util\Locator;
+use Tests\Support\AcceptanceTester;
 
 class EventoCest
 {

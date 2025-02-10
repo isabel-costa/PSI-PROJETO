@@ -59,17 +59,5 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
         <?php endif; ?>
 
     </div>
-    <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-        <?php if (Yii::$app->user->can('admin') || Yii::$app->user->can('partner')): ?>
-
-        <?= \hail812\adminlte\widgets\SmallBox::widget([
-            'title' => 'Relatórios',
-            'theme' => 'primary',
-
-            'linkUrl' => \yii\helpers\Url::to(['relatorio/index']),
-        ]); ?>
-        <?php endif; ?>
-
-    </div>
 
 </div>
