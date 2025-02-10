@@ -10,23 +10,12 @@ use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 
 
-class UserController extends \yii\web\Controller
+class UserController extends BaseController
 {
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['createUsers', 'updateUsers', 'deleteUsers'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ]
-                ],
-
-            ],
-        ];
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
     public function actionIndex()
     {

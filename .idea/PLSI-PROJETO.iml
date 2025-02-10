@@ -17,6 +17,7 @@
       <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/frontend/tests" isTestSource="true" packagePrefix="frontend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/PLSI-PROJETO/TicketGo/frontend/tests/_support" isTestSource="true" packagePrefix="frontend\tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/TicketGo" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/almasaeed2010/adminlte" />
       <excludeFolder url="file://$MODULE_DIR$/TicketGo/vendor/behat/gherkin" />

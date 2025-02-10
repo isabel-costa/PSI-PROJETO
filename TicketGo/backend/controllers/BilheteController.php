@@ -9,8 +9,13 @@ use common\models\Zona;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
-class BilheteController extends Controller
+class BilheteController extends BaseController
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        return $behaviors;
+    }
     public function actionIndex()
     {
         $evento_id = Yii::$app->request->get('evento_id');

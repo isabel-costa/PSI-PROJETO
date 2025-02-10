@@ -12,24 +12,15 @@ use yii\filters\VerbFilter;
 /**
  * ZonaController implements the CRUD actions for Zona model.
  */
-class ZonaController extends Controller
+class ZonaController extends BaseController
 {
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
-                    ],
-                ],
-            ]
-        );
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
 
     /**
