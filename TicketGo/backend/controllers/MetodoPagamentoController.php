@@ -12,25 +12,15 @@ use yii\filters\VerbFilter;
 /**
  * MetodoPagamentoController implements the CRUD actions for MetodoPagamento model.
  */
-class MetodoPagamentoController extends Controller
+class MetodoPagamentoController extends BaseController
 {
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['createPaymentMethod', 'updatePaymentMethod' , 'deletePaymentMethod'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ]
-                ],
-            ],
-        ];
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
 
     /**

@@ -12,25 +12,15 @@ use yii\filters\VerbFilter;
 /**
  * LocalController implements the CRUD actions for Local model.
  */
-class LocalController extends Controller
+class LocalController extends BaseController
 {
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['createPlaces', 'updatePlaces', 'deletePlaces'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ]
-                ],
-            ],
-        ];
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
 
     /**

@@ -12,25 +12,15 @@ use yii\filters\VerbFilter;
 /**
  * CategoriaController implements the CRUD actions for Categoria model.
  */
-class CategoriaController extends Controller
+class CategoriaController extends BaseController
 {
     /**
      * @inheritDoc
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['createCategories', 'updateCategories', 'deleteCategories'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin'],
-                    ]
-                ],
-            ],
-        ];
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
 
     /**

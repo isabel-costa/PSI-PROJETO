@@ -30,8 +30,6 @@ return [
        'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true, // permite login automático baseado em cookies
-            'enableSession' => false,
-            'loginUrl' => null,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
 
         ],

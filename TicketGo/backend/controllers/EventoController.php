@@ -13,22 +13,12 @@ use yii\data\ActiveDataProvider;
 use yii\web\ForbiddenHttpException;
 use yii\web\UploadedFile;
 
-class EventoController extends \yii\web\Controller
+class EventoController extends BaseController
 {
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::class,
-                'only' => ['createEvents', 'updateEvents', 'deleteEvents'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['admin', 'organizer'],
-                    ]
-                ],
-            ],
-        ];
+        $behaviors = parent::behaviors();
+        return $behaviors;
     }
 
     public function actionIndex()
