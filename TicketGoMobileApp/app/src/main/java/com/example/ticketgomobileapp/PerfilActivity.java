@@ -3,6 +3,7 @@ package com.example.ticketgomobileapp;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,8 +29,7 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView nifTextView;
     private TextView moradaTextView;
     private Button logoutButton; // Botão de logout
-    private ImageView houseIconView, heartIconView, profileIconView;
-    private static final String PROFILE_URL = "https://your-api-url.com/profile"; // Substitua pelo endpoint da sua API
+    private static final String PROFILE_URL = "http://10.0.2.2/TicketGoAPI/backend/web/profile"; // Substitua pelo endpoint da sua API
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,9 @@ public class PerfilActivity extends AppCompatActivity {
 
         // Verificar autenticação
         SharedPreferences sharedPreferences = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
-        boolean isAuthenticated = sharedPreferences.getBoolean("is_authenticated", false);
+        boolean isAuthenticated = (sharedPreferences.getBoolean("is_authenticated", false));
+        String authenticated = (sharedPreferences.getString("auth_token", ""));
+        Log.d("PerfilActivity", authenticated);
 
         if (!isAuthenticated) {
             // Redirecionar para login se não autenticado
@@ -54,17 +56,17 @@ public class PerfilActivity extends AppCompatActivity {
         nifTextView = findViewById(R.id.nifTextView); // Adicionei o ID correto
 
         // Configurar botão de logout
-        logoutButton.setOnClickListener(v -> {
+        /*logoutButton.setOnClickListener(v -> {
             // Realizar o logout (remover dados de autenticação)
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean("is_authenticated", false);
-            editor.apply();
+            editor.commit();
 
             // Redirecionar para a tela de login
             Intent intent = new Intent(PerfilActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        });
+        });*/
 
         // Carregar dados do perfil
         carregarDadosPerfil();

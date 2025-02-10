@@ -27,6 +27,8 @@ use yii\widgets\ActiveForm;
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
 </head>
 
 <body>
@@ -37,7 +39,7 @@ use yii\widgets\ActiveForm;
             <div class="col-md-4">
                 <div class="logo">
                     <a href="<?= Yii::getAlias('@web') ?>/">
-                        <img src="../../web/img/logoticketgo.png" alt="Logo">
+                        <img src="../../img/logoticketgo.png" alt="Logo">
                     </a>
                 </div>
             </div>
@@ -48,17 +50,17 @@ use yii\widgets\ActiveForm;
                 <div class="user-icons d-flex justify-content-end">
                     <div class="perfil">
                         <a href="<?= \yii\helpers\Url::to(['site/profile']) ?>">
-                            <img src="../../web/img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
+                            <img src="../../img/icon_perfil.png" alt="Perfil" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="favoritos">
                         <a href="<?= \yii\helpers\Url::to(['favorito/index']) ?>">
-                            <img src="../../web/img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
+                            <img src="../../img/icon_coracao.png" alt="Favoritos" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                     <div class="carrinho">
-                        <a href="<?= \yii\helpers\Url::to(['cart/index']) ?>">
-                            <img src="../../web/img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
+                        <a href="<?= \yii\helpers\Url::to(['carrinho/cart']) ?>">
+                            <img src="../../img/icon_carrinho.png" alt="Carrinho" style="width: 40px; height: 40px;">
                         </a>
                     </div>
                 </div>
@@ -89,7 +91,7 @@ use yii\widgets\ActiveForm;
                                 <div class="product-content">
                                     <?php
                                     $form = ActiveForm::begin([
-                                        'action' => ['site/add-to-cart'], // Ação para adicionar ao carrinho
+                                        'action' => ['carrinho/add-tickets-cart'],
                                         'method' => 'post',
                                     ]);
                                     ?>
@@ -97,7 +99,7 @@ use yii\widgets\ActiveForm;
 
                                     <?php if (!empty($zonasPrecos)): ?>
                                         <div class="price">
-                                            <h3>Escolha a sua Plateia:</h3>
+                                            <h5>Escolha a sua Plateia:</h5>
                                             <div class="dropdown-container">
                                                 <select name="zona_id" class="custom-dropdown" required>
                                                     <option value="">Escolha uma zona...</option>
@@ -114,31 +116,27 @@ use yii\widgets\ActiveForm;
                                     <div class="quantity">
                                         <h4>Quantidade:</h4>
                                         <div class="qty">
-                                            <button type="button" class="btn-minus"><i class="fa fa-minus"></i></button>
                                             <input type="number" name="quantidade" value="1" min="1" required>
-                                            <button type="button" class="btn-plus"><i class="fa fa-plus"></i></button>
                                         </div>
                                     </div>
 
                                     <div class="action">
-                                        <button type="submit" class="btn btn-primary">Adicionar ao Carrinho</button>
+                                        <button type="submit" class="btn btn-primary" id="addcart">Adicionar ao Carrinho</button>
+                                        <?php if (Yii::$app->user->isGuest): ?>
+                                            <a href="#" title="É necessário fazer login para adicionar um evento aos favoritos"><i class="fa fa-heart"></i></a>
+                                        <?php else: ?>
+                                            <!-- Verifica se o utilizador tem permissão para adicionar aos favoritos -->
+                                            <?php if (Yii::$app->user->can('addToFavorites')): ?>
+                                                <a href="<?= \yii\helpers\Url::to(['favorito/toggle', 'eventoId' => $evento->id]) ?>">
+                                                    <i class="fa fa-heart"></i>
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="text-muted"><i class="fa fa-heart"></i></span>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </div>
                                     <?php ActiveForm::end(); ?>
                                 </div>
-                            </div>
-                            <div class="action">
-                                <?php if (Yii::$app->user->isGuest): ?>
-                                    <a href="#" title="É necessário fazer login para adicionar um evento aos favoritos"><i class="fa fa-heart"></i></a>
-                                <?php else: ?>
-                                    <!-- Verifica se o utilizador tem permissão para adicionar aos favoritos -->
-                                    <?php if (Yii::$app->user->can('addToFavorites')): ?>
-                                        <a href="<?= \yii\helpers\Url::to(['favorito/toggle', 'eventoId' => $evento->id]) ?>">
-                                            <i class="fa fa-heart"></i>
-                                        </a>
-                                    <?php else: ?>
-                                        <span class="text-muted"><i class="fa fa-heart"></i></span>
-                                    <?php endif; ?>
-                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
@@ -158,7 +156,6 @@ use yii\widgets\ActiveForm;
     </div>
 </div>
 <!-- Product Detail End -->
-
 
 <div class="featured-product">
     <div class="container">

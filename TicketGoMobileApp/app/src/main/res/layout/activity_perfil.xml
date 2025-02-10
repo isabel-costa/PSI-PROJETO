@@ -182,22 +182,6 @@
                 android:textColor="#555555"
                 android:layout_marginBottom="16dp" />
 
-            <!-- Palavra-Passe -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Palavra-Passe"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginBottom="4dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="********"
-                android:textSize="14sp"
-                android:textColor="#555555"
-                android:layout_marginBottom="16dp" />
         </LinearLayout>
     </ScrollView>
 
@@ -206,13 +190,14 @@
         android:id="@+id/editProfileButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Editar Perfil"
         android:layout_margin="16dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#6200EE"
+        android:text="Editar Perfil"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

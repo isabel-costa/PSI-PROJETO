@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         profileIconView.setOnClickListener(v -> {
-            if (AuthUtils.isUserAuthenticated(this)) {
+            if (AuthUtils.isUserAuthenticated(this) == true) {
                 Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
                 startActivity(intent);
             } else {
@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
                         String nomeImagem = imagemObject.getString("nome");
 
                         // Construa a URL da imagem
-                        String imagemUrl = "http://10.0.2.2/SIS-PROJETO/TicketGo/backend/web/imagens/" + nomeImagem;
+                        String imagemUrl = "http://10.0.2.2/TicketGo/backend/web/api/imagem/" + nomeImagem;
 
                         // Associe a imagem ao evento correspondente
                         for (Evento evento : eventoList) {

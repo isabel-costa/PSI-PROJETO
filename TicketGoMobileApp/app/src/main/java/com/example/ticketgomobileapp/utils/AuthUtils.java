@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 public class AuthUtils {
 
-    private static final String PREFS_NAME = "UserAuthPrefs";
+    private static final String PREFS_NAME = "MyAppPrefs";
     private static final String KEY_IS_AUTHENTICATED = "is_authenticated";
 
     // Verificar se o usuário está autenticado
