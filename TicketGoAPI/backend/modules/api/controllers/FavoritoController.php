@@ -128,6 +128,17 @@ class FavoritoController extends ActiveController
         } else {
             throw new BadRequestHttpException('Erro ao adicionar o evento aos favoritos.');
         }
+
+        // Adiciona aos favoritos
+        $novoFavorito = new Favorito();
+        $novoFavorito->user_id = $userId;
+        $novoFavorito->profile_id = $profile_id;
+
+        if ($novoFavorito->save()) {
+            return ['message' => 'Adicionado aos favoritos'];
+        }
+
+        return ['message' => 'Erro ao adicionar aos favoritos'];
     }
 
 

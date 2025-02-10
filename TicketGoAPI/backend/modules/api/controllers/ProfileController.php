@@ -16,13 +16,14 @@ class ProfileController extends ActiveController
 {
     public $modelClass = 'common\models\Profile';
 
-
+    
     // configura os comportamentos do controlador
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         
         // adiciona autenticação via Query Params
+
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::class,
         ];

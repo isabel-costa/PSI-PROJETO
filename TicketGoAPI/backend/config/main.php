@@ -21,7 +21,8 @@ return [
             'csrfParam' => '_csrf-backend',
             'enableCsrfValidation' => false,
             'parsers' => [
-                'application/json' => 'yii\web\JsonParser', ]
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -56,16 +57,15 @@ return [
                     'controller' => 'api/bilhete',
                     'pluralize' => true,
                     'extraPatterns' => [
-                        'GET {evento_id}' => 'getevento',
+                        'GET bilhetes/{evento_id}' => 'getevento',
                     ],
 
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/carrinho',
-                    'pluralize' => true,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile',
+                        'GET carrinho/{profile_id}' => 'getprofile',
                     ],
                 ],
                 [
@@ -73,11 +73,11 @@ return [
                     'controller' => 'api/favorito',
                     'pluralize' => true,
                     'extraPatterns' => [
-                        'GET {profile_id}' => 'getprofile', //actionGetProfile
-                        'POST /api/favorito/addfav' => 'addfav',
-                        'DELETE {evento_id}' => 'deletefav', //actionDeleteFav
+                        'GET favoritos/{profile_id}' => 'index', //actionGetProfile
+                        'POST favoritos/{profile_id}' => 'addfav',
+                        'DELETE favoritos/{evento_id}' => 'deletefav', //actionDeleteFav
                     ],
-                    
+
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',
@@ -89,7 +89,7 @@ return [
                     'controller' => 'api/evento',
                     'pluralize' => true,
                     'extraPatterns' => [
-                        'GET,HEAD search' => 'search', // Adiciona a rota de pesquisa
+                        'GET,HEAD search' => 'search',
                     ],
                 ],
                 [
@@ -102,7 +102,9 @@ return [
                     'controller' => 'api/profile',
                     'pluralize' => true,
                     'extraPatterns' => [
-                        'PUT {profile_id}' => 'updateprofile',
+                        //'GET profiles/{nome}' => 'get-profile-by-nome',
+                        //'GET {username_id}' => 'getProfileByUsername',
+                        'PUT profiles/{profile_id}' => 'updateprofile',
                     ],
                 ],
                 [
@@ -120,7 +122,6 @@ return [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/linhafatura',
-                    'pluralize' => true,
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',

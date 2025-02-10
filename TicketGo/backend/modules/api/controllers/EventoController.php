@@ -1,39 +1,55 @@
-<?php
-
-namespace backend\modules\api\controllers;
-
-use Yii;
-use yii\rest\ActiveController;
-use yii\web\BadRequestHttpException;
-use yii\web\ForbiddenHttpException;
-use yii\web\NotFoundHttpException;
-use yii\web\UnauthorizedHttpException;
-use backend\modules\api\components\QueryParamAuth;
 use common\models\Evento;
+use Yii;
+use backend\modules\api\components\QueryParamAuth;
+use yii\rest\ActiveController;
+use yii\web\ForbiddenHttpException;
+use common\models\mqttPublisher;
+use yii\web\Response;
 
-class EventoController extends ActiveController 
-{    
+class EventoController extends ActiveController {
+    
     public $modelClass = 'common\models\Evento';
 
-    // configura os comportamentos do controlador
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        
-        // adiciona autenticação via query parameter
-        $behaviors['authenticator'] = [
-            'class' => QueryParamAuth::class,
-        ];
-        
-        return $behaviors;
-    }
-
-    // método para verificar o acesso às ações
+    // Método para verificar o acesso às ações
     public function checkAccess($action, $model = null, $params = [])
     {
-        // bloqueia qualquer método que não seja GET
+        // Bloqueia qualquer método que não seja GET
         if (in_array($action, ['create', 'update', 'delete'])) {
-            throw new ForbiddenHttpException('You are not allowed to perform this action');
+            throw new \yii\web\ForbiddenHttpException('You are not allowed to perform this action');
         }
     }
+
+    public function actionSearch($query)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+
+        // Verifica se a consulta não está vazia
+        if (empty($query)) {
+            return [
+                'eventos' => [],
+                'message' => 'Nenhum evento encontrado.',
+            ];
+        }
+
+        // Realiza a pesquisa no banco de dados
+        $eventos = Evento::find()
+            ->where(['like', 'titulo', $query])
+            ->orWhere(['like', 'descricao', $query])
+            ->all();
+
+        // Se não encontrar eventos
+        if (empty($eventos)) {
+            return [
+                'eventos' => [],
+                'message' => 'Nenhum evento encontrado.',
+            ];
+        }
+
+        // Retorna os eventos encontrados
+        return [
+            'eventos' => $eventos,
+            'message' => 'Eventos encontrados.',
+        ];
+    }
+
 }

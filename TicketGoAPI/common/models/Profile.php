@@ -19,6 +19,7 @@ use yii\helpers\Json;
  * @property Carrinhos $carrinhos
  * @property Faturas[] $faturas
  * @property Favoritos[] $favoritos
+ * @property User[] $user
  */
 class Profile extends \yii\db\ActiveRecord
 {
@@ -66,6 +67,16 @@ class Profile extends \yii\db\ActiveRecord
     public function getCarrinhos()
     {
         return $this->hasOne(Carrinhos::class, ['profile_id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['profile_id' => 'id']);
     }
 
     /**
