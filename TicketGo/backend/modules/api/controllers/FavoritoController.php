@@ -92,7 +92,7 @@ class FavoritoController extends ActiveController
 
 
     // método para adicionar um evento aos favoritos
-    public function actionAddFavorito(eevento_id)
+    public function actionAddFavorito($evento_id)
     {
         // obtém o token e o profile_id
         $token = Yii::$app->request->get('token');
