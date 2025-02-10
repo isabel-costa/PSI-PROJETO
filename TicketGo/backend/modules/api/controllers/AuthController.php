@@ -3,59 +3,65 @@
 namespace backend\modules\api\controllers;
 
 use Yii;
+use backend\modules\api\components\QueryParamAuth;
+use common\models\Profile;
+use common\models\User;
 use yii\rest\Controller;
 use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
 use yii\web\UnauthorizedHttpException;
-use common\models\User;
-use common\models\Profile;
-use yii\web\Response;
 
 class AuthController extends Controller
 {
-    // Desativar a validação CSRF para facilitar o login via API
-    public $modelClass = 'common\models\User';
     public $enableCsrfValidation = false;
 
-    // Método para efetuar o login
+    // método para verificar o acesso às ações
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        // bloqueia qualquer método que não seja GET
+        if (in_array($action, ['create', 'update', 'delete'])) {
+            throw new ForbiddenHttpException('Erro: Você não tem permissão para realizar esta ação.');
+        }
+    }
+
+    // método de login
     public function actionLogin()
     {
-        $userModel = new $this->modelClass;
-        $request = Yii::$app->request; // Receber dados via query parameter
+        $request = Yii::$app->request; // recebe os dados via query parameter
         $username = $request->getBodyParam('username');
         $password = $request->getBodyParam('password');
 
-        // Verifica se o username e a password foram fornecidos
+        // verifica se o username e a password foram fornecidos
         if (empty($username) || empty($password)) {
-            throw new BadRequestHttpException('Missing required parameters.');
+            throw new BadRequestHttpException('Erro: Parâmetros obrigatórios ausentes.');
         }
 
-        // Encontra o utilizador na base de dados
+        // encontra o user na base de dados
         $user = User::findOne(['username' => $username]);
-
-        // Encontra o perfil associado ao utilizador
-        $profile = Profile::findOne(['user_id' => $user->id]);
-
-        // Verifica se o utilizador existe e se a password é válida
+        
+        // verifica se o user existe e se a password é válida
         if (!$user || !$user->validatePassword($password)) {
-            throw new UnauthorizedHttpException('Invalid credentials.');
+            throw new UnauthorizedHttpException('Erro: Credenciais inválidas.');
         }
 
-        // Gera a auth key se não existir
+        // gera a auth key caso não exista
         if (empty($user->auth_key)) {
-            $user->generateAuthKey();  // Método que gera a auth key
+            $user->generateAuthKey(); // método que gera a auth key
             if (!$user->save()) {
-                throw new UnauthorizedHttpException('Error generating auth key.');
+                throw new UnauthorizedHttpException('Erro ao gerar chave de autenticação.');
             }
         }
 
-        // Retorna a auth key
+        // retorna a auth key
         return ['auth_key' => $user->auth_key];
     }
 
-    // Método para efetuar o registo
+    // método de signup
     public function actionSignup()
     {
         $request = Yii::$app->request;
+
         $username = $request->getBodyParam('username');
         $email = $request->getBodyParam('email');
         $password = $request->getBodyParam('password');
@@ -63,46 +69,49 @@ class AuthController extends Controller
         $datanascimento = $request->getBodyParam('datanascimento');
         $nif = $request->getBodyParam('nif');
         $morada = $request->getBodyParam('morada');
-        $dataregisto = date('Y-m-d H:i:s'); // Data de registo atual
 
-        // Verifica se todos os parâmetros obrigatórios foram passados
-        if (empty($username) || empty($email) || empty($password) || empty($nome) || empty($datanascimento) || empty($nif) || empty($morada)) {
-            throw new BadRequestHttpException('Missing required parameters.');
+        // verifica se todos os parâmetros obrigatórios foram passados
+        if (!$username || !$email || !$password || !$nome || !$datanascimento || !$nif || !$morada) {
+            throw new BadRequestHttpException('Erro: Todos os campos são obrigatórios.');
         }
 
-        // Verifica se o username ou email já existem
+        // verifica se o username ou email já existam na base de dados
         if (User::findOne(['username' => $username]) || User::findOne(['email' => $email])) {
-            throw new BadRequestHttpException('Username or email already exists.');
+            throw new BadRequestHttpException('Erro: Nome de utilizador ou e-mail já se encontram registados.');
         }
 
-        // Cria um novo utilizador
+        // cria um novo user
         $user = new User();
+
         $user->username = $username;
         $user->email = $email;
         $user->setPassword($password);
-        $user->generateAuthKey(); // Gera a auth key
+        $user->generateAuthKey();                   // método que gera o auth_key
+        $user->generatePasswordResetToken();        // método que gera o password_reset_token
+        $user->generateEmailVerificationToken();    // método que gera o verification_token
+        $user->created_at = time();                 // define o created_at para a hora atual
+        $user->updated_at = time();                 // define o updated_at para a hora atual
 
         if ($user->save()) {
-            // Cria um perfil associado ao utilizador
+            // cria um profile associado ao user
             $profile = new Profile();
+            
             $profile->user_id = $user->id;
-            $profile->username = $username;
-            $profile->password = $user->password_hash;
             $profile->nome = $nome;
             $profile->datanascimento = $datanascimento;
             $profile->nif = $nif;
             $profile->morada = $morada;
-            $profile->dataregisto = $dataregisto;
+            $profile->dataregisto = date('Y-m-d H:i:s');    // define a dataregisto para a hora e dia atual
 
-            if ($profile->save()) {
-                return ['auth_key' => $user->auth_key];
-            } else {
-                // Se o perfil não for guardado, apaga o utilizador criado
+            if (!$profile->save()) {
+                // se o profile não for guardado, apaga o respetivo user criado
                 $user->delete();
-                throw new BadRequestHttpException('Error creating profile.');
+                throw new BadRequestHttpException('Erro ao criar perfil de utilizador.');
             }
-        } else {
-            throw new BadRequestHttpException('Error creating user.');
-        }
+
+            return ['auth_key' => $user->auth_key];
+        } 
+        
+        throw new BadRequestHttpException('Erro ao criar o utilizador.');
     }
 }

@@ -1,3 +1,7 @@
+<?php
+
+namespace backend\modules\api\controllers;
+
 use common\models\Evento;
 use Yii;
 use backend\modules\api\components\QueryParamAuth;

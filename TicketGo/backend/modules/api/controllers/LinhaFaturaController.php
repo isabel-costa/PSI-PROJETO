@@ -1,32 +1,39 @@
 <?php
+
 namespace backend\modules\api\controllers;
 
-use backend\modules\api\components\QueryParamAuth;
+use Yii;
 use yii\rest\ActiveController;
-use common\models\mqttPublisher;
+use yii\web\BadRequestHttpException;
+use yii\web\ForbiddenHttpException;
+use yii\web\NotFoundHttpException;
+use yii\web\UnauthorizedHttpException;
+use backend\modules\api\components\QueryParamAuth;
+use common\models\LinhaFatura;
 
-class LinhaFaturaController extends ActiveController {
+class LinhaFaturaController extends ActiveController
+{
     public $modelClass = 'common\models\LinhaFatura';
 
-    // Método para verificar o acesso às ações
-    public function checkAccess($action, $model = null, $params = [])
-    {
-        // Bloqueia qualquer método que não seja GET
-        if (in_array($action, ['create', 'update', 'delete'])) {
-            throw new \yii\web\ForbiddenHttpException('You are not allowed to perform this action');
-        }
-    }
-
-    // Configura os comportamentos do controlador
+    // configura os comportamentos do controlador
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-
-        // Adiciona autenticação via query parameter
+        
+        // adiciona autenticação via query parameter
         $behaviors['authenticator'] = [
             'class' => QueryParamAuth::class,
         ];
-
+        
         return $behaviors;
+    }
+
+    // método para verificar o acesso às ações
+    public function checkAccess($action, $model = null, $params = [])
+    {
+        // bloqueia qualquer método que não seja GET
+        if (in_array($action, ['create', 'update', 'delete'])) {
+            throw new ForbiddenHttpException('You are not allowed to perform this action');
+        }
     }
 }
