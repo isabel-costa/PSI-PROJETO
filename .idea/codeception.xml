@@ -7,75 +7,8 @@
           <option name="path" value="$PROJECT_DIR$/tests" />
         </Configuration>
         <Configuration>
+          <option name="namespace" value="Tests" />
           <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="path" value="$PROJECT_DIR$/TicketGo/tests" />
-        </Configuration>
-        <Configuration>
-          <option name="namespace" value="common\tests" />
-          <option name="path" value="$PROJECT_DIR$/TicketGo/common/tests" />
-          <option name="mySuiteNamespaces">
-            <map>
-              <entry key="unit" value="common\tests\unit" />
-            </map>
-          </option>
-        </Configuration>
-        <Configuration>
-          <option name="namespace" value="frontend\tests" />
-          <option name="path" value="$PROJECT_DIR$/TicketGo/frontend/tests" />
-          <option name="mySuiteNamespaces">
-            <map>
-              <entry key="functional" value="frontend\tests\functional" />
-              <entry key="unit" value="frontend\tests\unit" />
-            </map>
-          </option>
-        </Configuration>
-        <Configuration>
-          <option name="namespace" value="backend\tests" />
-          <option name="path" value="$PROJECT_DIR$/TicketGo/backend/tests" />
-          <option name="mySuiteNamespaces">
-            <map>
-              <entry key="functional" value="backend\tests\functional" />
-              <entry key="unit" value="backend\tests\unit" />
-            </map>
-          </option>
         </Configuration>
       </list>
     </option>

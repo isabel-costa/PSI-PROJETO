@@ -49,9 +49,6 @@
                     ['label' => 'Metodos Pagamento', 'header' => true, 'visible' => Yii::$app->user->can('createUsers')],
                     ['label' => 'Ver Metodos de Pagamento', 'url' => ['..\metodo-pagamento\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('createUsers')],
 
-                    ['label' => 'Relatórios', 'header' => true, 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
-                    ['label' => 'Ver Relatórios', 'url' => ['..\relatorio\index'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->can('admin')||Yii::$app->user->can('partner')],
-
 
                     ],
             ]);
