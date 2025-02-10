@@ -91,6 +91,9 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'api/evento',
                     'pluralize' => false,
+                    'extraPatterns' => [
+                        'GET,HEAD search' => 'search',
+                    ],
                 ],
                 [
                     'class' => 'yii\rest\UrlRule',

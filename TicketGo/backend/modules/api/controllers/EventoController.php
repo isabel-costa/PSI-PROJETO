@@ -26,7 +26,6 @@ class EventoController extends ActiveController {
     public function actionSearch($query)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
         // Verifica se a consulta não está vazia
         if (empty($query)) {
             return [
@@ -34,13 +33,11 @@ class EventoController extends ActiveController {
                 'message' => 'Nenhum evento encontrado.',
             ];
         }
-
         // Realiza a pesquisa no banco de dados
         $eventos = Evento::find()
             ->where(['like', 'titulo', $query])
             ->orWhere(['like', 'descricao', $query])
             ->all();
-
         // Se não encontrar eventos
         if (empty($eventos)) {
             return [
@@ -48,12 +45,10 @@ class EventoController extends ActiveController {
                 'message' => 'Nenhum evento encontrado.',
             ];
         }
-
         // Retorna os eventos encontrados
         return [
             'eventos' => $eventos,
             'message' => 'Eventos encontrados.',
         ];
     }
-
 }
