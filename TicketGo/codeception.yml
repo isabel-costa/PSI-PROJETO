@@ -1,24 +1,15 @@
-namespace: Tests
-support_namespace: Support
-actor: Tester
+namespace: backend\tests
 actor_suffix: Tester
-extensions:
-    enabled:
-        - Codeception\Extension\RunFailed
 paths:
     tests: tests
     output: tests/_output
-    data: tests/Support/Data
-    support: tests/Support
-    envs: tests/_envs
+    data: tests/_data
+    support: tests/_support
+bootstrap: _bootstrap.php
 settings:
     colors: true
-suites:
-    functional:
-        path: tests/functional
-        actor: FunctionalTester
-        modules:
-            enabled:
-                - Yii2:
-                    part: [orm, fixtures, email, database]
-                - \Helper\Functional
+    memory_limit: 1024M
+modules:
+    config:
+        Yii2:
+            configFile: 'config/codeception-local.php'
