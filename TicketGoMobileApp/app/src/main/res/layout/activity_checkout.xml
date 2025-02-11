@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CheckoutActivity"
+    android:padding="16dp">
+
+    <!-- Toolbar Title -->
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Finalizar Compra"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Purchase Summary -->
+    <TextView
+        android:id="@+id/tv_resumo_compra"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Resumo da Compra"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_title" />
+
+    <!-- Event Details Section -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_event_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border_black"
+        android:padding="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_resumo_compra">
+
+        <ImageView
+            android:id="@+id/event_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/icon_evento"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_event_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Nome do Evento"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/event_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Quantity Controls -->
+        <Button
+            android:id="@+id/btn_decrease"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="-"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_decrease" />
+
+        <Button
+            android:id="@+id/btn_increase"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="+"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_quantity" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Payment Method Section -->
+    <TextView
+        android:id="@+id/tv_payment_method"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Método de Pagamento"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/cl_event_details"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+
+    <!-- Payment Inputs -->
+    <RadioGroup
+        android:id="@+id/radioGroupPaymentOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32">
+
+        <!-- Multibanco -->
+        <RadioButton
+            android:id="@+id/rb_multibanco"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/icon_multibanco" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Multibanco" />
+        </LinearLayout>
+
+        <!-- MBWay -->
+        <RadioButton
+            android:id="@+id/rb_mbway"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/icon_mbway" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="MBWay" />
+        </LinearLayout>
+        <!-- Cartão de Crédito -->
+        <RadioButton
+            android:id="@+id/rb_credit_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+
+            <ImageView
+                android:layout_width="59dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/icon_cartao" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Cartão de Crédito" />
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_card_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Número do Cartão"
+        app:layout_constraintTop_toBottomOf="@id/radioGroupPaymentOptions"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/et_cardholder_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Titular"
+        app:layout_constraintTop_toBottomOf="@id/et_card_number"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/et_expiry_date"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:hint="Data de Validade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_cardholder_name" />
+
+    <!-- Confirm Button -->
+    <Button
+        android:id="@+id/btn_confirm_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Confirmar Compra"
+        app:layout_constraintTop_toBottomOf="@id/et_expiry_date" />
+
+    <!-- Navigation Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/heartIconView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/icon_coracao"
+            android:layout_marginEnd="32dp" />
+
+        <ImageView
+            android:id="@+id/houseIconView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:srcCompat="@drawable/icon_casa" />
+
+        <ImageView
+            android:id="@+id/profileIconView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="32dp"
+            app:srcCompat="@drawable/icon_perfil" />
+
+        <ImageView
+            android:id="@+id/cartIconView"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="32dp"
+            app:srcCompat="@drawable/icon_carrinho" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

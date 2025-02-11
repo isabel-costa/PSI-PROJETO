@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Barra superior -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topBar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/iconMenu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bilhete"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconMenu"
+            android:layout_marginStart="16dp" />
+
+        <ImageView
+            android:id="@+id/iconLogo"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:contentDescription="Logo"
+            android:src="@drawable/ticket"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Imagem do evento -->
+
+
+    <!-- Nome e informações do evento -->
+    <ImageView
+        android:id="@+id/eventImage1"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:contentDescription="@string/event_image"
+        app:layout_constraintTop_toBottomOf="@id/topBar"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/nomeEvento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nome do evento"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/eventImage1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/localEvento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Local"
+        android:textColor="#777777"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/nomeEvento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/descricaoEvento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Descrição"
+        android:textSize="14sp"
+        android:textColor="#555555"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/localEvento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/dataEvento"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Data: DD-MM-YY - HORAS"
+        android:textColor="#777777"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/descricaoEvento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/zonasSpinner"
+        android:text="Zonas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/dataEvento" />
+
+    <Button
+        android:id="@+id/btnAddToCart"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="100dp"
+        android:backgroundTint="#3F51B5"
+        android:text="Adicionar ao Carrinho"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        app:layout_constraintTop_toBottomOf="@id/dataEvento"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnFavorite" />
+
+    <ImageView
+        android:id="@+id/btnFavorite"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/icon_coracao"
+        android:contentDescription="Adicionar aos favoritos"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toTopOf="@id/btnAddToCart"
+        app:layout_constraintBottom_toBottomOf="@id/btnAddToCart"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Barra de navegação inferior -->
+    <!-- Barra de navegação inferior -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Ícone Coração -->
+        <ImageView
+            android:id="@+id/heartIconView3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/icon_coracao"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Ícone Casa -->
+        <ImageView
+            android:id="@+id/houseIconView3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/icon_casa"
+            app:layout_constraintStart_toEndOf="@id/heartIconView3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Ícone Perfil -->
+        <ImageView
+            android:id="@+id/profileIconView3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/icon_perfil"
+            app:layout_constraintStart_toEndOf="@id/houseIconView3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintWidth_percent="0.25" />
+
+        <!-- Ícone Carrinho -->
+        <ImageView
+            android:id="@+id/cartIconView3"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:srcCompat="@drawable/icon_carrinho"
+            app:layout_constraintStart_toEndOf="@id/profileIconView3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintWidth_percent="0.25" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
