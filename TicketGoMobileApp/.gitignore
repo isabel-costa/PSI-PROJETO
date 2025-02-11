@@ -1,0 +1,12 @@
+#TicketGoMobileApp
+.DS_Store
+	.gitignore.save
+	.gitignore.swp
+	#app/
+	#build.gradle.kts
+	#gradle.properties
+	#gradle/
+	#gradlew
+	#gradlew.bat
+	#local.properties
+	#settings.gradle.kts
